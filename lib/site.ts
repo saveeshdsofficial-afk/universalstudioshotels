@@ -26,7 +26,6 @@ export const SITE = {
   ],
 
   hero: {
-    eyebrow: "Not an official site · Bedfordshire",
     h1: ["Hotels and places to stay near ", "the Universal Studios UK site"] as const,
     lede: "An independent list of places within reach of the Bedford build, starting with the hotels closest to it. Every entry shows how far out it sits and links straight to the operator.",
   },

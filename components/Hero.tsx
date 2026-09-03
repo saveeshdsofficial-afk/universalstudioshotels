@@ -20,8 +20,7 @@ export function Hero() {
         {/* copy and artwork sit side by side once there is room */}
         <div className="grid items-center gap-9 md:grid-cols-[1.05fr_0.95fr] md:gap-12 lg:gap-16">
           <Reveal>
-            <span className="eyebrow">{SITE.hero.eyebrow}</span>
-            <h1 className="mt-5 text-[clamp(2.1rem,6.4vw,3.5rem)]">
+            <h1 className="text-[clamp(2.1rem,6.4vw,3.5rem)]">
               {headline}
               <span className="text-accent-ink">{headlineAccent}</span>
             </h1>
