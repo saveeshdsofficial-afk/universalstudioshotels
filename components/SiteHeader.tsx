@@ -10,9 +10,8 @@ export function Brand({ tone = "light" }: { tone?: "light" | "dark" }) {
     <a
       href="#top"
       aria-label={`${SITE.brand} ${SITE.brandSub} — home`}
-      className="flex min-h-11 items-center gap-2.5"
+      className="flex min-h-11 items-center"
     >
-      <span className="size-[11px] shrink-0 rounded-full bg-accent shadow-[0_0_0_4px_var(--color-accent-soft)]" />
       <span className="leading-none">
         <span
           className={cn(
