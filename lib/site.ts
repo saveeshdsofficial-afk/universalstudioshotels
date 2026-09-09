@@ -10,8 +10,29 @@ import type { FaqEntry, ValueProp } from "./types";
  * The visual theme comes from the single `--accent` custom property in
  * app/globals.css.
  */
+/**
+ * Every contact route on the site ends here. Defined once so the address
+ * cannot drift between the header, the provider section and the footer.
+ *
+ * These are plain mailto links, which address scrapers do harvest. If the
+ * spam becomes a problem, swap these for a contact form — the call sites all
+ * read `mailtoLink()`, so it is a one-file change.
+ */
+export const CONTACT_EMAIL = "hello@kainovation.com";
+
+export function mailtoLink(subject: string) {
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+}
+
+/** Subjects, so enquiries arrive pre-sorted. */
+export const MAIL = {
+  listing: mailtoLink("Add a listing — Universal Studios Hotels"),
+  enquiry: mailtoLink("Enquiry — Universal Studios Hotels"),
+} as const;
+
 export const SITE = {
   brand: "Universal Studios Hotels",
+  email: CONTACT_EMAIL,
   brandSub: "Independent guide",
   domain: "universalstudioshotels.co.uk",
   /** The development this directory serves. One string, so it is easy to retarget. */
@@ -139,7 +160,7 @@ export const SITE = {
           { label: "Add your place", href: "/#providers" },
           { label: "What it costs", href: "#" },
           { label: "Help for owners", href: "#" },
-          { label: "Get in touch", href: "#" },
+          { label: "Get in touch", href: MAIL.enquiry },
         ],
       },
       {

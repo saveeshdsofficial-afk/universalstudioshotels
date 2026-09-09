@@ -1,6 +1,6 @@
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
-import { SITE } from "@/lib/site";
+import { MAIL, SITE } from "@/lib/site";
 import { LISTINGS } from "@/lib/listings";
 
 export function ProviderCta() {
@@ -36,7 +36,7 @@ export function ProviderCta() {
                 </ul>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href="#" className="btn btn-primary btn-lg">
+                  <a href={MAIL.listing} className="btn btn-primary btn-lg">
                     <Icon name="key" className="size-[17px]" />
                     {providers.cta}
                   </a>

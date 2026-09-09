@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
-import { SITE } from "@/lib/site";
+import { MAIL, SITE } from "@/lib/site";
 import { cn } from "@/lib/cn";
 
 export function Faq() {
@@ -21,7 +21,7 @@ export function Faq() {
           <p className="mt-4 max-w-[32ch] text-ink-muted">
             Can&rsquo;t find an answer?{" "}
             <a
-              href="#"
+              href={MAIL.enquiry}
               className="font-semibold text-accent-ink underline-offset-4 hover:underline"
             >
               Get in touch

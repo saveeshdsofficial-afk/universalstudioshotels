@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Icon } from "./Icon";
-import { SITE } from "@/lib/site";
+import { MAIL, SITE } from "@/lib/site";
 import { cn } from "@/lib/cn";
 
 export function Brand({ tone = "light" }: { tone?: "light" | "dark" }) {
@@ -81,6 +81,11 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-3">
+          <a href={MAIL.listing} className="btn btn-primary hidden sm:inline-flex">
+            <Icon name="key" className="size-[17px]" />
+            Add listing
+          </a>
+
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -100,7 +105,7 @@ export function SiteHeader() {
         hidden={!open}
         className="border-t border-line bg-surface shadow-[var(--shadow-mid)] lg:hidden"
       >
-        <nav aria-label="Primary" className="wrap safe-b flex flex-col py-2 pb-4">
+        <nav aria-label="Primary" className="wrap flex flex-col py-2">
           {SITE.nav.map((l) => (
             <a
               key={l.href + l.label}
@@ -113,6 +118,16 @@ export function SiteHeader() {
           ))}
         </nav>
 
+        <div className="wrap safe-b flex flex-col pt-2 pb-5 sm:hidden">
+          <a
+            href={MAIL.listing}
+            onClick={() => setOpen(false)}
+            className="btn btn-primary w-full"
+          >
+            <Icon name="key" className="size-[17px]" />
+            Add listing
+          </a>
+        </div>
       </div>
     </header>
   );
