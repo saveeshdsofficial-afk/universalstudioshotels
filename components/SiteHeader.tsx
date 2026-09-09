@@ -8,7 +8,9 @@ import { cn } from "@/lib/cn";
 export function Brand({ tone = "light" }: { tone?: "light" | "dark" }) {
   return (
     <a
-      href="#top"
+      /* the header renders on the guides too, so the logo goes home
+         rather than scrolling to the top of whatever page you are on */
+      href="/"
       aria-label={`${SITE.brand} ${SITE.brandSub} — home`}
       className="flex min-h-11 items-center"
     >
@@ -79,14 +81,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-3">
-          <a
-            href="#"
-            className="hidden min-h-11 items-center text-[0.94rem] font-medium whitespace-nowrap text-ink-soft transition-colors hover:text-ink lg:inline-flex"
-          >
-            Log in
-          </a>
-
-          <a href="#providers" className="btn btn-primary hidden sm:inline-flex">
+          <a href="/#providers" className="btn btn-primary hidden sm:inline-flex">
             <Icon name="key" className="size-[17px]" />
             Add listing
           </a>
@@ -123,17 +118,14 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="wrap safe-b flex flex-col gap-3 pt-2 pb-5">
+        <div className="wrap safe-b flex flex-col gap-3 pt-2 pb-5 sm:hidden">
           <a
-            href="#providers"
+            href="/#providers"
             onClick={() => setOpen(false)}
-            className="btn btn-primary w-full sm:hidden"
+            className="btn btn-primary w-full"
           >
             <Icon name="key" className="size-[17px]" />
             Add listing
-          </a>
-          <a href="#" className="btn btn-ghost w-full">
-            Log in
           </a>
         </div>
       </div>
