@@ -24,7 +24,7 @@ export function Brand({ tone = "light" }: { tone?: "light" | "dark" }) {
         </span>
         <span
           className={cn(
-            "mt-0.5 block font-mono text-[0.7rem] font-normal tracking-[0.1em] uppercase",
+            "mt-0.5 block font-mono text-[0.75rem] font-normal tracking-[0.08em] uppercase",
             tone === "dark" ? "text-footer-dim" : "text-ink-muted",
           )}
         >

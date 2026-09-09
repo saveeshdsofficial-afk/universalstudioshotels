@@ -34,7 +34,7 @@ export function ListingCard({
           These are generic illustrations. Say so on the card — letting a
           drawing pass as a photo of a real hotel would mislead people.
         */}
-        <span className="absolute bottom-2 left-2 rounded-pill bg-ink/70 px-2 py-0.5 text-[0.7rem] font-medium text-bg backdrop-blur-sm">
+        <span className="absolute bottom-2 left-2 rounded-pill bg-ink/70 px-2 py-0.5 text-[0.75rem] font-medium text-bg backdrop-blur-sm">
           Illustration
         </span>
 

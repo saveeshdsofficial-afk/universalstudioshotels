@@ -5,7 +5,23 @@
    A new site in the network changes this line and nothing else.
    ============================================================ */
 :root {
-  --accent: oklch(0.52 0.16 300);
+  /* ---- BRAND ------------------------------------------------------------
+     Primary is the violet already live on the domain and in the favicon —
+     it stays put. Everything violet on the site derives from this one value.
+
+       --brand-violet   headline accent, primary buttons, active states
+       --brand-amber    secondary. Editorial only: guide tags, "new" flags.
+                        Never a primary action, so the two never compete.
+
+     Both are stated in oklch so the derived tints below mix perceptually
+     rather than drifting grey the way sRGB blends do.
+     --------------------------------------------------------------------- */
+  --brand-violet: oklch(0.52 0.16 300);
+  --brand-amber: oklch(0.72 0.13 68);
+
+  /* what the rest of the sheet reads. Swap to re-skin the whole site. */
+  --accent: var(--brand-violet);
+
   /* one page gutter, shared by .wrap and by rails that break out of it */
   --wrap-pad: clamp(1.25rem, 5vw, 2.5rem);
 }
@@ -29,6 +45,12 @@
   --color-accent-softer: color-mix(in oklch, var(--accent) 6%, white);
   --color-accent-ring: color-mix(in oklch, var(--accent) 28%, white);
   --color-on-accent: color-mix(in oklch, var(--accent) 8%, white);
+
+  /* secondary brand — editorial accents only */
+  --color-warm: var(--brand-amber);
+  --color-warm-ink: color-mix(in oklch, var(--brand-amber) 72%, black);
+  --color-warm-soft: color-mix(in oklch, var(--brand-amber) 18%, white);
+  --color-warm-ring: color-mix(in oklch, var(--brand-amber) 34%, white);
 
   /* footer ink */
   --color-footer: oklch(0.21 0.02 260);
@@ -251,4 +273,53 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* ============================================================
+   Long-form article body. Only used inside .prose on blog pages.
+   ============================================================ */
+@layer components {
+  .prose {
+    max-width: 68ch;
+  }
+
+  .prose > * + * {
+    margin-top: 1.15em;
+  }
+
+  .prose h2 {
+    margin-top: 2em;
+    font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  }
+
+  .prose h3 {
+    margin-top: 1.6em;
+    font-size: clamp(1.12rem, 2vw, 1.28rem);
+  }
+
+  .prose p,
+  .prose li {
+    color: var(--color-ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .prose ul,
+  .prose ol {
+    display: grid;
+    gap: 0.6em;
+    padding-left: 1.35em;
+  }
+
+  .prose ul { list-style: disc; }
+  .prose ol { list-style: decimal; }
+  .prose li::marker { color: var(--color-accent); }
+
+  .prose a {
+    color: var(--color-accent-ink);
+    font-weight: 560;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose strong { color: var(--color-ink); font-weight: 600; }
 }

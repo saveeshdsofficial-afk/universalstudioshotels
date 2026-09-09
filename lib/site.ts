@@ -19,10 +19,11 @@ export const SITE = {
   region: "Bedfordshire",
 
   nav: [
-    { label: "The directory", href: "#listings" },
-    { label: "By type", href: "#types" },
-    { label: "Add your place", href: "#providers" },
-    { label: "Questions", href: "#faq" },
+    { label: "The directory", href: "/#listings" },
+    { label: "By type", href: "/#types" },
+    { label: "Guides", href: "/blog" },
+    { label: "Add your place", href: "/#providers" },
+    { label: "Questions", href: "/#faq" },
   ],
 
   hero: {
@@ -89,6 +90,34 @@ export const SITE = {
       q: "Are the hotels listed here involved with the site?",
       a: "No. They are simply nearby businesses, listed because of where they are. None of them has paid for placement, none has a commercial arrangement with us, and the order they appear in is decided only by distance or alphabetically. If you run one of them and would rather not be listed, get in touch and we will take the entry down.",
     },
+    {
+      q: "Which hotel is closest to the Universal Studios UK site?",
+      a: "Of the properties currently listed, the closest sit on the Kempston and Elstow edge of the site, under a mile out in a straight line, close to the A421. Central Bedford follows at roughly two to three miles, and the northern edge toward Clapham at around four. Because the site has no public entrance yet, treat these as a way to rank properties rather than as door-to-door journeys.",
+    },
+    {
+      q: "Where is the Universal Studios UK site actually being built?",
+      a: "On the former brickworks at Kempston Hardwick, a few miles south of Bedford in Bedfordshire, between the A421 and the A6. Kempston, Elstow, Wixams, Stewartby and Marston Moretaine are the settlements immediately around it, with Bedford town to the north.",
+    },
+    {
+      q: "When does Universal Studios UK open?",
+      a: "Opening is expected around the start of the 2030s, but no date should be treated as fixed on a construction programme of this length. We are not connected to the development and have no inside information — check the official channels for anything you intend to rely on.",
+    },
+    {
+      q: "How do I get to the Universal Bedford site?",
+      a: "By road, the A421 runs east to west across the south of Bedford, linking toward Milton Keynes and the M1 one way and the A1 the other, while the A6 runs north to south through Bedford. By rail, Kempston Hardwick sits on the Marston Vale line between Bedford and Bletchley, and Bedford itself has fast services to London St Pancras. Rail provision in the area is expected to change substantially before the park opens.",
+    },
+    {
+      q: "Is there parking at the hotels near the site?",
+      a: "Most properties in this area have parking, but whether it is free, secure, or able to take a van varies a great deal — and a daily parking charge across a long stay can quietly exceed the price difference between two hotels. Ask the property directly, and ask specifically about long-wheelbase vehicles if that applies to you.",
+    },
+    {
+      q: "Can I get a weekly or monthly rate for a long stay?",
+      a: "Usually, yes, but it is rarely advertised. Long-stay rates near a large construction project are negotiated rather than published, and they are often well below the nightly rate multiplied out — particularly for several rooms or a repeat booking. Phone the property rather than booking through an aggregator, and lead with the length of stay and the number of rooms.",
+    },
+    {
+      q: "Do you take a commission on bookings?",
+      a: "No. We run no booking engine, handle no money and take no commission from anyone. Nobody can pay to appear higher in the list, and the order is decided only by distance or alphabetically.",
+    },
   ] satisfies FaqEntry[],
 
   footer: {
@@ -98,16 +127,16 @@ export const SITE = {
       {
         title: "Find a place",
         links: [
-          { label: "The whole list", href: "#listings" },
-          { label: "By type", href: "#types" },
-          { label: "Nearest first", href: "#listings" },
-          { label: "Area notes", href: "#" },
+          { label: "The whole list", href: "/#listings" },
+          { label: "By type", href: "/#types" },
+          { label: "Nearest first", href: "/#listings" },
+          { label: "Guides", href: "/blog" },
         ],
       },
       {
         title: "For owners",
         links: [
-          { label: "Add your place", href: "#providers" },
+          { label: "Add your place", href: "/#providers" },
           { label: "What it costs", href: "#" },
           { label: "Help for owners", href: "#" },
           { label: "Get in touch", href: "#" },
