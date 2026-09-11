@@ -30,6 +30,24 @@ export const MAIL = {
   enquiry: mailtoLink("Enquiry — Universal Studios Hotels"),
 } as const;
 
+/**
+ * Photo credit for the hero.
+ *
+ * The image is CC BY 2.0, which permits commercial use but *requires*
+ * attribution — title, author, source and licence. That is not decorative:
+ * drop the credit and the licence to use the photo lapses. If you swap the
+ * image, swap this with it.
+ */
+export const HERO_CREDIT = {
+  title: "Bedford Bridge On The River Great Ouse",
+  author: "Jim",
+  licence: "CC BY 2.0",
+  licenceUrl: "https://creativecommons.org/licenses/by/2.0/",
+  sourceUrl:
+    "https://commons.wikimedia.org/wiki/File:Bedford_Bridge_On_The_River_Great_Ouse.jpg",
+  alt: "Bedford Town Bridge crossing the River Great Ouse, with the spire of St Paul's Church behind it",
+} as const;
+
 export const SITE = {
   brand: "Universal Studios Hotels",
   email: CONTACT_EMAIL,

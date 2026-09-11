@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
 import { SearchPanel } from "./SearchPanel";
-import { SITE } from "@/lib/site";
+import { HERO_CREDIT, SITE } from "@/lib/site";
 import { LISTINGS } from "@/lib/listings";
 
 const nearest = Math.min(...LISTINGS.map((l) => l.miles));
@@ -30,16 +30,40 @@ export function Hero() {
           </Reveal>
 
           <Reveal>
-            <div className="relative aspect-4/3 w-full overflow-hidden rounded-panel shadow-[var(--shadow-tall)] ring-1 ring-line">
-              <Image
-                src="/images/hero.jpg"
-                alt="Illustration of hotels and houses along a road leading to the Bedford site"
-                fill
-                priority
-                sizes="(min-width: 768px) 46vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+            <figure>
+              {/* 3:2 matches the photograph, so the bridge is not cropped */}
+              <div className="relative aspect-3/2 w-full overflow-hidden rounded-panel shadow-[var(--shadow-tall)] ring-1 ring-line">
+                <Image
+                  src="/images/hero.jpg"
+                  alt={HERO_CREDIT.alt}
+                  fill
+                  priority
+                  sizes="(min-width: 768px) 46vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              {/* CC BY 2.0 requires this credit — see HERO_CREDIT */}
+              <figcaption className="mt-2.5 text-[0.78rem] leading-relaxed text-ink-muted">
+                <a
+                  href={HERO_CREDIT.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-ink"
+                >
+                  {HERO_CREDIT.title}
+                </a>{" "}
+                by {HERO_CREDIT.author}, licensed under{" "}
+                <a
+                  href={HERO_CREDIT.licenceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer license"
+                  className="underline underline-offset-2 hover:text-ink"
+                >
+                  {HERO_CREDIT.licence}
+                </a>
+                . Bedford town centre, about two miles from the site.
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
 

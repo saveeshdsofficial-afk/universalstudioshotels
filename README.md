@@ -174,8 +174,10 @@ blocks going live.
       verified against api.postcodes.io — or getting owners to submit.
 - [ ] **No rates, room counts or amenities**, by design: unverifiable per
       property. They arrive when owners confirm their own details.
-- [ ] **Photography.** Card images are generated illustrations and are
-      labelled "Illustration" so they cannot pass as the real building.
+- [ ] **Listing photography.** Card images are generated illustrations,
+      labelled "Illustration" so they cannot pass as the real building. The
+      hero is now a real CC BY 2.0 photograph of Bedford Town Bridge — its
+      credit in `HERO_CREDIT` is a licence condition, not decoration.
 
 ### Dead links still in the footer
 
