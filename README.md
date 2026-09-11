@@ -140,9 +140,62 @@ listing pages are links to `#` — wire them up when you have a backend.
 
 ## Before launch
 
-- Replace every listing in `lib/listings.ts` with real data.
-- Remove the "Are the listings on this page real?" FAQ entry once they are.
-- Have someone check the disclaimer wording against your actual legal position.
+Checked against the code on 11 September 2026. Roughly in the order that
+blocks going live.
 
-Nothing in this project is derived from any other operator's site. The copy,
-brand and sample data were written for this build.
+### Blocking
+
+- [ ] **Point `universalstudioshotels.co.uk` at the project.** The domain is
+      bought but not attached — `vercel domains ls` shows only
+      `kainovation.com` on the account, so the site is currently reachable
+      only at `universalstudioshotels.vercel.app`. Vercel → Project →
+      Settings → Domains.
+- [ ] **Write Privacy and Terms.** Both are linked twice in the footer and
+      both go nowhere. The site sets no cookies and runs no analytics, so a
+      cookie policy may be unnecessary — but if that changes, it is not.
+
+### Legal
+
+- [ ] **Have a solicitor read the disclaimer** against the actual position.
+      The name is built from a trademark that is not ours; the masthead,
+      hero, FAQ and footer all state non-affiliation, but that is mitigation,
+      not clearance.
+- [ ] **Stand up the removal route.** The FAQ promises a listed hotel can ask
+      to be taken down. That now reaches `hello@kainovation.com` — make sure
+      somebody reads it.
+
+### Content
+
+- [ ] **Three listings have no official link:** Mercure Bedford Centre, The
+      Bedford Swan, Woodlands Manor. They show "No official link on file yet"
+      rather than a guessed URL.
+- [ ] **Seven entries, all hotels.** Five of the six property types show
+      "None yet". Growing it means sourcing addresses the same way — postcode
+      verified against api.postcodes.io — or getting owners to submit.
+- [ ] **No rates, room counts or amenities**, by design: unverifiable per
+      property. They arrive when owners confirm their own details.
+- [ ] **Photography.** Card images are generated illustrations and are
+      labelled "Illustration" so they cannot pass as the real building.
+
+### Dead links still in the footer
+
+`What it costs`, `Help for owners`, the Facebook and Instagram icons, and the
+four legal links. Either give them destinations or remove them.
+
+### Infrastructure
+
+- [ ] **Auto-deploy.** Pushing to GitHub does not deploy; each release is
+      `vercel deploy --prod` by hand. Fixing it needs the Vercel GitHub App
+      authorised on the `saveeshdsofficial-afk` account — the Vercel login
+      (`shayeny`) is a different identity, which is why `vercel git connect`
+      returns "need admin or write access".
+- [ ] **Submit the sitemap** to Google Search Console and Bing Webmaster
+      Tools once the real domain resolves. `sitemap.xml` and `robots.txt` are
+      already live.
+
+### Done
+
+Real listings with verified postcodes and computed distances · six guides at
+`/blog` · 14-entry FAQ with FAQPage schema · full metadata, OpenGraph, JSON-LD,
+sitemap and robots · brand tokens and `/style-guide` · every contact CTA wired
+to email · mobile-responsive and verified at 375–1280px.
