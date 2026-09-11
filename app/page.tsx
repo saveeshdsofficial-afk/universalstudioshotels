@@ -9,7 +9,7 @@ import { ProviderCta } from "@/components/ProviderCta";
 import { Faq } from "@/components/Faq";
 import { SiteFooter } from "@/components/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
-import { SITE } from "@/lib/site";
+import { HOME_FAQ_COUNT, SITE } from "@/lib/site";
 import { LISTINGS } from "@/lib/listings";
 import { BASE_URL, faqLd } from "@/lib/seo";
 
@@ -43,7 +43,7 @@ function listingsLd() {
 export default function Page() {
   return (
     <>
-      <JsonLd data={faqLd(SITE.faq)} />
+      <JsonLd data={faqLd(SITE.faq.slice(0, HOME_FAQ_COUNT))} />
       <JsonLd data={listingsLd()} />
       <JsonLd
         data={{
@@ -65,7 +65,7 @@ export default function Page() {
         <ValueProps />
         <GuidesTeaser />
         <ProviderCta />
-        <Faq />
+        <Faq limit={HOME_FAQ_COUNT} />
       </main>
       <SiteFooter />
     </>

@@ -48,6 +48,15 @@ export const HERO_CREDIT = {
   alt: "Bedford Town Bridge crossing the River Great Ouse, with the spire of St Paul's Church behind it",
 } as const;
 
+/**
+ * How many questions the homepage shows before pointing at /faq.
+ *
+ * The homepage's FAQPage schema is built from this same slice. Google
+ * requires FAQ structured data to match what is actually visible, so if the
+ * two ever drift the markup becomes invalid — keep them reading one value.
+ */
+export const HOME_FAQ_COUNT = 3;
+
 export const SITE = {
   brand: "Universal Studios Hotels",
   email: CONTACT_EMAIL,
@@ -62,7 +71,7 @@ export const SITE = {
     { label: "By type", href: "/#types" },
     { label: "Guides", href: "/blog" },
     { label: "Add your place", href: "/#providers" },
-    { label: "Questions", href: "/#faq" },
+    { label: "Questions", href: "/faq" },
   ],
 
   hero: {

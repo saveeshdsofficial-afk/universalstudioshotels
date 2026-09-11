@@ -1,14 +1,23 @@
 "use client";
 
 import { useId, useState } from "react";
+import Link from "next/link";
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
 import { MAIL, SITE } from "@/lib/site";
 import { cn } from "@/lib/cn";
 
-export function Faq() {
+export function Faq({
+  /** Omit to show every question — the /faq page does. */
+  limit,
+}: {
+  limit?: number;
+} = {}) {
   const baseId = useId();
   const [openIndex, setOpenIndex] = useState(0);
+
+  const shown = limit ? SITE.faq.slice(0, limit) : SITE.faq;
+  const remaining = SITE.faq.length - shown.length;
 
   return (
     <section id="faq" className="section-y">
@@ -30,7 +39,7 @@ export function Faq() {
         </Reveal>
 
         <Reveal className="border-t border-line">
-          {SITE.faq.map((item, i) => {
+          {shown.map((item, i) => {
             const open = openIndex === i;
             const panelId = `${baseId}-panel-${i}`;
             const buttonId = `${baseId}-button-${i}`;
@@ -81,6 +90,12 @@ export function Faq() {
               </div>
             );
           })}
+
+          {remaining > 0 ? (
+            <Link href="/faq" className="btn btn-ghost mt-7 w-full sm:w-auto">
+              Read all {SITE.faq.length} questions
+            </Link>
+          ) : null}
         </Reveal>
       </div>
     </section>
