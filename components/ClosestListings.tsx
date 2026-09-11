@@ -15,8 +15,7 @@ export function ClosestListings() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-[640px]">
-              <span className="eyebrow">Nearest first</span>
-              <h2 className="mt-3.5 text-[clamp(1.75rem,4.2vw,2.7rem)]">
+              <h2 className="text-[clamp(1.75rem,4.2vw,2.7rem)]">
                 Closest to the site
               </h2>
               <p className="mt-3.5 text-[1.08rem] text-ink-muted">

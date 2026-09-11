@@ -13,8 +13,7 @@ export function ProviderCta() {
           <div className="card overflow-hidden bg-[linear-gradient(135deg,var(--color-accent-softer),var(--color-surface))]">
             <div className="grid gap-8 p-7 sm:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14 lg:p-12">
               <div>
-                <span className="eyebrow">{providers.eyebrow}</span>
-                <h2 className="mt-3.5 text-[clamp(1.6rem,3.6vw,2.3rem)]">
+                <h2 className="text-[clamp(1.6rem,3.6vw,2.3rem)]">
                   {providers.h2}
                 </h2>
                 <p className="mt-4 max-w-[46ch] text-[1.06rem] text-ink-soft">

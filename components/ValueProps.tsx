@@ -9,7 +9,6 @@ export function ValueProps() {
       <div className="wrap">
         <Reveal>
           <SectionHead
-            eyebrow="Why bother with us"
             title="Put together for people working on site"
             className="mb-0"
           />

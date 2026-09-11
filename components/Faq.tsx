@@ -14,8 +14,7 @@ export function Faq() {
     <section id="faq" className="section-y">
       <div className="wrap grid items-start gap-9 md:grid-cols-[0.7fr_1.3fr] md:gap-12 lg:gap-18">
         <Reveal>
-          <span className="eyebrow">Good to know</span>
-          <h2 className="mt-3.5 text-[clamp(1.75rem,4.2vw,2.7rem)]">
+          <h2 className="text-[clamp(1.75rem,4.2vw,2.7rem)]">
             Frequently asked questions
           </h2>
           <p className="mt-4 max-w-[32ch] text-ink-muted">

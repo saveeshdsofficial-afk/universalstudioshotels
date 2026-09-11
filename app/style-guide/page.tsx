@@ -89,8 +89,7 @@ export default function StyleGuide() {
     <main className="section-y">
       <div className="wrap grid gap-12">
         <header>
-          <span className="eyebrow">Internal reference</span>
-          <h1 className="mt-3.5 text-[clamp(2rem,5vw,2.8rem)]">
+          <h1 className="text-[clamp(2rem,5vw,2.8rem)]">
             {SITE.brand} — brand &amp; style
           </h1>
           <p className="mt-4 max-w-[66ch] text-[1.08rem] text-ink-muted">

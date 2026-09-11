@@ -17,8 +17,7 @@ export function ListingsExplorer() {
         <Reveal>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-[640px]">
-              <span className="eyebrow">The whole list</span>
-              <h2 className="mt-3.5 text-[clamp(1.75rem,4.2vw,2.7rem)]">
+              <h2 className="text-[clamp(1.75rem,4.2vw,2.7rem)]">
                 {type === "All"
                   ? "Everywhere on the list"
                   : `Every ${type.toLowerCase()} on the list`}

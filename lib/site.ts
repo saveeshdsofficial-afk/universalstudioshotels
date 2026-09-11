@@ -89,7 +89,6 @@ export const SITE = {
   ] satisfies ValueProp[],
 
   providers: {
-    eyebrow: "Got a room going spare?",
     h2: "Put your place in front of the crews",
     lede: "A hotel, a B&B, a spare double, a whole house — if it is within a sensible drive of the site, the people working there would like to know it exists.",
     points: [

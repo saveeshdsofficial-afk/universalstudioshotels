@@ -40,8 +40,7 @@ export default function BlogIndex() {
       <main id="top">
         <section className="section-y">
           <div className="wrap">
-            <span className="eyebrow">Guides</span>
-            <h1 className="mt-3.5 max-w-[20ch] text-[clamp(2rem,5.4vw,3rem)]">
+            <h1 className="max-w-[20ch] text-[clamp(2rem,5.4vw,3rem)]">
               Staying near the Bedford site, explained
             </h1>
             <p className="mt-4 max-w-[60ch] text-[1.08rem] text-ink-muted">

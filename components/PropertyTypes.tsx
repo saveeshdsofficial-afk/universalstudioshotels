@@ -15,7 +15,6 @@ export function PropertyTypes() {
       <div className="wrap">
         <Reveal>
           <SectionHead
-            eyebrow="What suits the job"
             title="Pick the kind of place you need"
             sub="The list starts with hotels because those are the ones we could verify. The other categories open up as owners add their own places."
             className="mb-0"
