@@ -8,7 +8,9 @@ import { BASE_URL, KEYWORDS, breadcrumbLd, pageMeta } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
 export const metadata = pageMeta({
+  // absolute: the brand suffix pushed this to 70 characters
   title: `Guides to staying near ${SITE.park}`,
+  absoluteTitle: true,
   description:
     "Practical guides to accommodation near the Universal Studios UK site at Kempston Hardwick — where to stay, how to get there, and how to book a long stay well.",
   path: "/blog",
