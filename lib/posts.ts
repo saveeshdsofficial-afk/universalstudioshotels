@@ -170,7 +170,7 @@ export const POSTS: Post[] = [
     metaTitle: "Contractor accommodation near Universal Bedford",
     title: "Contractor accommodation near Universal Bedford: a 9-point checklist before you book",
     description:
-      "What to check before booking long-stay contractor accommodation near the Universal Bedford site — parking, laundry, breakfast times, invoicing and cancellation terms.",
+      "What to check before booking long-stay contractor accommodation near the Universal Bedford site: parking, laundry, breakfast times and cancellation terms.",
     tag: "Tips & tricks",
     date: "2026-09-07",
     readingMinutes: 7,
