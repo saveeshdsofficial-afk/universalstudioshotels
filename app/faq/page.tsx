@@ -7,7 +7,10 @@ import { SITE } from "@/lib/site";
 import { KEYWORDS, breadcrumbLd, faqLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: `Questions about staying near the ${SITE.park} site`,
+  // absolute: with the brand suffix appended this ran to 85 characters,
+  // well past what a search result shows
+  title: `Questions about staying near ${SITE.park}`,
+  absoluteTitle: true,
   description:
     "Answers on the hotels closest to the Universal Studios UK site at Kempston Hardwick, how distances are measured, opening timing, parking and long-stay rates.",
   path: "/faq",
