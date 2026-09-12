@@ -178,8 +178,8 @@ export const POSTS: Post[] = [
       "contractor accommodation Bedford",
       "long stay accommodation Bedford",
       "crew accommodation Universal Bedford",
-      "weekly rates hotels Bedford",
       "project team accommodation Bedford",
+      "what to check before booking a long stay",
     ],
     body: [
       {
@@ -235,7 +235,7 @@ export const POSTS: Post[] = [
       "Universal Studios UK opening date",
       "Universal theme park Bedford",
       "Universal UK Kempston Hardwick",
-      "Universal Bedford accommodation",
+      "when does Universal UK open",
     ],
     body: [
       {
@@ -344,8 +344,8 @@ export const POSTS: Post[] = [
     keywords: [
       "weekly rates hotels Bedford",
       "monthly accommodation Bedfordshire",
-      "long stay accommodation Bedford",
-      "contractor accommodation Bedford",
+      "cheap accommodation near Universal Bedford",
+      "negotiating hotel rates Bedford",
     ],
     body: [
       {
