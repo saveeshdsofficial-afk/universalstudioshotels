@@ -2,6 +2,13 @@ import { Brand } from "./SiteHeader";
 import { Icon } from "./Icon";
 import { SITE } from "@/lib/site";
 
+const LEGAL = [
+  { label: "About", href: "/about" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Affiliate disclosure", href: "/affiliate-disclosure" },
+  { label: "Contact", href: "/contact" },
+];
+
 export function SiteFooter() {
   return (
     <footer className="bg-footer pt-14 text-footer-text sm:pt-18 lg:pt-21">
@@ -13,18 +20,7 @@ export function SiteFooter() {
             <p className="mt-4 max-w-[34ch] text-[0.95rem] leading-relaxed">
               {SITE.footer.blurb}
             </p>
-            <div className="mt-5 flex gap-2.5">
-              {(["facebook", "instagram"] as const).map((name) => (
-                <a
-                  key={name}
-                  href="#"
-                  aria-label={name[0].toUpperCase() + name.slice(1)}
-                  className="grid size-11 place-items-center rounded-[10px] border border-white/15 transition-colors hover:border-accent hover:bg-accent hover:text-on-accent"
-                >
-                  <Icon name={name} className="size-[17px]" />
-                </a>
-              ))}
-            </div>
+
           </div>
 
           {SITE.footer.columns.map((col) => (
@@ -66,13 +62,13 @@ export function SiteFooter() {
             independent accommodation directory.
           </span>
           <div className="flex flex-wrap gap-x-5.5 gap-y-2">
-            {["Privacy", "Cookies", "Terms", "Accessibility"].map((l) => (
+            {LEGAL.map((l) => (
               <a
-                key={l}
-                href="#"
+                key={l.href}
+                href={l.href}
                 className="inline-flex min-h-11 items-center transition-colors hover:text-white"
               >
-                {l}
+                {l.label}
               </a>
             ))}
           </div>

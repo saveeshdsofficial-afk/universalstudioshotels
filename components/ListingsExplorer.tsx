@@ -5,6 +5,8 @@ import { ListingCard } from "./ListingCard";
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
 import { cn } from "@/lib/cn";
+import { AFFILIATE_NOTE } from "@/lib/affiliate";
+import Link from "next/link";
 
 export function ListingsExplorer() {
   const { results, type, setType, query, setQuery, reset } = useDirectory();
@@ -65,6 +67,17 @@ export function ListingsExplorer() {
             </button>
           </div>
         ) : null}
+
+        {/* disclosure sits with the links it describes, not only in the footer */}
+        <p className="mt-6 flex flex-wrap items-center gap-x-1.5 text-[0.84rem] text-ink-muted">
+          {AFFILIATE_NOTE}{" "}
+          <Link
+            href="/affiliate-disclosure"
+            className="underline underline-offset-2 hover:text-ink"
+          >
+            How this works
+          </Link>
+        </p>
 
         {results.length > 0 ? (
           <div className="mt-8 grid gap-5.5 sm:grid-cols-2 lg:grid-cols-3">

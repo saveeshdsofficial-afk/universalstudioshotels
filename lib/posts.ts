@@ -217,7 +217,7 @@ export const POSTS: Post[] = [
       },
       {
         t: "note",
-        text: "We take no commission and run no booking engine, so we have nothing riding on where you book. Every listing here links straight to the operator.",
+        text: "Some of our links to Booking.com earn us a commission, which is how the site pays for itself. It costs you nothing extra, and it buys no property a place on the list or a higher position — the order is distance, every time. Where we have the operator's own site, we link that too.",
       },
     ],
   },

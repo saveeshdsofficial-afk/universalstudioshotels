@@ -60,8 +60,8 @@ export function ProviderCta() {
                   },
                   {
                     icon: "percent" as const,
-                    big: "0%",
-                    sm: "commission taken",
+                    big: "£0",
+                    sm: "to list your place",
                   },
                   {
                     icon: "calendar" as const,

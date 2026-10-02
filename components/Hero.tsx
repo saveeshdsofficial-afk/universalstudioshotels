@@ -86,7 +86,7 @@ export function Hero() {
             </li>
             <li className="flex items-center gap-2">
               <Icon name="shield" className="size-4 text-accent-ink" />
-              independent &amp; commission-free
+              independent &amp; distance-ranked
             </li>
           </ul>
         </Reveal>

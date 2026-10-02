@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Icon } from "./Icon";
+import { AFFILIATE_REL, bookingSearchUrl } from "@/lib/affiliate";
 import type { Listing } from "@/lib/types";
 import { cn } from "@/lib/cn";
 
@@ -65,20 +66,32 @@ export function ListingCard({
           </span>
         </div>
 
-        {listing.website ? (
+        <div className="mt-4 grid gap-2">
+          {/*
+            A Booking.com *search* for this property, not a guessed hotel id —
+            we have no verified ids and a wrong one sends people elsewhere.
+            rel="sponsored" is required by Google on monetised links.
+          */}
           <a
-            href={listing.website}
+            href={bookingSearchUrl(`${listing.name}, ${listing.town}`)}
             target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="btn btn-ghost mt-4 w-full group-hover:border-accent group-hover:text-accent-ink"
+            rel={AFFILIATE_REL}
+            className="btn btn-primary w-full"
           >
-            Visit official site
+            Check availability
           </a>
-        ) : (
-          <p className="mt-4 rounded-card bg-bg-alt px-3 py-2.5 text-center text-[0.84rem] text-ink-muted">
-            No official link on file yet
-          </p>
-        )}
+
+          {listing.website ? (
+            <a
+              href={listing.website}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="btn btn-ghost w-full"
+            >
+              Visit official site
+            </a>
+          ) : null}
+        </div>
       </div>
     </article>
   );

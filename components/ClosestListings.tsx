@@ -19,8 +19,8 @@ export function ClosestListings() {
                 Closest to the site
               </h2>
               <p className="mt-3.5 text-[1.08rem] text-ink-muted">
-                Ranked by straight-line distance from Kempston Hardwick. No one
-                pays to appear here.
+                Ranked by straight-line distance from Kempston Hardwick. No
+                property can pay for a place here or a higher one.
               </p>
             </div>
             <a href="#listings" className="btn btn-ghost">

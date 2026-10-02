@@ -53,11 +53,103 @@ export const KEYWORDS = {
   ],
 } as const;
 
+/**
+ * Clusters from the content plan. These are *candidates*: the plan's own rule
+ * is that tickets, parking and resort facilities get described only once
+ * confirmed, so several of these are deliberately not yet page topics. They
+ * sit here to steer research and future pages, not to be stuffed into a tag.
+ */
+export const KEYWORD_CLUSTERS = {
+  resort: [
+    "universal studios uk",
+    "universal studios bedford",
+    "universal theme park uk",
+    "universal uk resort",
+    "where is universal studios uk",
+  ],
+  openingUpdates: [
+    "universal studios uk opening date",
+    "when will universal studios uk open",
+    "universal bedford opening date",
+    "universal uk construction updates",
+  ],
+  hotelsNearby: [
+    "hotels near universal studios bedford",
+    "hotels near universal uk",
+    "accommodation near universal bedford",
+    "best hotels near universal uk",
+    "cheap hotels near universal bedford",
+    "bed and breakfast near universal bedford",
+  ],
+  bedfordKempston: [
+    "bedford hotels for universal uk",
+    "family hotels bedford",
+    "bedford hotels with parking",
+    "hotels near kempston hardwick",
+    "bedford town centre hotels",
+    "bedford hotels near train station",
+  ],
+  wixamsStewartby: [
+    "hotels near wixams",
+    "accommodation near wixams",
+    "hotels near stewartby",
+    "wixams to universal bedford",
+  ],
+  miltonKeynes: [
+    "milton keynes hotels for universal uk",
+    "milton keynes to universal bedford",
+    "bedford or milton keynes for universal uk",
+    "hotels between milton keynes and bedford",
+  ],
+  lutonAirport: [
+    "luton airport to universal bedford",
+    "hotels near luton airport for universal uk",
+    "luton airport to bedford train",
+  ],
+  london: [
+    "london to universal uk",
+    "universal uk day trip from london",
+    "london to bedford train for universal uk",
+  ],
+  trainTransfers: [
+    "universal uk nearest train station",
+    "how to get to universal bedford by train",
+    "bedford station to universal uk",
+    "universal bedford public transport",
+  ],
+  familyAccessibility: [
+    "family hotels near universal uk",
+    "bedford hotels with family rooms",
+    "accessible hotels bedford",
+    "pet friendly hotels bedford",
+  ],
+  budgetGroups: [
+    "budget hotels near universal bedford",
+    "group accommodation near universal uk",
+    "apartments near universal bedford",
+    "self catering near universal uk",
+  ],
+  tripPlanning: [
+    "universal uk trip planner",
+    "how many days for universal uk",
+    "universal uk travel guide",
+    "best time to visit universal uk",
+  ],
+  nearbyActivities: [
+    "things to do near universal bedford",
+    "bedford family attractions",
+    "places to eat near universal bedford",
+  ],
+} as const;
+
 export const ALL_KEYWORDS: string[] = [
-  ...KEYWORDS.core,
-  ...KEYWORDS.place,
-  ...KEYWORDS.audience,
-  ...KEYWORDS.intent,
+  ...new Set([
+    ...KEYWORDS.core,
+    ...KEYWORDS.place,
+    ...KEYWORDS.audience,
+    ...KEYWORDS.intent,
+    ...Object.values(KEYWORD_CLUSTERS).flat(),
+  ]),
 ];
 
 const OG_IMAGE = {

@@ -145,24 +145,22 @@ blocks going live.
 
 ### Blocking
 
+- [ ] **Set `NEXT_PUBLIC_BOOKING_AID`** in Vercel → Settings → Environment
+      Variables once your Booking.com affiliate account is approved. Until it
+      is set, the "Check availability" links still work but earn nothing — and
+      the disclosure page and FAQ say exactly that, switching their wording
+      automatically when the variable appears. Nothing else needs changing.
 - [ ] **Point `universalstudioshotels.co.uk` at the project.** The domain is
-      bought but not attached — `vercel domains ls` shows only
-      `kainovation.com` on the account, so the site is currently reachable
-      only at `universalstudioshotels.vercel.app`. Vercel → Project →
-      Settings → Domains.
-- [ ] **Write Privacy and Terms.** Both are linked twice in the footer and
-      both go nowhere. The site sets no cookies and runs no analytics, so a
-      cookie policy may be unnecessary — but if that changes, it is not.
+      bought but not attached, so the site is reachable only at
+      `universalstudioshotels.vercel.app`.
 
 ### Legal
 
-- [ ] **Have a solicitor read the disclaimer** against the actual position.
-      The name is built from a trademark that is not ours; the masthead,
-      hero, FAQ and footer all state non-affiliation, but that is mitigation,
-      not clearance.
-- [ ] **Stand up the removal route.** The FAQ promises a listed hotel can ask
-      to be taken down. That now reaches `hello@kainovation.com` — make sure
-      somebody reads it.
+- [ ] **Have a solicitor read the disclaimer and the trust pages.** The name is
+      built from a trademark that is not ours, and the site is now monetised,
+      which raises the bar on both counts.
+- [ ] **Someone must read `hello@kainovation.com`.** The FAQ, the contact page
+      and the about page all promise corrections and removals on request.
 
 ### Content
 

@@ -87,8 +87,8 @@ export const SITE = {
     },
     {
       icon: "headset",
-      title: "Straight to the operator",
-      text: "We publish the entry and step back. Dates, terms and money are settled with the property itself — no booking engine, no commission, no paid placement.",
+      title: "Ranked by distance, nothing else",
+      text: "Some links earn us a commission if you book through them. No property can pay to rank higher, and the order never changes because of it — it is distance or the alphabet, every time.",
     },
     {
       icon: "calendar",
@@ -102,7 +102,7 @@ export const SITE = {
     lede: "A hotel, a B&B, a spare double, a whole house — if it is within a sensible drive of the site, the people working there would like to know it exists.",
     points: [
       "We work out the road distance for you",
-      "Enquiries land in your inbox, not ours",
+      "Enquiries land in your inbox, and we never charge you for them",
       "Price it by the night, the week or the month",
     ],
     cta: "Add your place",
@@ -123,7 +123,7 @@ export const SITE = {
     },
     {
       q: "What does it cost to get in touch with a place?",
-      a: "Nothing. Enquiries go straight to the owner and we take no commission and handle no money. Whatever you agree on price, deposit and cancellation is between the two of you.",
+      a: "Nothing, and you pay us nothing either way. Enquiries go straight to the property, and whatever you agree on price, deposit and cancellation is between the two of you. If you book through one of our Booking.com links we may earn a commission from Booking.com — it costs you no more, and it has no bearing on which places are listed or in what order.",
     },
     {
       q: "How do I get my property on the list?",
@@ -162,14 +162,14 @@ export const SITE = {
       a: "Usually, yes, but it is rarely advertised. Long-stay rates near a large construction project are negotiated rather than published, and they are often well below the nightly rate multiplied out — particularly for several rooms or a repeat booking. Phone the property rather than booking through an aggregator, and lead with the length of stay and the number of rooms.",
     },
     {
-      q: "Do you take a commission on bookings?",
-      a: "No. We run no booking engine, handle no money and take no commission from anyone. Nobody can pay to appear higher in the list, and the order is decided only by distance or alphabetically.",
+      q: "Do you make money from this site?",
+      a: "That is the plan, through affiliate links. The \"check availability\" buttons go to Booking.com, and once our affiliate account is live we may receive a commission from Booking.com if you book after following one — at no extra cost to you. That would be the only way the site earns. No hotel pays us for a listing, nobody can buy a higher position, and the order is decided only by distance or alphabetically. Full detail is on our affiliate disclosure page.",
     },
   ] satisfies FaqEntry[],
 
   footer: {
     blurb:
-      "An independently run list of hotels and places to stay within reach of the Universal Studios UK build in Bedfordshire. No commission, no booking engine — just the owner's details.",
+      "An independently run list of hotels and places to stay within reach of the Universal Studios UK build in Bedfordshire. Some links earn us a commission; none of them buy a place on the list.",
     columns: [
       {
         title: "Find a place",
@@ -184,18 +184,18 @@ export const SITE = {
         title: "For owners",
         links: [
           { label: "Add your place", href: "/#providers" },
-          { label: "What it costs", href: "#" },
-          { label: "Help for owners", href: "#" },
+          { label: "What it costs", href: "/about" },
+          { label: "Help for owners", href: "/contact" },
           { label: "Get in touch", href: MAIL.enquiry },
         ],
       },
       {
         title: "Small print",
         links: [
-          { label: "Terms", href: "#" },
-          { label: "Privacy", href: "#" },
-          { label: "Cookies", href: "#" },
-          { label: "Accessibility", href: "#" },
+          { label: "About", href: "/about" },
+          { label: "Privacy", href: "/privacy" },
+          { label: "Affiliate disclosure", href: "/affiliate-disclosure" },
+          { label: "Contact", href: "/contact" },
         ],
       },
     ],
