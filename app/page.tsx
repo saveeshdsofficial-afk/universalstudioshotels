@@ -33,6 +33,8 @@ const TINT_LINE = "#D9E1FF";
 const BLUE = "#1F4BFF";
 const BLUE_INK = "#1F45E6";
 
+const GUTTER = "max(24px, calc((100vw - 1200px) / 2))";
+
 const SPONSORED = "sponsored nofollow noopener noreferrer";
 
 /** Booking.com search for a town, with the affiliate id when one is set. */
@@ -147,6 +149,25 @@ const POSTS = [
   { cat: "Planning", img: "/images/guides/contractor-accommodation-bedford-checklist.jpg", title: "Nine things to check before you book anything", meta: "7 min read" },
 ];
 
+/* Every photo is a real, freely-licensed image from Wikimedia Commons. Credit is a
+   condition of the CC BY and CC BY-SA licences, so it is published, not optional. */
+const PHOTOS = [
+  { c: "Bedford bridge over the Great Ouse", by: "Jim", lic: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Bedford_Bridge_On_The_River_Great_Ouse.jpg", licUrl: "https://creativecommons.org/licenses/by/2.0/" },
+  { c: "Bedford Embankment, beside the Great Ouse", by: "Ronald Saunders from Warrington, UK", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Flickr_-_ronsaunders47_-_BEDFORD_EMBANKMENT..jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "Milton Keynes city centre", by: "John Chryslar", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Milton_Keynes_Sainsburys-Hub_Skyline.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
+  { c: "Luton town centre, seen from the station exit", by: "Robert Eva", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Luton_town_centre_from_the_railway_station_exit._-_geograph.org.uk_-_5432104.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "St Pancras International, London", by: "mattbuck", lic: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:St_Pancras_railway_station_MMB_A7.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/3.0/" },
+  { c: "Kempston Hardwick station, beside the park site", by: "D.J.H Photography", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Kempston_Hardwick_(17187363592).jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "The M1 through Bedfordshire", by: "Lewis Clarke", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Central_Bedfordshire_-_M1_Motorway_(geograph_5733152).jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "Harpur Square market, Bedford", by: "Paul Gillett", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Harpur_Square_Market,_Bedford_-_geograph.org.uk_-_2948619.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "The High Street, Bedford", by: "PAUL FARMER", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:The_Bear,_Public_House,_High_Street,_Bedford_-_geograph.org.uk_-_3283295.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "Elstow village, a mile from the site", by: "Simon Burchell", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Village_Farmhouse,_Elstow.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
+  { c: "The suspension bridge on the Great Ouse, Bedford", by: "Simon Speed", lic: "Public domain", url: "https://commons.wikimedia.org/wiki/File:BedfordSuspensionBridge.JPG", licUrl: "" },
+  { c: "The platform at Kempston Hardwick", by: "Bikeboy", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Kempston_Hardwick_railway_station_-_geograph.org.uk_-_4547847.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "The A421 south of Bedford", by: "David Howard", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Roxton_Road_crossing_the_A421_-_geograph.org.uk_-_6947323.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "Grassland by Elstow Abbey", by: "Philip Jeffrey", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Grassland_by_Elstow_Abbey_-_geograph.org.uk_-_6004029.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+];
+
 const STEPS = [
   { n: "01", t: "Pick your base", d: "Bedford for closeness, Milton Keynes for value and parking, Luton if you are flying, London for a city break." },
   { n: "02", t: "Work out the journey", d: "The A421 and the M1 do most of the work by road. Trains run into Bedford from St Pancras and along the Marston Vale line." },
@@ -159,7 +180,7 @@ export default function Page() {
   return (
     <>
       <style>{`
-        body{background:#DCDCD6;margin:0}
+        body{background:#FAFAF7;margin:0;overflow-x:clip}
         .p a{color:#17181B;text-decoration:none}
         .p a:hover{color:#1F4BFF}
         .p .bb:hover{transform:translateY(-1px);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 3px 6px rgba(31,75,255,.3),0 20px 40px -10px rgba(31,75,255,.7)}
@@ -168,7 +189,7 @@ export default function Page() {
         .p .soft:hover{background:#FAFAF7}
       `}</style>
 
-      <div className="p" style={{ width: 1440, margin: "0 auto", background: PAPER, color: INK, fontFamily: SANS, fontSize: 16, lineHeight: 1.6 }}>
+      <div className="p" style={{ width: "100%", background: PAPER, color: INK, fontFamily: SANS, fontSize: 16, lineHeight: 1.6 }}>
 
         {/* 1 — top bar: the disclosure, above everything */}
         <div style={{ background: INK, color: "#D6D7DB", fontSize: 13, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, padding: "8px 24px" }}>
@@ -181,7 +202,7 @@ export default function Page() {
 
         {/* 2 — header */}
         <header style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(250,250,247,.86)", backdropFilter: "blur(14px)", borderBottom: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.04), 0 8px 24px -12px rgba(23,24,27,.10)" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 120px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: `16px ${GUTTER}` }}>
             <a href="#" style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
               <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 26, letterSpacing: "-0.04em", lineHeight: 1 }}>
                 Parkline<span style={{ color: BLUE }}>.</span>
@@ -198,7 +219,7 @@ export default function Page() {
         </header>
 
         {/* 3 — hero: the park is not open, and the page says so first */}
-        <section style={{ position: "relative", height: 720, display: "flex", alignItems: "flex-end", padding: "0 120px 128px", overflow: "hidden" }}>
+        <section style={{ position: "relative", height: 720, display: "flex", alignItems: "flex-end", padding: `0 ${GUTTER} 128px`, overflow: "hidden" }}>
           <Image src="/images/hero.jpg" alt="" fill priority sizes="1440px" style={{ objectFit: "cover", zIndex: 0 }} />
           <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg,rgba(23,24,27,.58) 0%,rgba(23,24,27,.26) 30%,rgba(23,24,27,.5) 60%,rgba(23,24,27,.9) 100%)" }} />
           <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: 24, maxWidth: 940, color: "#FFFFFF" }}>
@@ -224,7 +245,7 @@ export default function Page() {
         </section>
 
         {/* 4 — trust strip */}
-        <section style={{ padding: "96px 120px" }}>
+        <section style={{ padding: `96px ${GUTTER}` }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))" }}>
             {[
               { b: "4 towns", s: "Bedford, Milton Keynes, Luton and London" },
@@ -241,13 +262,13 @@ export default function Page() {
         </section>
 
         {/* 5 — featured guide */}
-        <section id="guides" style={{ padding: "0 120px 128px" }}>
+        <section id="guides" style={{ padding: `0 ${GUTTER} 128px` }}>
           <SectionRule n="01" label="Featured guide" link="All guides" />
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.55fr) minmax(0,1fr)", gap: 48, alignItems: "start" }}>
-            <a href="#" style={{ position: "relative", display: "block", marginLeft: -120 }}>
+            <a href="#" style={{ position: "relative", display: "block", marginLeft: `calc(-1 * ${GUTTER})` }}>
               <div style={{ position: "relative", height: 600, borderRadius: "0 24px 24px 0", overflow: "hidden" }}>
                 <Image src="/images/guides/where-to-stay-near-universal-studios-uk.jpg" alt="" fill sizes="900px" style={{ objectFit: "cover" }} />
-                <div style={{ position: "absolute", top: 24, left: 144, display: "flex", gap: 8 }}>
+                <div style={{ position: "absolute", top: 24, left: `calc(${GUTTER} + 24px)`, display: "flex", gap: 8 }}>
                   <span style={PILL}>Where to stay</span>
                   <span style={PILL}>6 min read</span>
                   <span style={{ ...PILL, background: INK, color: "#fff" }}>Updated 2026</span>
@@ -287,7 +308,7 @@ export default function Page() {
         </section>
 
         {/* 6 — where to stay by town */}
-        <section id="towns" style={{ padding: "112px 120px 200px", backgroundColor: TINT, backgroundImage: NOISE }}>
+        <section id="towns" style={{ padding: `112px ${GUTTER} 200px`, backgroundColor: TINT, backgroundImage: NOISE }}>
           <SectionRule n="02" label="Where to stay by town" />
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, alignItems: "end", marginBottom: 48, marginTop: -16 }}>
             <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 0.98, letterSpacing: "-0.04em" }}>Pick the town, then the room.</h2>
@@ -314,7 +335,7 @@ export default function Page() {
         </section>
 
         {/* 7 — hotel picks */}
-        <section style={{ padding: "0 120px 128px", backgroundColor: "#FFFFFF", backgroundImage: `linear-gradient(180deg,${TINT} 0,${TINT} 120px,#FFFFFF 120px)` }}>
+        <section style={{ padding: `0 ${GUTTER} 128px`, backgroundColor: "#FFFFFF", backgroundImage: `linear-gradient(180deg,${TINT} 0,${TINT} 120px,#FFFFFF 120px)` }}>
           <div style={{ position: "relative", top: -104, marginBottom: -104 }}>
             <div style={{ display: "flex", alignItems: "end", justifyContent: "space-between", marginBottom: 32 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -365,7 +386,7 @@ export default function Page() {
         </section>
 
         {/* 8 — park news */}
-        <section id="news" style={{ padding: "112px 120px 128px", background: PAPER, borderTop: `1px solid ${LINE}` }}>
+        <section id="news" style={{ padding: `112px ${GUTTER} 128px`, background: PAPER, borderTop: `1px solid ${LINE}` }}>
           <SectionRule n="04" label="Park news and updates" link="All updates" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 32 }}>
             {NEWS.map((n) => (
@@ -387,7 +408,7 @@ export default function Page() {
         </section>
 
         {/* 9 — latest blog */}
-        <section id="blog" style={{ padding: "112px 120px 128px", background: "#FFFFFF" }}>
+        <section id="blog" style={{ padding: `112px ${GUTTER} 128px`, background: "#FFFFFF" }}>
           <SectionRule n="05" label="Latest from the journal" link="Visit the journal" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: "48px 32px" }}>
             {POSTS.map((p) => (
@@ -406,7 +427,7 @@ export default function Page() {
         </section>
 
         {/* 10 — plan your stay band */}
-        <section id="getting-there" style={{ position: "relative", padding: "128px 120px", background: `radial-gradient(ellipse 60% 80% at 85% 0%,rgba(31,75,255,.22) 0%,rgba(31,75,255,0) 60%),${INK}`, color: "#FFFFFF", overflow: "hidden" }}>
+        <section id="getting-there" style={{ position: "relative", padding: `128px ${GUTTER}`, background: `radial-gradient(ellipse 60% 80% at 85% 0%,rgba(31,75,255,.22) 0%,rgba(31,75,255,0) 60%),${INK}`, color: "#FFFFFF", overflow: "hidden" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24 }}>
             <span style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: 20, color: "#8FA6FF" }}>06</span>
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "#D6D7DB" }}>Plan your stay</span>
@@ -433,7 +454,7 @@ export default function Page() {
         </section>
 
         {/* 11 — newsletter */}
-        <section style={{ padding: "112px 120px", background: PAPER }}>
+        <section style={{ padding: `112px ${GUTTER}`, background: PAPER }}>
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,1fr)", gap: 64, alignItems: "center", padding: 64, borderRadius: 24, border: `1px solid ${TINT_LINE}`, backgroundColor: TINT, backgroundImage: NOISE, boxShadow: "0 1px 2px rgba(23,24,27,.04), 0 24px 56px -28px rgba(31,75,255,.35)" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: BLUE_INK }}>The monthly letter</span>
@@ -465,7 +486,7 @@ export default function Page() {
         </section>
 
         {/* 12 — footer */}
-        <footer style={{ background: "#FFFFFF", borderTop: `1px solid ${LINE}`, padding: "80px 120px 48px", display: "flex", flexDirection: "column", gap: 56 }}>
+        <footer style={{ background: "#FFFFFF", borderTop: `1px solid ${LINE}`, padding: `80px ${GUTTER} 48px`, display: "flex", flexDirection: "column", gap: 56 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr", gap: 32 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 28, letterSpacing: "-0.04em", lineHeight: 1 }}>Parkline<span style={{ color: BLUE }}>.</span></span>
@@ -483,6 +504,27 @@ export default function Page() {
               </div>
             ))}
           </div>
+          <details style={{ paddingTop: 32, borderTop: `1px solid ${LINE}`, fontSize: 13, lineHeight: 1.65, color: MUTED }}>
+            <summary style={{ cursor: "pointer", color: INK, fontSize: 12, letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 700 }}>
+              Photo credits
+            </summary>
+            <p style={{ margin: "16px 0 12px" }}>
+              Photographs are freely licensed images from Wikimedia Commons, cropped to fit. Where a photo carries a
+              share-alike licence, our crop is offered under that same licence. Illustrations elsewhere on the page are
+              drawings, not photographs.
+            </p>
+            <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "6px 32px" }}>
+              {PHOTOS.map((ph) => (
+                <li key={ph.url}>
+                  {ph.c} — <a href={ph.url} rel="noopener noreferrer" target="_blank" style={{ color: MUTED, textDecoration: "underline", textUnderlineOffset: 3 }}>{ph.by}</a>
+                  {", "}
+                  {ph.licUrl
+                    ? <a href={ph.licUrl} rel="license noopener noreferrer" target="_blank" style={{ color: MUTED, textDecoration: "underline", textUnderlineOffset: 3 }}>{ph.lic}</a>
+                    : ph.lic}
+                </li>
+              ))}
+            </ul>
+          </details>
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, paddingTop: 32, borderTop: `1px solid ${LINE}`, fontSize: 13, lineHeight: 1.65, color: MUTED }}>
             <p style={{ margin: 0 }}>
               <strong style={{ color: INK }}>Affiliate disclosure.</strong> Booking.com is our only partner. When you book through one of our links we may earn a commission, at no extra cost to you. It never decides what we write or which places we recommend. <a href="#" style={{ textDecoration: "underline", textUnderlineOffset: 3 }}>Read the full disclosure</a>.
