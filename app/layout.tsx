@@ -24,9 +24,9 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Parkline — park-stay journal",
+  title: "Parkline — Bedfordshire stay guide",
   description:
-    "An independent guide to the hotels, park-day plans and small tricks that make a Universal trip in Florida or California go smoothly.",
+    "An independent guide to Bedfordshire and the planned theme park near Bedford: area guides, getting there, days out and where to stay.",
 };
 
 export const viewport: Viewport = {
