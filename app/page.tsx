@@ -141,7 +141,7 @@ const NEWS = [
 const POSTS = [
   { cat: "Area guide", img: "/images/guides/bedford-area-guide-where-to-base-yourself.jpg", title: "Which Bedfordshire town to base yourself in", meta: "6 min read" },
   { cat: "Getting there", img: "/images/guides/getting-to-the-universal-uk-site.jpg", title: "Trains, the M1 and the A421: how to reach the site", meta: "5 min read" },
-  { cat: "Where to stay", img: "/images/guides/where-to-stay-near-universal-studios-uk.jpg", title: "Hotels closest to the Kempston Hardwick site", meta: "6 min read" },
+  { cat: "Where to stay", img: "/images/guides/hotels-closest-to-the-site.jpg", title: "Hotels closest to the Kempston Hardwick site", meta: "6 min read" },
   { cat: "Tips", img: "/images/guides/cutting-the-cost-of-a-long-stay.jpg", title: "Cutting the cost of a long stay in Bedfordshire", meta: "6 min read" },
   { cat: "Days out", img: "/images/areas/central-bedford.jpg", title: "A weekend in Bedford that is not just the park", meta: "7 min read" },
   { cat: "Planning", img: "/images/guides/contractor-accommodation-bedford-checklist.jpg", title: "Nine things to check before you book anything", meta: "7 min read" },
@@ -164,6 +164,7 @@ const PHOTOS = [
   { c: "The platform at Kempston Hardwick", by: "Bikeboy", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Kempston_Hardwick_railway_station_-_geograph.org.uk_-_4547847.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "The A421 south of Bedford", by: "David Howard", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Roxton_Road_crossing_the_A421_-_geograph.org.uk_-_6947323.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "Ampthill Park, Bedfordshire", by: "Philip Jeffrey", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Ampthill_Park_House_seen_across_the_fields_-_geograph.org.uk_-_3498686.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "The White Lion, a former coaching inn at Elstow", by: "PAUL FARMER", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Former_coaching_Inn_The_White_Lion_High_Street_Elstow_-_geograph.org.uk_-_1675438.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "The Swan, Bedford Embankment", by: "Gary Houston", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Swan-Hotel-Bedford-20050921-007.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
   { c: "The Mill, Bedford", by: "Dave Bevis", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Bedford_-_The_Mill_Hotel_-_geograph.org.uk_-_3832245.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "Woodland Manor, Clapham", by: "Jeff Gogarty", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Woodland_Manor_Hotel,_Clapham_Green,_Bedford_-_geograph.org.uk_-_7575369.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
