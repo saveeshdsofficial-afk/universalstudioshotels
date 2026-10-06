@@ -311,7 +311,7 @@ export default function Page() {
         <section id="towns" style={{ padding: `112px ${GUTTER} 200px`, backgroundColor: TINT, backgroundImage: NOISE }}>
           <SectionRule n="02" label="Where to stay by town" />
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, alignItems: "end", marginBottom: 48, marginTop: -16 }}>
-            <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 0.98, letterSpacing: "-0.04em" }}>Pick the town, then the room.</h2>
+            <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 0.98, letterSpacing: "-0.04em" }}>Start with the town.</h2>
             <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT, maxWidth: 480 }}>Which town suits you depends on what you want from the trip: the shortest drive, the easiest parking, a station on the doorstep, or a city break attached to it. Here is how the four compare.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 24 }}>
