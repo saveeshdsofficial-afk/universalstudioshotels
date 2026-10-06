@@ -157,7 +157,7 @@ const PHOTOS = [
   { c: "Milton Keynes city centre", by: "John Chryslar", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Milton_Keynes_Sainsburys-Hub_Skyline.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
   { c: "Luton town centre, seen from the station exit", by: "Robert Eva", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Luton_town_centre_from_the_railway_station_exit._-_geograph.org.uk_-_5432104.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "St Pancras International, London", by: "mattbuck", lic: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:St_Pancras_railway_station_MMB_A7.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/3.0/" },
-  { c: "Kempston Hardwick station, beside the park site", by: "D.J.H Photography", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Kempston_Hardwick_(17187363592).jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "Elstow Abbey, a mile from the park site", by: "Poliphilo", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Elstow_Abbey_from_east.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
   { c: "The M1 through Bedfordshire", by: "Lewis Clarke", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Central_Bedfordshire_-_M1_Motorway_(geograph_5733152).jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "Harpur Square market, Bedford", by: "Paul Gillett", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Harpur_Square_Market,_Bedford_-_geograph.org.uk_-_2948619.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "The High Street, Bedford", by: "PAUL FARMER", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:The_Bear,_Public_House,_High_Street,_Bedford_-_geograph.org.uk_-_3283295.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
@@ -165,7 +165,7 @@ const PHOTOS = [
   { c: "The suspension bridge on the Great Ouse, Bedford", by: "Simon Speed", lic: "Public domain", url: "https://commons.wikimedia.org/wiki/File:BedfordSuspensionBridge.JPG", licUrl: "" },
   { c: "The platform at Kempston Hardwick", by: "Bikeboy", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Kempston_Hardwick_railway_station_-_geograph.org.uk_-_4547847.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "The A421 south of Bedford", by: "David Howard", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Roxton_Road_crossing_the_A421_-_geograph.org.uk_-_6947323.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "Grassland by Elstow Abbey", by: "Philip Jeffrey", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Grassland_by_Elstow_Abbey_-_geograph.org.uk_-_6004029.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "Ampthill Park, Bedfordshire", by: "Philip Jeffrey", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Ampthill_Park_House_seen_across_the_fields_-_geograph.org.uk_-_3498686.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
 ];
 
 const STEPS = [
