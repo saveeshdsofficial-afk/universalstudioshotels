@@ -246,6 +246,30 @@
     background: rgb(255 255 255 / 0.18);
   }
 
+  /*
+    Bleeds an element to the left viewport edge from inside .wrap.
+
+    `calc(50% - 50vw)` is the usual trick but it resolves 50% against the
+    *containing block* — here a grid column, not the container — so it
+    overshoots. The real distance from the container's content edge to the
+    viewport is its padding plus half the leftover centring gap, so compute
+    that and expose it as --bleed for children to align against.
+  */
+  .bleed-left {
+    --bleed: 0px;
+  }
+
+  @media (width >= 64rem) {
+    .bleed-left {
+      --bleed: calc(
+        var(--wrap-pad) + max(0px, (100vw - var(--container-page)) / 2)
+      );
+      margin-left: calc(-1 * var(--bleed));
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
+  }
+
   .card {
     background: var(--color-surface);
     border: 1px solid var(--color-line);
