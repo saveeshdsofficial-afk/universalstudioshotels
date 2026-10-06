@@ -23,14 +23,14 @@ export function Faq({
     <section id="faq" className="section-y">
       <div className="wrap grid items-start gap-9 md:grid-cols-[0.7fr_1.3fr] md:gap-12 lg:gap-18">
         <Reveal>
-          <h2 className="text-[clamp(1.75rem,4.2vw,2.7rem)]">
+          <h2 className="text-[clamp(1.9rem,5vw,3.2rem)]">
             Frequently asked questions
           </h2>
           <p className="mt-4 max-w-[32ch] text-ink-muted">
             Can&rsquo;t find an answer?{" "}
             <a
               href={MAIL.enquiry}
-              className="font-semibold text-accent-ink underline-offset-4 hover:underline"
+              className="font-bold text-accent-ink underline underline-offset-4"
             >
               Get in touch
             </a>{" "}
@@ -58,10 +58,10 @@ export function Faq({
                     <span>{item.q}</span>
                     <span
                       className={cn(
-                        "grid size-7.5 shrink-0 place-items-center rounded-[9px] border transition-colors duration-250",
+                        "grid size-9 shrink-0 place-items-center rounded-full border transition-colors duration-250",
                         open
-                          ? "border-accent bg-accent text-on-accent"
-                          : "border-line-strong text-accent-ink",
+                          ? "border-accent bg-accent text-white"
+                          : "border-line text-accent-ink",
                       )}
                     >
                       <Icon
@@ -82,7 +82,7 @@ export function Faq({
                   className={cn("collapse-grid", open && "collapse-open")}
                 >
                   <div>
-                    <p className="pb-6 text-[1.02rem] text-ink-soft sm:pr-12">
+                    <p className="serif pb-6 text-[1.04rem] text-ink-soft sm:pr-12">
                       {item.a}
                     </p>
                   </div>
@@ -92,7 +92,7 @@ export function Faq({
           })}
 
           {remaining > 0 ? (
-            <Link href="/faq" className="btn btn-ghost mt-7 w-full sm:w-auto">
+            <Link href="/faq" className="btn btn-ghost mt-8 w-full sm:w-auto">
               Read all {SITE.faq.length} questions
             </Link>
           ) : null}

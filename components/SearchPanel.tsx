@@ -2,16 +2,40 @@
 
 import { useDirectory } from "./DirectoryProvider";
 import { Icon } from "./Icon";
-import { ALL_TYPES } from "@/lib/listings";
+import { ALL_TYPES, LISTINGS } from "@/lib/listings";
 import type { PropertyType, SortKey } from "@/lib/types";
+import { cn } from "@/lib/cn";
 
 const SORT_LABELS: Record<SortKey, string> = {
   nearest: "Closest to the site",
   name: "Name A–Z",
 };
 
-const fieldClass =
-  "min-h-11 w-full rounded-card border border-line bg-surface px-3.5 text-[0.95rem] text-ink outline-none transition focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent-ring";
+/** A labelled field in the glass panel. */
+function Field({
+  icon,
+  label,
+  children,
+}: {
+  icon: "pin" | "calendar" | "bed";
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label className="flex items-center gap-3 rounded-card border border-line bg-surface px-4 py-3 focus-within:border-accent focus-within:ring-2 focus-within:ring-tint-line">
+      <Icon name={icon} className="size-5 shrink-0 text-ink-muted" />
+      <span className="flex min-w-0 flex-1 flex-col leading-tight">
+        <span className="text-[0.75rem] font-semibold text-ink-muted">
+          {label}
+        </span>
+        {children}
+      </span>
+    </label>
+  );
+}
+
+const fieldInput =
+  "w-full min-w-0 border-0 bg-transparent p-0 text-[1rem] font-semibold text-ink outline-none";
 
 export function SearchPanel() {
   const { query, setQuery, type, setType, sort, setSort, results } =
@@ -26,45 +50,55 @@ export function SearchPanel() {
           .getElementById("listings")
           ?.scrollIntoView({ behavior: "smooth", block: "start" });
       }}
-      className="card p-4 shadow-[var(--shadow-mid)] sm:p-5"
+      className="flex flex-col gap-4 rounded-panel border border-white/70 bg-white/80 p-4 shadow-[var(--shadow-float)] backdrop-blur-[20px] backdrop-saturate-150 sm:p-6"
     >
-      {/* stacks on phones, becomes a single row once there is width */}
-      <div className="grid gap-3 lg:grid-cols-[1.6fr_1fr_1.2fr_auto] lg:items-end">
-        <div>
-          <label
-            htmlFor="q"
-            className="mb-1.5 block text-[0.82rem] font-medium text-ink-soft"
-          >
-            Search by name or place
-          </label>
-          <div className="relative">
-            <Icon
-              name="pin"
-              className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-ink-muted"
-            />
-            <input
-              id="q"
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Bedford, Kempston, MK42…"
-              className={`${fieldClass} pl-9`}
-            />
-          </div>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        {/* type pills double as the mockup's destination tabs */}
+        <div className="flex gap-1 rounded-pill bg-ink/[0.06] p-1">
+          {(["All", "Hotel"] as const).map((t) => {
+            const on = type === t;
+            return (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setType(t)}
+                aria-pressed={on}
+                className={cn(
+                  "rounded-pill px-4 py-2 text-[0.85rem] font-semibold transition",
+                  on
+                    ? "bg-surface text-ink shadow-[0_1px_2px_rgb(23_24_27/0.08),0_4px_12px_-4px_rgb(23_24_27/0.16)]"
+                    : "text-ink-soft",
+                )}
+              >
+                {t === "All" ? "Everything" : "Hotels"}
+              </button>
+            );
+          })}
         </div>
+        <span className="text-[0.8rem] text-ink-muted">
+          {LISTINGS.length} places · distances from Kempston Hardwick
+        </span>
+      </div>
 
-        <div>
-          <label
-            htmlFor="type"
-            className="mb-1.5 block text-[0.82rem] font-medium text-ink-soft"
-          >
-            Type
-          </label>
+      <div className="grid gap-2 lg:grid-cols-[1.3fr_1.2fr_0.9fr_auto] lg:items-stretch">
+        <Field icon="pin" label="Search">
+          <input
+            id="q"
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Bedford, Kempston, MK42…"
+            className={fieldInput}
+            aria-label="Search by name, town or postcode"
+          />
+        </Field>
+
+        <Field icon="bed" label="Type">
           <select
             id="type"
             value={type}
             onChange={(e) => setType(e.target.value as PropertyType | "All")}
-            className={fieldClass}
+            className={cn(fieldInput, "cursor-pointer")}
           >
             <option value="All">All types</option>
             {ALL_TYPES.map((t) => (
@@ -73,20 +107,14 @@ export function SearchPanel() {
               </option>
             ))}
           </select>
-        </div>
+        </Field>
 
-        <div>
-          <label
-            htmlFor="sort"
-            className="mb-1.5 block text-[0.82rem] font-medium text-ink-soft"
-          >
-            Sort by
-          </label>
+        <Field icon="calendar" label="Order">
           <select
             id="sort"
             value={sort}
             onChange={(e) => setSort(e.target.value as SortKey)}
-            className={fieldClass}
+            className={cn(fieldInput, "cursor-pointer")}
           >
             {(Object.keys(SORT_LABELS) as SortKey[]).map((k) => (
               <option key={k} value={k}>
@@ -94,14 +122,18 @@ export function SearchPanel() {
               </option>
             ))}
           </select>
-        </div>
+        </Field>
 
-        <button type="submit" className="btn btn-primary w-full lg:w-auto">
-          <Icon name="check" className="size-4" />
+        <button type="submit" className="btn btn-primary btn-lg w-full lg:w-auto">
           View {results.length}
-          <span className="lg:hidden"> matching stays</span>
+          <Icon name="route" className="size-4" />
         </button>
       </div>
+
+      <p className="flex items-center justify-end gap-2 text-[0.8rem] text-ink-soft">
+        <Icon name="check" className="size-3.5 text-accent" />
+        Every entry shows its straight-line distance to the site
+      </p>
     </form>
   );
 }

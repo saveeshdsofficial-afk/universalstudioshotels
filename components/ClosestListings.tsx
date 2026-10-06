@@ -1,51 +1,46 @@
-"use client";
-
+import Link from "next/link";
 import { ListingCard } from "./ListingCard";
 import { Reveal } from "./Reveal";
+import { RuleHead } from "./SectionHead";
 import { LISTINGS } from "@/lib/listings";
+import { AFFILIATE_NOTE } from "@/lib/affiliate";
 
-/* Editorial only: the nearest few by the distance we computed. Nobody pays
-   to appear here — there is no paid placement on this site. */
-const CLOSEST = [...LISTINGS].sort((a, b) => a.miles - b.miles).slice(0, 6);
+const CLOSEST = [...LISTINGS].sort((a, b) => a.miles - b.miles).slice(0, 3);
 
 export function ClosestListings() {
   return (
-    <section className="section-y">
+    <section className="section-y bg-surface">
       <div className="wrap">
         <Reveal>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div className="max-w-[640px]">
-              <h2 className="text-[clamp(1.75rem,4.2vw,2.7rem)]">
-                Closest to the site
-              </h2>
-              <p className="mt-3.5 text-[1.08rem] text-ink-muted">
-                Ranked by straight-line distance from Kempston Hardwick. No
-                property can pay for a place here or a higher one.
-              </p>
-            </div>
-            <a href="#listings" className="btn btn-ghost">
-              See the whole list
-            </a>
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <RuleHead
+              n="02"
+              label="Our closest picks"
+              className="min-w-[min(100%,22rem)] flex-1"
+            />
+            <span className="text-[0.82rem] text-ink-muted">
+              Ranked by distance · checked against the postcode database
+            </span>
           </div>
         </Reveal>
 
-        {/*
-          A scroll-snapping rail on phones (thumb-friendly, no cramped cards)
-          that becomes a plain grid once there is room for three across.
-        */}
-        <div
-          className="-mx-(--wrap-pad) mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-(--wrap-pad) pb-4 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5.5 lg:overflow-visible lg:px-0 lg:pb-0"
-          style={{ scrollbarWidth: "thin" }}
-        >
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {CLOSEST.map((l, i) => (
-            <div
-              key={l.slug}
-              className="w-[78vw] max-w-[330px] shrink-0 snap-start sm:w-[46vw] lg:w-auto lg:max-w-none"
-            >
+            <Reveal key={l.slug} className="h-full">
               <ListingCard listing={l} priority={i < 3} />
-            </div>
+            </Reveal>
           ))}
         </div>
+
+        <p className="mt-8 flex flex-wrap items-center gap-x-2 text-[0.84rem] text-ink-muted">
+          {AFFILIATE_NOTE}
+          <Link
+            href="/affiliate-disclosure"
+            className="underline underline-offset-2 hover:text-ink"
+          >
+            How we work
+          </Link>
+        </p>
       </div>
     </section>
   );

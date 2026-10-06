@@ -11,17 +11,16 @@ export function ListingCard({
 }: {
   listing: Listing;
   className?: string;
-  /** Set on cards above the fold so their image is not lazy-loaded. */
   priority?: boolean;
 }) {
   return (
     <article
       className={cn(
-        "card group flex h-full flex-col overflow-hidden transition duration-200 hover:-translate-y-1 hover:border-accent-ring hover:shadow-[var(--shadow-mid)]",
+        "group flex h-full flex-col overflow-hidden rounded-panel border border-line bg-surface shadow-[var(--shadow-card)] transition duration-200 hover:-translate-y-1",
         className,
       )}
     >
-      <div className="relative aspect-16/10 overflow-hidden bg-bg-alt">
+      <div className="relative aspect-16/10 overflow-hidden">
         <Image
           src={listing.image}
           alt={`Illustration representing a ${listing.type.toLowerCase()} — not a photograph of ${listing.name}`}
@@ -31,47 +30,38 @@ export function ListingCard({
           className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
 
-        {/*
-          These are generic illustrations. Say so on the card — letting a
-          drawing pass as a photo of a real hotel would mislead people.
-        */}
-        <span className="absolute bottom-2 left-2 rounded-pill bg-ink/70 px-2 py-0.5 text-[0.75rem] font-medium text-bg backdrop-blur-sm">
-          Illustration
+        <span className="absolute top-4 left-4 rounded-pill bg-white/[0.92] px-3 py-1.5 text-[0.75rem] font-semibold">
+          {listing.type}
         </span>
 
-        <span className="absolute top-3 right-3 rounded-pill bg-surface/90 px-2.5 py-1 text-[0.75rem] font-semibold text-ink-soft shadow-[var(--shadow-soft)] backdrop-blur-sm">
-          {listing.type}
+        {/* distance takes the slot the mockup gives a review score */}
+        <div className="absolute top-4 right-4 flex items-center gap-2 rounded-pill bg-dark py-1 pr-3 pl-1 text-white">
+          <span className="rounded-pill bg-white px-2 py-1 text-[0.82rem] font-bold text-ink">
+            {listing.miles}
+          </span>
+          <span className="text-[0.74rem] font-semibold">miles out</span>
+        </div>
+
+        <span className="absolute bottom-3 left-4 rounded-sm bg-white/90 px-1.5 py-0.5 font-mono text-[0.62rem] font-medium">
+          Illustration, not a photo
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-[1.1rem] leading-snug">{listing.name}</h3>
-
-        <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-[0.86rem] text-ink-muted">
-          <Icon name="pin" className="size-3.5 shrink-0" />
-          {listing.town}
-          <span className="font-mono text-[0.8rem]">· {listing.postcode}</span>
-        </p>
-
-        {/* grows so the distance row and link line up across a row of cards */}
-        <p className="mt-3 flex-1 text-[0.94rem] text-ink-soft">{listing.blurb}</p>
-
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-4">
-          <span className="inline-flex items-center gap-1.5 rounded-pill bg-accent-soft px-3 py-1.5 font-mono text-[0.8rem] whitespace-nowrap text-accent-ink">
-            <Icon name="route" className="size-3.5" />
-            {listing.miles} mi
-          </span>
-          <span className="text-[0.8rem] text-ink-muted">
-            straight line to the site
+      <div className="flex flex-1 flex-col gap-4 p-6">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-[clamp(1.15rem,2vw,1.45rem)]">{listing.name}</h3>
+          <span className="flex flex-wrap items-center gap-1.5 text-[0.86rem] text-ink-muted">
+            <Icon name="pin" className="size-3.5 shrink-0" />
+            {listing.town} ·{" "}
+            <strong className="font-semibold text-ink">
+              {listing.postcode}
+            </strong>
           </span>
         </div>
 
-        <div className="mt-4 grid gap-2">
-          {/*
-            A Booking.com *search* for this property, not a guessed hotel id —
-            we have no verified ids and a wrong one sends people elsewhere.
-            rel="sponsored" is required by Google on monetised links.
-          */}
+        <p className="flex-1 text-[0.94rem] text-ink-soft">{listing.blurb}</p>
+
+        <div className="mt-auto flex flex-col gap-3 border-t border-line pt-4">
           <a
             href={bookingSearchUrl(`${listing.name}, ${listing.town}`)}
             target="_blank"
@@ -79,6 +69,7 @@ export function ListingCard({
             className="btn btn-primary w-full"
           >
             Check availability
+            <span className="btn-chip">Booking.com</span>
           </a>
 
           {listing.website ? (
@@ -86,11 +77,15 @@ export function ListingCard({
               href={listing.website}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="btn btn-ghost w-full"
+              className="text-center text-[0.86rem] font-semibold underline underline-offset-[3px] hover:text-accent"
             >
-              Visit official site
+              Visit the hotel&rsquo;s own site
             </a>
-          ) : null}
+          ) : (
+            <span className="text-center text-[0.84rem] text-ink-muted">
+              No official link on file yet
+            </span>
+          )}
         </div>
       </div>
     </article>

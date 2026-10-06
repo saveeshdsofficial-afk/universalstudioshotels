@@ -3,7 +3,7 @@
 import { useDirectory } from "./DirectoryProvider";
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
-import { SectionHead } from "./SectionHead";
+import { RuleHead, SectionHead } from "./SectionHead";
 import { PROPERTY_TYPES, countByType } from "@/lib/listings";
 import { cn } from "@/lib/cn";
 
@@ -11,70 +11,64 @@ export function PropertyTypes() {
   const { browseType } = useDirectory();
 
   return (
-    <section id="types" className="section-y border-y border-line bg-bg-alt">
+    <section id="types" className="noise section-y bg-tint">
       <div className="wrap">
         <Reveal>
+          <RuleHead n="01" label="Where to stay" className="mb-6" />
           <SectionHead
-            title="Pick the kind of place you need"
-            sub="The list starts with hotels because those are the ones we could verify. The other categories open up as owners add their own places."
-            className="mb-0"
+            title="Choose a place by what your stay needs."
+            sub="A room for a fortnight or a whole house for the crew. The list starts with hotels because those are the ones we could verify."
           />
         </Reveal>
 
-        {/* 2 up on phones, 3 at tablet, 6 across on desktop */}
-        <div className="mt-9 grid grid-cols-2 gap-3.5 sm:mt-12 sm:grid-cols-3 lg:grid-cols-6 lg:gap-4">
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 lg:grid-cols-3 xl:grid-cols-6">
           {PROPERTY_TYPES.map((t) => {
             const count = countByType(t.type);
             const empty = count === 0;
+            const Tag = empty ? "a" : "button";
 
-            /* An empty category says so and points at the listing form,
-               rather than filtering to a blank page. */
             return (
               <Reveal key={t.type} className="h-full">
-                {empty ? (
-                  <a
-                    href="#providers"
-                    className="card flex h-full w-full flex-col items-start border-dashed p-4 text-left opacity-70 transition duration-200 hover:opacity-100 sm:p-5"
-                  >
-                    <span className="grid size-11 place-items-center rounded-[12px] bg-bg-alt text-ink-muted">
-                      <Icon name={t.icon} className="size-[22px]" />
-                    </span>
-                    <span className="mt-3.5 font-semibold text-ink-soft">
-                      {t.label}
-                    </span>
-                    <span className="mt-1 text-[0.86rem] text-ink-muted">
-                      {t.blurb}
-                    </span>
-                    <span className="mt-3 rounded-pill border border-dashed border-line-strong px-2.5 py-1 text-[0.78rem] text-ink-muted">
-                      None yet — add one
-                    </span>
-                  </a>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => browseType(t.type)}
+                <Tag
+                  {...(empty
+                    ? { href: "#providers" }
+                    : { type: "button" as const, onClick: () => browseType(t.type) })}
+                  className={cn(
+                    "flex h-full w-full flex-col gap-3 rounded-panel bg-surface p-2 pb-5 text-left transition duration-200 hover:-translate-y-1",
+                    empty
+                      ? "border border-dashed border-[#c9cbd2] bg-transparent opacity-80 hover:opacity-100"
+                      : "shadow-[var(--shadow-raise)] hover:shadow-[0_2px_4px_rgb(23_24_27/0.05),0_24px_48px_-16px_rgb(31_75_255/0.28)]",
+                  )}
+                >
+                  <div
                     className={cn(
-                      "card flex h-full w-full flex-col items-start p-4 text-left transition duration-200",
-                      "hover:-translate-y-1 hover:border-accent-ring hover:shadow-[var(--shadow-mid)] sm:p-5",
+                      "relative grid aspect-4/3 place-items-center rounded-card",
+                      empty ? "bg-white/50" : "hatch",
                     )}
                   >
-                    <span className="grid size-11 place-items-center rounded-[12px] bg-accent-soft text-accent-ink">
-                      <Icon name={t.icon} className="size-[22px]" />
+                    <Icon
+                      name={t.icon}
+                      className={cn(
+                        "size-8",
+                        empty ? "text-ink-muted/50" : "text-ink-muted/70",
+                      )}
+                    />
+                    <span className="absolute top-3 left-3 rounded-pill bg-white/[0.92] px-2.5 py-1 text-[0.72rem] font-semibold">
+                      {empty ? "None yet" : `${count} listed`}
                     </span>
-                    <span className="mt-3.5 flex items-center gap-1 font-semibold">
-                      {t.label}
-                      <span aria-hidden="true" className="text-accent-ink">
-                        →
-                      </span>
-                    </span>
-                    <span className="mt-1 text-[0.86rem] text-ink-muted">
+                  </div>
+
+                  <div className="flex flex-col gap-1.5 px-3">
+                    <h3 className="text-[1.15rem]">{t.label}</h3>
+                    <p className="text-[0.86rem] leading-snug text-ink-muted">
                       {t.blurb}
+                    </p>
+                    <span className="mt-1 inline-flex items-center gap-1.5 text-[0.82rem] font-bold text-accent-text">
+                      {empty ? "Add yours" : "Browse"}
+                      <Icon name="route" className="size-3.5" />
                     </span>
-                    <span className="mt-3 rounded-pill bg-accent-soft px-2.5 py-1 text-[0.78rem] font-medium text-accent-ink">
-                      {count} listed
-                    </span>
-                  </button>
-                )}
+                  </div>
+                </Tag>
               </Reveal>
             );
           })}

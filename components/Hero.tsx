@@ -1,96 +1,78 @@
 import Image from "next/image";
-import { Icon } from "./Icon";
-import { Reveal } from "./Reveal";
 import { SearchPanel } from "./SearchPanel";
 import { HERO_CREDIT, SITE } from "@/lib/site";
-import { LISTINGS } from "@/lib/listings";
 
-const nearest = Math.min(...LISTINGS.map((l) => l.miles));
 const [headline, headlineAccent] = SITE.hero.h1;
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-12 pb-14 sm:pt-16 md:pt-20 md:pb-20">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_70%_at_75%_0%,var(--color-accent-softer),transparent_70%)]"
-      />
+    <>
+      <section className="relative isolate flex min-h-[clamp(26rem,62vh,44rem)] items-end overflow-hidden pt-16 pb-24 sm:pb-28 lg:min-h-[42rem] lg:pb-44">
+        <Image
+          src="/images/hero.jpg"
+          alt={HERO_CREDIT.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover"
+        />
+        {/* dark at the top for the sticky header, dark at the foot for the copy */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_24_27/0.55)_0%,rgb(23_24_27/0.28)_26%,rgb(23_24_27/0.52)_58%,rgb(23_24_27/0.92)_100%)]"
+        />
+        {/* a second, softer pass keeps the copy legible over the bright sky */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_70%_at_20%_80%,rgb(23_24_27/0.55)_0%,rgb(23_24_27/0)_70%)]"
+        />
 
-      <div className="wrap relative">
-        {/* copy and artwork sit side by side once there is room */}
-        <div className="grid items-center gap-9 md:grid-cols-[1.05fr_0.95fr] md:gap-12 lg:gap-16">
-          <Reveal>
-            <h1 className="text-[clamp(2.1rem,6.4vw,3.5rem)]">
+        <div className="wrap relative text-white">
+          <div className="flex max-w-[56rem] flex-col gap-5">
+            <div className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.16em] uppercase">
+              <span className="h-px w-8 bg-white" />
+              {SITE.region} · {SITE.park}
+            </div>
+
+            <h1 className="text-[clamp(2.3rem,6.6vw,4.75rem)] leading-[0.95] drop-shadow-[0_2px_24px_rgb(23_24_27/0.4)]">
+              {/* no manual break — text-wrap:balance distributes the lines */}
               {headline}
-              <span className="text-accent-ink">{headlineAccent}</span>
+              {headlineAccent}
             </h1>
-            <p className="mt-5 max-w-[52ch] text-[clamp(1.05rem,1.7vw,1.24rem)] text-ink-soft">
+
+            <p className="serif max-w-[36rem] text-[clamp(1.02rem,1.9vw,1.3rem)] text-[#f1f1f3] drop-shadow-[0_1px_12px_rgb(23_24_27/0.5)]">
               {SITE.hero.lede}
             </p>
-          </Reveal>
-
-          <Reveal>
-            <figure>
-              {/* 3:2 matches the photograph, so the bridge is not cropped */}
-              <div className="relative aspect-3/2 w-full overflow-hidden rounded-panel shadow-[var(--shadow-tall)] ring-1 ring-line">
-                <Image
-                  src="/images/hero.jpg"
-                  alt={HERO_CREDIT.alt}
-                  fill
-                  priority
-                  sizes="(min-width: 768px) 46vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              {/* CC BY 2.0 requires this credit — see HERO_CREDIT */}
-              <figcaption className="mt-2.5 text-[0.78rem] leading-relaxed text-ink-muted">
-                <a
-                  href={HERO_CREDIT.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 hover:text-ink"
-                >
-                  {HERO_CREDIT.title}
-                </a>{" "}
-                by {HERO_CREDIT.author}, licensed under{" "}
-                <a
-                  href={HERO_CREDIT.licenceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer license"
-                  className="underline underline-offset-2 hover:text-ink"
-                >
-                  {HERO_CREDIT.licence}
-                </a>
-                . Bedford town centre, about two miles from the site.
-              </figcaption>
-            </figure>
-          </Reveal>
+          </div>
         </div>
+      </section>
 
-        <Reveal className="mt-8 sm:mt-10">
-          <SearchPanel />
-        </Reveal>
-
-        <Reveal className="mt-6">
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.92rem] text-ink-muted">
-            <li className="flex items-center gap-2">
-              <Icon name="bed" className="size-4 text-accent-ink" />
-              <b className="font-semibold text-ink">{LISTINGS.length}</b>
-              properties listed
-            </li>
-            <li className="flex items-center gap-2">
-              <Icon name="route" className="size-4 text-accent-ink" />
-              nearest is
-              <b className="font-semibold text-ink">{nearest} miles</b>
-              from the site
-            </li>
-            <li className="flex items-center gap-2">
-              <Icon name="shield" className="size-4 text-accent-ink" />
-              independent &amp; distance-ranked
-            </li>
-          </ul>
-        </Reveal>
+      {/* the panel lifts into the hero rather than sitting under it */}
+      <div className="wrap relative z-10 -mt-16 sm:-mt-20 lg:-mt-28">
+        <SearchPanel />
       </div>
-    </section>
+
+      <p className="wrap mt-3 text-[0.72rem] text-ink-muted">
+        Photo:{" "}
+        <a
+          href={HERO_CREDIT.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2"
+        >
+          {HERO_CREDIT.title}
+        </a>{" "}
+        by {HERO_CREDIT.author},{" "}
+        <a
+          href={HERO_CREDIT.licenceUrl}
+          target="_blank"
+          rel="noopener noreferrer license"
+          className="underline underline-offset-2"
+        >
+          {HERO_CREDIT.licence}
+        </a>
+        . Bedford town centre, about two miles from the site.
+      </p>
+    </>
   );
 }

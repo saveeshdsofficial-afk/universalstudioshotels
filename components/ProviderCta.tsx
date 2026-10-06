@@ -1,90 +1,48 @@
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
 import { MAIL, SITE } from "@/lib/site";
-import { LISTINGS } from "@/lib/listings";
 
+/* Takes the newsletter slot from the reference. We have no mailing list, and
+   a form that goes nowhere is worse than none — this is the real action. */
 export function ProviderCta() {
   const { providers } = SITE;
 
   return (
-    <section id="providers" className="section-y border-y border-line bg-bg-alt">
+    <section id="providers" className="section-y bg-bg">
       <div className="wrap">
         <Reveal>
-          <div className="card overflow-hidden bg-[linear-gradient(135deg,var(--color-accent-softer),var(--color-surface))]">
-            <div className="grid gap-8 p-7 sm:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14 lg:p-12">
-              <div>
-                <h2 className="text-[clamp(1.6rem,3.6vw,2.3rem)]">
-                  {providers.h2}
-                </h2>
-                <p className="mt-4 max-w-[46ch] text-[1.06rem] text-ink-soft">
-                  {providers.lede}
-                </p>
+          <div className="noise grid gap-10 rounded-panel border border-tint-line bg-tint p-8 shadow-[0_1px_2px_rgb(23_24_27/0.04),0_24px_56px_-28px_rgb(31_75_255/0.35)] sm:p-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16 lg:p-16">
+            <div className="flex flex-col gap-4">
+              <span className="text-[0.72rem] font-bold tracking-[0.16em] uppercase text-accent-ink">
+                For owners
+              </span>
+              <h2 className="text-[clamp(1.75rem,4vw,3rem)] leading-none">
+                {providers.h2}
+              </h2>
+              <p className="serif text-[clamp(1rem,1.6vw,1.13rem)] text-ink-soft">
+                {providers.lede}
+              </p>
+            </div>
 
-                <ul className="mt-6 grid gap-3">
-                  {providers.points.map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-start gap-3 text-ink-soft"
-                    >
-                      <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-[7px] bg-accent-soft text-accent-ink">
-                        <Icon name="check" className="size-3.5" />
-                      </span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={MAIL.listing} className="btn btn-primary btn-lg">
-                    <Icon name="key" className="size-[17px]" />
-                    {providers.cta}
-                  </a>
-                  <a href="#faq" className="btn btn-ghost btn-lg">
-                    How listing works
-                  </a>
-                </div>
-              </div>
-
-              {/* two plain numbers carry more weight here than a stock photo */}
-              <div className="grid grid-cols-2 gap-4 lg:gap-5">
-                {[
-                  {
-                    icon: "bed" as const,
-                    big: `${LISTINGS.length}`,
-                    sm: "properties listed",
-                  },
-                  {
-                    icon: "route" as const,
-                    big: "0.9 mi",
-                    sm: "closest to the site",
-                  },
-                  {
-                    icon: "percent" as const,
-                    big: "£0",
-                    sm: "to list your place",
-                  },
-                  {
-                    icon: "calendar" as const,
-                    big: "Weekly",
-                    sm: "and monthly rates",
-                  },
-                ].map((stat) => (
-                  <div
-                    key={stat.sm}
-                    className="rounded-card border border-line bg-surface p-4 sm:p-5"
-                  >
-                    <span className="grid size-10 place-items-center rounded-[11px] bg-accent-soft text-accent-ink">
-                      <Icon name={stat.icon} className="size-5" />
+            <div className="flex flex-col gap-4">
+              <ul className="grid gap-3">
+                {providers.points.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-ink-soft">
+                    <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-accent text-white">
+                      <Icon name="check" className="size-3" />
                     </span>
-                    <div className="mt-3 text-[1.35rem] font-semibold tracking-[-0.02em]">
-                      {stat.big}
-                    </div>
-                    <div className="text-[0.84rem] text-ink-muted">
-                      {stat.sm}
-                    </div>
-                  </div>
+                    {point}
+                  </li>
                 ))}
-              </div>
+              </ul>
+
+              <a href={MAIL.listing} className="btn btn-dark btn-lg mt-2 w-full sm:w-auto">
+                {providers.cta}
+                <Icon name="route" className="size-4" />
+              </a>
+              <span className="text-[0.82rem] text-ink-muted">
+                Free to list. No commission on anything you take.
+              </span>
             </div>
           </div>
         </Reveal>

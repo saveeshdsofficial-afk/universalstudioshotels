@@ -4,6 +4,8 @@ import { PropertyTypes } from "@/components/PropertyTypes";
 import { ClosestListings } from "@/components/ClosestListings";
 import { ListingsExplorer } from "@/components/ListingsExplorer";
 import { ValueProps } from "@/components/ValueProps";
+import { TrustStrip } from "@/components/TrustStrip";
+import { PlanSteps } from "@/components/PlanSteps";
 import { GuidesTeaser } from "@/components/GuidesTeaser";
 import { ProviderCta } from "@/components/ProviderCta";
 import { Faq } from "@/components/Faq";
@@ -59,11 +61,13 @@ export default function Page() {
       <SiteHeader />
       <main id="top">
         <Hero />
+        <TrustStrip />
         <PropertyTypes />
         <ClosestListings />
+        <GuidesTeaser />
+        <PlanSteps />
         <ListingsExplorer />
         <ValueProps />
-        <GuidesTeaser />
         <ProviderCta />
         <Faq limit={HOME_FAQ_COUNT} />
       </main>

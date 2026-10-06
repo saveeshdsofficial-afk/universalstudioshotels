@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Public_Sans, Source_Serif_4 } from "next/font/google";
 import { DirectoryProvider } from "@/components/DirectoryProvider";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
@@ -11,16 +11,25 @@ import {
 } from "@/lib/seo";
 import "./globals.css";
 
-const geistSans = Geist({
+/* Archivo carries the headlines, Public Sans the UI, Source Serif the ledes. */
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-archivo",
+  display: "swap",
+  weight: ["500", "600", "700", "800"],
+});
+
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  variable: "--font-public-sans",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-source-serif",
   display: "swap",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -91,15 +100,15 @@ export const viewport: Viewport = {
   initialScale: 1,
   // let people pinch-zoom; capping this is an accessibility failure
   maximumScale: 5,
-  themeColor: "#ffffff",
+  themeColor: "#fafaf7",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="text-[16px] leading-[1.65] sm:text-[17px]">
+    <html lang="en-GB" className={`${archivo.variable} ${publicSans.variable} ${sourceSerif.variable}`}>
+      <body className="text-[16px] leading-[1.6]">
         <JsonLd data={organisationLd()} />
         <JsonLd data={websiteLd()} />
         <DirectoryProvider>{children}</DirectoryProvider>

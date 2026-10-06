@@ -4,6 +4,7 @@ import { useDirectory } from "./DirectoryProvider";
 import { ListingCard } from "./ListingCard";
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
+import { RuleHead } from "./SectionHead";
 import { cn } from "@/lib/cn";
 import { AFFILIATE_NOTE } from "@/lib/affiliate";
 import Link from "next/link";
@@ -14,17 +15,18 @@ export function ListingsExplorer() {
   const filtered = type !== "All" || query.trim() !== "";
 
   return (
-    <section id="listings" className="section-y">
+    <section id="listings" className="noise section-y bg-tint">
       <div className="wrap">
         <Reveal>
+          <RuleHead n="06" label="The whole list" className="mb-6" />
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-[640px]">
-              <h2 className="text-[clamp(1.75rem,4.2vw,2.7rem)]">
+              <h2 className="text-[clamp(1.9rem,5vw,3.4rem)]">
                 {type === "All"
                   ? "Everywhere on the list"
                   : `Every ${type.toLowerCase()} on the list`}
               </h2>
-              <p className="mt-3.5 text-[1.08rem] text-ink-muted">
+              <p className="serif mt-4 text-[1.08rem] text-ink-soft">
                 {results.length}{" "}
                 {results.length === 1 ? "place" : "places"}
                 {filtered ? " match what you asked for" : " so far"}, each with a
@@ -42,7 +44,7 @@ export function ListingsExplorer() {
               <button
                 type="button"
                 onClick={() => setType("All")}
-                className="inline-flex min-h-9 items-center gap-1.5 rounded-pill border border-accent-ring bg-accent-softer px-3 text-[0.85rem] text-accent-ink"
+                className="inline-flex min-h-9 items-center gap-1.5 rounded-pill border border-tint-line bg-surface px-3 text-[0.85rem] font-semibold text-accent-ink"
               >
                 {type}
                 <Icon name="x" className="size-3.5" />
@@ -52,7 +54,7 @@ export function ListingsExplorer() {
               <button
                 type="button"
                 onClick={() => setQuery("")}
-                className="inline-flex min-h-9 items-center gap-1.5 rounded-pill border border-accent-ring bg-accent-softer px-3 text-[0.85rem] text-accent-ink"
+                className="inline-flex min-h-9 items-center gap-1.5 rounded-pill border border-tint-line bg-surface px-3 text-[0.85rem] font-semibold text-accent-ink"
               >
                 &ldquo;{query.trim()}&rdquo;
                 <Icon name="x" className="size-3.5" />
@@ -80,7 +82,7 @@ export function ListingsExplorer() {
         </p>
 
         {results.length > 0 ? (
-          <div className="mt-8 grid gap-5.5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {results.map((l) => (
               <Reveal key={l.slug} className="h-full">
                 <ListingCard listing={l} />
@@ -89,7 +91,7 @@ export function ListingsExplorer() {
           </div>
         ) : (
           <div className="card mt-8 grid place-items-center px-6 py-16 text-center">
-            <span className="grid size-13 place-items-center rounded-[14px] bg-accent-soft text-accent-ink">
+            <span className="grid size-14 place-items-center rounded-card bg-tint text-accent-ink">
               <Icon name="pin" className="size-6" />
             </span>
             <h3 className="mt-4 text-[1.2rem]">Nothing matches that</h3>

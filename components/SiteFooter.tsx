@@ -1,77 +1,73 @@
+import Link from "next/link";
 import { Brand } from "./SiteHeader";
-import { Icon } from "./Icon";
 import { SITE } from "@/lib/site";
 
 const LEGAL = [
   { label: "About", href: "/about" },
-  { label: "Privacy", href: "/privacy" },
   { label: "Affiliate disclosure", href: "/affiliate-disclosure" },
   { label: "Contact", href: "/contact" },
+  { label: "Privacy", href: "/privacy" },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="bg-footer pt-14 text-footer-text sm:pt-18 lg:pt-21">
-      <div className="wrap">
-        {/* 1 col on phones → 2 at tablet → brand + 3 link columns on desktop */}
-        <div className="grid gap-8 border-b border-white/10 pb-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-10">
-          <div>
-            <Brand tone="dark" />
-            <p className="mt-4 max-w-[34ch] text-[0.95rem] leading-relaxed">
+    <footer className="border-t border-line bg-surface">
+      <div className="wrap flex flex-col gap-14 py-16 lg:py-20">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+          <div className="flex flex-col gap-4">
+            <Brand />
+            <p className="max-w-[22rem] text-[0.95rem] leading-relaxed text-ink-muted">
               {SITE.footer.blurb}
             </p>
-
           </div>
 
           {SITE.footer.columns.map((col) => (
-            <nav key={col.title} aria-label={col.title}>
-              <h2 className="mb-3.5 font-mono text-[0.82rem] font-medium tracking-[0.1em] text-white uppercase">
+            <nav key={col.title} aria-label={col.title} className="flex flex-col gap-3">
+              <h2 className="text-[0.72rem] font-bold tracking-[0.14em] uppercase">
                 {col.title}
               </h2>
               {col.links.map((l) => (
-                <a
+                <Link
                   key={l.label}
                   href={l.href}
-                  className="block py-2 text-[0.95rem] text-footer-text transition-colors hover:text-white"
+                  className="text-[0.95rem] text-ink-muted transition-colors hover:text-accent"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </nav>
           ))}
         </div>
 
-        <div className="py-6.5">
-          <div className="flex items-start gap-3.5 rounded-card border border-white/10 bg-footer-raised p-5">
-            <Icon
-              name="alert"
-              className="mt-0.5 size-5 shrink-0 text-[oklch(0.7_0.05_80)]"
-            />
-            <p className="text-[0.9rem] leading-relaxed">
-              <b className="font-semibold text-white">
-                Independent directory — not an official site.
-              </b>{" "}
-              {SITE.disclaimer}
-            </p>
-          </div>
+        <div className="grid gap-8 border-t border-line pt-8 text-[0.82rem] leading-relaxed text-ink-muted lg:grid-cols-2 lg:gap-12">
+          <p>
+            <strong className="text-ink">Affiliate disclosure.</strong>{" "}
+            Booking.com is our only partner. When you book through our links we
+            may earn a commission, at no extra cost to you. It never decides
+            which places are listed or in what order.{" "}
+            <Link
+              href="/affiliate-disclosure"
+              className="underline underline-offset-[3px] hover:text-ink"
+            >
+              Read the full disclosure
+            </Link>
+            .
+          </p>
+          <p>
+            {SITE.disclaimer} © {new Date().getFullYear()} {SITE.brand}.
+          </p>
         </div>
 
-        <div className="safe-b flex flex-col gap-4 pt-6 pb-10 text-[0.88rem] text-footer-dim sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
-          <span>
-            © {new Date().getFullYear()} {SITE.brand} {SITE.brandSub}. An
-            independent accommodation directory.
-          </span>
-          <div className="flex flex-wrap gap-x-5.5 gap-y-2">
-            {LEGAL.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="inline-flex min-h-11 items-center transition-colors hover:text-white"
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
+        <div className="safe-b flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-6 text-[0.86rem]">
+          {LEGAL.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="inline-flex min-h-11 items-center text-ink-muted transition-colors hover:text-accent"
+            >
+              {l.label}
+            </Link>
+          ))}
         </div>
       </div>
     </footer>

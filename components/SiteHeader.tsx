@@ -1,47 +1,61 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Icon } from "./Icon";
 import { MAIL, SITE } from "@/lib/site";
+import { AFFILIATE_NOTE, AFFILIATE_REL, bookingSearchUrl } from "@/lib/affiliate";
 import { cn } from "@/lib/cn";
 
 export function Brand({ tone = "light" }: { tone?: "light" | "dark" }) {
   return (
-    <a
-      /* the header renders on the guides too, so the logo goes home
-         rather than scrolling to the top of whatever page you are on */
+    <Link
       href="/"
-      aria-label={`${SITE.brand} ${SITE.brandSub} — home`}
-      className="flex min-h-11 items-center"
+      aria-label={`${SITE.brand} — home`}
+      className="flex min-h-11 items-baseline gap-2.5"
     >
-      <span className="leading-none">
-        <span
-          className={cn(
-            /* the name is long — hold it on one line and let it shrink first */
-            "block text-[0.95rem] font-semibold tracking-[-0.02em] whitespace-nowrap xs:text-[1.02rem] sm:text-[1.12rem]",
-            tone === "dark" && "text-white",
-          )}
-        >
-          {SITE.brand}
-        </span>
-        <span
-          className={cn(
-            "mt-0.5 block font-mono text-[0.75rem] font-normal tracking-[0.08em] uppercase",
-            tone === "dark" ? "text-footer-dim" : "text-ink-muted",
-          )}
-        >
-          {SITE.brandSub}
-        </span>
+      <span
+        className={cn(
+          "font-display text-[1.05rem] leading-none font-extrabold tracking-[-0.04em] whitespace-nowrap sm:text-[1.25rem] lg:text-[1.4rem]",
+          tone === "dark" ? "text-white" : "text-ink",
+        )}
+      >
+        Universal Studios Hotels
+        <span className="text-accent">.</span>
       </span>
-    </a>
+      <span
+        className={cn(
+          "hidden text-[0.69rem] font-semibold tracking-[0.14em] uppercase lg:inline",
+          tone === "dark" ? "text-on-dark-dim" : "text-ink-muted",
+        )}
+      >
+        {SITE.brandSub}
+      </span>
+    </Link>
+  );
+}
+
+/** Dark strip above the header: the disclosure people see before anything else. */
+export function AnnouncementBar() {
+  return (
+    <div className="bg-dark text-on-dark">
+      <div className="wrap flex flex-wrap items-center justify-center gap-x-2 gap-y-1 py-2 text-center text-[0.8rem]">
+        <Icon name="shield" className="size-3.5 shrink-0" />
+        <span>{AFFILIATE_NOTE}</span>
+        <Link
+          href="/affiliate-disclosure"
+          className="font-medium text-white underline underline-offset-[3px]"
+        >
+          How we work
+        </Link>
+      </div>
+    </div>
   );
 }
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
-  // Lock the page behind the mobile menu, and never leave it open on
-  // a viewport that has the desktop nav.
   useEffect(() => {
     if (!open) return;
     const { overflow } = document.body.style;
@@ -50,10 +64,7 @@ export function SiteHeader() {
     const mq = window.matchMedia("(min-width: 64rem)");
     const close = () => setOpen(false);
     mq.addEventListener("change", close);
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
 
     return () => {
@@ -64,71 +75,88 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bg/85 backdrop-blur-lg backdrop-saturate-150">
-      <div className="wrap flex h-(--header-h) items-center gap-7">
-        <Brand />
+    <>
+      <AnnouncementBar />
 
-        <nav aria-label="Primary" className="ml-3.5 hidden gap-6.5 lg:flex">
-          {SITE.nav.map((l) => (
-            <a
-              key={l.href + l.label}
-              href={l.href}
-              className="inline-flex min-h-11 items-center text-[0.96rem] font-medium whitespace-nowrap text-ink-soft transition-colors hover:text-ink"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
+      <header className="sticky top-0 z-30 border-b border-line bg-bg/[0.86] shadow-[0_1px_2px_rgb(23_24_27/0.04),0_8px_24px_-12px_rgb(23_24_27/0.10)] backdrop-blur-[14px]">
+        <div className="wrap flex h-(--header-h) items-center justify-between gap-6">
+          <Brand />
 
-        <div className="ml-auto flex items-center gap-3">
-          <a href={MAIL.listing} className="btn btn-primary hidden sm:inline-flex">
-            <Icon name="key" className="size-[17px]" />
-            Add listing
-          </a>
-
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            aria-label={open ? "Close menu" : "Open menu"}
-            className="grid size-11 shrink-0 place-items-center rounded-[10px] border border-line-strong text-ink lg:hidden"
+          <nav
+            aria-label="Primary"
+            className="hidden gap-8 text-[0.95rem] font-medium lg:flex"
           >
-            <Icon name={open ? "x" : "menu"} className="size-5" />
-          </button>
-        </div>
-      </div>
+            {SITE.nav.map((l) => (
+              <Link
+                key={l.href + l.label}
+                href={l.href}
+                className="whitespace-nowrap transition-colors hover:text-accent"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
 
-      {/* Mobile menu: a real panel, not a squeezed desktop nav. */}
-      <div
-        id="mobile-nav"
-        hidden={!open}
-        className="border-t border-line bg-surface shadow-[var(--shadow-mid)] lg:hidden"
-      >
-        <nav aria-label="Primary" className="wrap flex flex-col py-2">
-          {SITE.nav.map((l) => (
+          <div className="flex items-center gap-3">
             <a
-              key={l.href + l.label}
-              href={l.href}
+              href={bookingSearchUrl("hotels near Kempston Hardwick, Bedford")}
+              target="_blank"
+              rel={AFFILIATE_REL}
+              className="btn btn-primary hidden !min-h-[42px] !gap-2.5 !py-2.5 !pr-3 !pl-4.5 !text-[0.88rem] sm:inline-flex"
+            >
+              Find hotels
+              <span className="btn-chip">Booking.com</span>
+              <Icon name="route" className="size-4" />
+            </a>
+
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              aria-label={open ? "Close menu" : "Open menu"}
+              className="grid size-11 shrink-0 place-items-center rounded-[12px] border border-line bg-surface text-ink lg:hidden"
+            >
+              <Icon name={open ? "x" : "menu"} className="size-5" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="mobile-nav"
+          hidden={!open}
+          className="border-t border-line bg-surface shadow-[var(--shadow-raise)] lg:hidden"
+        >
+          <nav aria-label="Primary" className="wrap flex flex-col py-2">
+            {SITE.nav.map((l) => (
+              <Link
+                key={l.href + l.label}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-line py-3.5 text-[1.02rem] font-medium last:border-b-0"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="wrap safe-b flex flex-col gap-2.5 pt-2 pb-5">
+            <a
+              href={bookingSearchUrl("hotels near Kempston Hardwick, Bedford")}
+              target="_blank"
+              rel={AFFILIATE_REL}
               onClick={() => setOpen(false)}
-              className="border-b border-line py-3.5 text-[1.02rem] font-medium text-ink-soft last:border-b-0"
+              className="btn btn-primary w-full sm:hidden"
             >
-              {l.label}
+              Find hotels
+              <span className="btn-chip">Booking.com</span>
             </a>
-          ))}
-        </nav>
-
-        <div className="wrap safe-b flex flex-col pt-2 pb-5 sm:hidden">
-          <a
-            href={MAIL.listing}
-            onClick={() => setOpen(false)}
-            className="btn btn-primary w-full"
-          >
-            <Icon name="key" className="size-[17px]" />
-            Add listing
-          </a>
+            <a href={MAIL.listing} className="btn btn-ghost w-full">
+              Add your place
+            </a>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
