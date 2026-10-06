@@ -104,12 +104,6 @@ const Tick = ({ s = 14, c = BLUE, w = 2 }) => (
     <path d="M5 12.5l4.5 4.5L19 7.5" />
   </svg>
 );
-const Pin = ({ s = 14, c = "currentColor", w = 1.6 }) => (
-  <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth={w}>
-    <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" />
-    <circle cx="12" cy="9.5" r="2.5" />
-  </svg>
-);
 
 const SectionRule = ({ n, label, link }: { n: string; label: string; link?: string }) => (
   <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 40 }}>
@@ -128,11 +122,15 @@ const TOWNS = [
   { name: "London", img: "/images/towns/london.jpg", note: "Under an hour by train", body: "Make it a city break with a day out in Bedfordshire. Fast services run into Bedford from St Pancras.", count: "City break" },
 ];
 
-const HOTELS = [
-  { name: "Premier Inn Bedford South (A421)", area: "Kempston, Bedford", dist: "0.6 mi from the site", perks: ["By the A421", "On-site parking"], img: "/images/listings/premier-inn-bedford-south-a421.jpg", tier: "Closest on our list" },
-  { name: "Holiday Inn Express Bedford", area: "Elstow, Bedford", dist: "0.7 mi from the site", perks: ["A6 / A421 junction", "Breakfast included"], img: "/images/listings/holiday-inn-express-bedford.jpg", tier: "Easy road access" },
-  { name: "The Bedford Swan Hotel & Thermal Spa", area: "Bedford town centre", dist: "2.4 mi from the site", perks: ["Riverside", "Thermal spa"], img: "/images/listings/bedford-swan-hotel.jpg", tier: "For a treat" },
+/* Four real Bedfordshire hotels, photographed. Two carry their name on the
+   signage, so the caption names all four rather than implying anything. */
+const HOTEL_PICS = [
+  { src: "/images/hotels/swan.jpg", alt: "The Swan Hotel on Bedford Embankment, seen from across the Great Ouse" },
+  { src: "/images/hotels/mill.jpg", alt: "The Mill Hotel, a white-painted corner building in Bedford" },
+  { src: "/images/hotels/woodland.jpg", alt: "Woodland Manor Hotel, a stone country house at Clapham near Bedford" },
+  { src: "/images/hotels/bell.jpg", alt: "The Bell Hotel, a red-brick coaching inn in Woburn" },
 ];
+
 
 const NEWS = [
   { tag: "Planning", img: "/images/news/planning.jpg", title: "What has actually been announced about the Bedfordshire park", meta: "Updated Oct 2026" },
@@ -166,6 +164,10 @@ const PHOTOS = [
   { c: "The platform at Kempston Hardwick", by: "Bikeboy", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Kempston_Hardwick_railway_station_-_geograph.org.uk_-_4547847.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "The A421 south of Bedford", by: "David Howard", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Roxton_Road_crossing_the_A421_-_geograph.org.uk_-_6947323.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "Ampthill Park, Bedfordshire", by: "Philip Jeffrey", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Ampthill_Park_House_seen_across_the_fields_-_geograph.org.uk_-_3498686.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "The Swan, Bedford Embankment", by: "Gary Houston", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Swan-Hotel-Bedford-20050921-007.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
+  { c: "The Mill, Bedford", by: "Dave Bevis", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Bedford_-_The_Mill_Hotel_-_geograph.org.uk_-_3832245.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "Woodland Manor, Clapham", by: "Jeff Gogarty", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Woodland_Manor_Hotel,_Clapham_Green,_Bedford_-_geograph.org.uk_-_7575369.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
+  { c: "The Bell, Woburn", by: "Robert Eva", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Bell_Hotel,_Woburn_-_geograph.org.uk_-_5234113.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
 ];
 
 const STEPS = [
@@ -340,47 +342,34 @@ export default function Page() {
             <div style={{ display: "flex", alignItems: "end", justifyContent: "space-between", marginBottom: 32 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <span style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: 20, color: BLUE }}>03</span>
-                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase" }}>Hotels we would book first</span>
+                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase" }}>Hotels near the site</span>
               </div>
-              <span style={{ fontSize: 13, color: MUTED }}>Distances measured from Kempston Hardwick</span>
+              <span style={{ fontSize: 13, color: MUTED }}>Real places, photographed — not stock images</span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 24 }}>
-              {HOTELS.map((h) => (
-                <div key={h.name} className="lift" style={{ display: "flex", flexDirection: "column", borderRadius: 24, background: "#FFFFFF", overflow: "hidden", border: `1px solid ${LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -20px rgba(23,24,27,.24)", transition: "transform .2s, box-shadow .2s" }}>
-                  <div style={{ position: "relative", height: 260 }}>
-                    <Image src={h.img} alt="" fill sizes="400px" style={{ objectFit: "cover" }} />
-                    <span style={{ ...PILL, position: "absolute", top: 16, left: 16 }}>{h.tier}</span>
-                    <span style={{ position: "absolute", bottom: 14, left: 16, font: "500 10px ui-monospace,Menlo,monospace", background: "rgba(255,255,255,.9)", padding: "3px 6px", borderRadius: 4 }}>illustration, not a photo</span>
+            <div style={{ borderRadius: 24, overflow: "hidden", background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -20px rgba(23,24,27,.24)" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 2, background: LINE }}>
+                {HOTEL_PICS.map((h) => (
+                  <div key={h.src} style={{ position: "relative", height: 320 }}>
+                    <Image src={h.src} alt={h.alt} fill sizes="(max-width: 900px) 50vw, 300px" style={{ objectFit: "cover" }} />
                   </div>
-                  <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 16, flex: 1 }}>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                      <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 24, lineHeight: 1.1, letterSpacing: "-0.03em" }}>{h.name}</h3>
-                      <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 14, color: MUTED }}>
-                        <Pin />{h.area} · <strong style={{ color: INK, fontWeight: 600 }}>{h.dist}</strong>
-                      </span>
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                      {h.perks.map((p) => (
-                        <span key={p} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, padding: "6px 10px", borderRadius: 999, background: TINT, color: "#1838C9" }}>
-                          <Tick s={12} c="currentColor" w={2.4} />{p}
-                        </span>
-                      ))}
-                    </div>
-                    <div style={{ marginTop: "auto", paddingTop: 16, borderTop: `1px solid ${LINE}`, display: "flex", flexDirection: "column", gap: 12 }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                        <span style={{ fontSize: 14, color: MUTED }}>Live prices in £ on Booking.com</span>
-                        <a href="#" style={{ fontSize: 14, fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 3 }}>Our notes</a>
-                      </div>
-                      <a className="bb" href={booking(`${h.name}, ${h.area}`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "flex", alignItems: "center", justifyContent: "center", gap: 12, padding: "14px 20px", fontSize: 16 }}>
-                        Check availability<span style={{ ...CHIP, fontSize: 12 }}>Booking.com</span><Arrow />
-                      </a>
-                      <span style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 6, fontSize: 13, color: SOFT }}>
-                        <Tick s={13} />Free cancellation on most rooms
-                      </span>
-                    </div>
-                  </div>
+                ))}
+              </div>
+              <div style={{ padding: 32, display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: 40, alignItems: "center" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT }}>
+                    Bedford holds the most choice within a few miles of the site, from Georgian hotels on the
+                    Embankment to the chains along the A421 at Kempston and Elstow. Prices move daily, so we send you
+                    to the live listings rather than print a number that is wrong by the time you read it.
+                  </p>
+                  <span style={{ fontSize: 13, color: MUTED }}>
+                    Pictured, left to right: The Swan on Bedford Embankment, The Mill in Bedford, Woodland Manor at
+                    Clapham, and The Bell at Woburn.
+                  </span>
                 </div>
-              ))}
+                <a className="bb" href={booking("Bedford, Bedfordshire, UK")} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 12, padding: "16px 24px", fontSize: 16, whiteSpace: "nowrap" }}>
+                  View hotels<span style={{ ...CHIP, fontSize: 12 }}>Booking.com</span><Arrow />
+                </a>
+              </div>
             </div>
           </div>
         </section>
