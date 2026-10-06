@@ -23,12 +23,14 @@ const side = rest.slice(0, 2);
  *      numbers are what make it look placed rather than stacked.
  */
 export function GuidesTeaser() {
+  /* No top padding: the trust strip above supplies the gap, as the
+     reference does. */
   return (
-    <section id="guides" className="section-y bg-bg">
+    <section id="guides" className="bg-bg pb-20 lg:pb-32">
       <div className="wrap">
         <Reveal>
           <RuleHead
-            n="03"
+            n="01"
             label="Featured guides"
             link={{ href: "/blog", label: "All guides" }}
             className="mb-10"

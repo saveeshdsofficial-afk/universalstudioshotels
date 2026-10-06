@@ -1,19 +1,18 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { Hero } from "@/components/Hero";
-import { PropertyTypes } from "@/components/PropertyTypes";
-import { ClosestListings } from "@/components/ClosestListings";
-import { ListingsExplorer } from "@/components/ListingsExplorer";
-import { ValueProps } from "@/components/ValueProps";
 import { TrustStrip } from "@/components/TrustStrip";
-import { PlanSteps } from "@/components/PlanSteps";
 import { GuidesTeaser } from "@/components/GuidesTeaser";
+import { PropertyTypes } from "@/components/PropertyTypes";
+import { HotelPicks } from "@/components/HotelPicks";
+import { AreaSplit } from "@/components/AreaSplit";
+import { BlogGrid } from "@/components/BlogGrid";
+import { PlanSteps } from "@/components/PlanSteps";
 import { ProviderCta } from "@/components/ProviderCta";
-import { Faq } from "@/components/Faq";
 import { SiteFooter } from "@/components/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
-import { HOME_FAQ_COUNT, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
 import { LISTINGS } from "@/lib/listings";
-import { BASE_URL, faqLd } from "@/lib/seo";
+import { BASE_URL } from "@/lib/seo";
 
 /* The directory itself, so the listing set is legible to a crawler rather
    than locked behind client-side filtering. */
@@ -45,7 +44,11 @@ function listingsLd() {
 export default function Page() {
   return (
     <>
-      <JsonLd data={faqLd(SITE.faq.slice(0, HOME_FAQ_COUNT))} />
+      {/*
+        No FAQPage schema here any more: the homepage no longer shows the
+        questions, and Google requires FAQ markup to match visible content.
+        The full set and its schema live on /faq.
+      */}
       <JsonLd data={listingsLd()} />
       <JsonLd
         data={{
@@ -62,14 +65,13 @@ export default function Page() {
       <main id="top">
         <Hero />
         <TrustStrip />
-        <PropertyTypes />
-        <ClosestListings />
         <GuidesTeaser />
+        <PropertyTypes />
+        <HotelPicks />
+        <AreaSplit />
+        <BlogGrid />
         <PlanSteps />
-        <ListingsExplorer />
-        <ValueProps />
         <ProviderCta />
-        <Faq limit={HOME_FAQ_COUNT} />
       </main>
       <SiteFooter />
     </>

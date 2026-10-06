@@ -12,7 +12,7 @@ const STATS = [
 
 export function TrustStrip() {
   return (
-    <section className="wrap pt-12 pb-16 sm:pt-14 lg:pt-16 lg:pb-24">
+    <section className="wrap pt-10 pb-14 lg:pt-12 lg:pb-24">
       <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4">
         {STATS.map((s) => (
           <div

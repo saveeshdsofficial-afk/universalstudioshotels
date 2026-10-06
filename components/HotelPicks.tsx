@@ -1,45 +1,45 @@
 "use client";
 
+import Link from "next/link";
 import { useDirectory } from "./DirectoryProvider";
 import { ListingCard } from "./ListingCard";
-import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
 import { RuleHead } from "./SectionHead";
-import { cn } from "@/lib/cn";
+import { Icon } from "./Icon";
 import { AFFILIATE_NOTE } from "@/lib/affiliate";
-import Link from "next/link";
 
-export function ListingsExplorer() {
+/**
+ * 03 — the reference's "Hotel picks": a grid of hotel cards on the tinted-to-
+ * white step. This is also the directory, so the hero's search panel filters
+ * it; the reference had nowhere for results to land, we do.
+ */
+export function HotelPicks() {
   const { results, type, setType, query, setQuery, reset } = useDirectory();
-
   const filtered = type !== "All" || query.trim() !== "";
 
   return (
-    <section id="listings" className="noise section-y bg-tint">
-      <div className="wrap">
+    <section
+      id="listings"
+      className="noise bg-[linear-gradient(180deg,var(--color-tint)_0,var(--color-tint)_7.5rem,var(--color-surface)_7.5rem)] pb-20 lg:pb-32"
+    >
+      {/* the grid climbs back into the blue band above it */}
+      <div className="wrap relative lg:-top-26 lg:-mb-26">
         <Reveal>
-          <RuleHead n="06" label="The whole list" className="mb-6" />
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div className="max-w-[640px]">
-              <h2 className="text-[clamp(1.9rem,5vw,3.4rem)]">
-                {type === "All"
-                  ? "Everywhere on the list"
-                  : `Every ${type.toLowerCase()} on the list`}
-              </h2>
-              <p className="serif mt-4 text-[1.08rem] text-ink-soft">
-                {results.length}{" "}
-                {results.length === 1 ? "place" : "places"}
-                {filtered ? " match what you asked for" : " so far"}, each with a
-                straight-line distance worked out from its postcode.
-              </p>
-            </div>
-
+          <div className="flex flex-wrap items-end justify-between gap-4 pt-14 pb-8 lg:pt-0">
+            <RuleHead
+              n="03"
+              label="Our hotel picks"
+              className="min-w-[min(100%,20rem)] flex-1 [&::after]:bg-tint-line"
+            />
+            <span className="text-[0.82rem] text-ink-muted">
+              {results.length} of {results.length === 1 ? "" : ""}
+              {filtered ? "matching" : "all"} · distances from Kempston Hardwick
+            </span>
           </div>
         </Reveal>
 
-        {/* active filters, always removable */}
         {filtered ? (
-          <div className="mt-6 flex flex-wrap items-center gap-2">
+          <div className="mb-6 flex flex-wrap items-center gap-2">
             {type !== "All" ? (
               <button
                 type="button"
@@ -70,31 +70,20 @@ export function ListingsExplorer() {
           </div>
         ) : null}
 
-        {/* disclosure sits with the links it describes, not only in the footer */}
-        <p className="mt-6 flex flex-wrap items-center gap-x-1.5 text-[0.84rem] text-ink-muted">
-          {AFFILIATE_NOTE}{" "}
-          <Link
-            href="/affiliate-disclosure"
-            className="underline underline-offset-2 hover:text-ink"
-          >
-            How this works
-          </Link>
-        </p>
-
         {results.length > 0 ? (
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {results.map((l) => (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {results.map((l, i) => (
               <Reveal key={l.slug} className="h-full">
-                <ListingCard listing={l} />
+                <ListingCard listing={l} priority={i < 3} />
               </Reveal>
             ))}
           </div>
         ) : (
-          <div className="card mt-8 grid place-items-center px-6 py-16 text-center">
+          <div className="card grid place-items-center px-6 py-16 text-center">
             <span className="grid size-14 place-items-center rounded-card bg-tint text-accent-ink">
               <Icon name="pin" className="size-6" />
             </span>
-            <h3 className="mt-4 text-[1.2rem]">Nothing matches that</h3>
+            <h3 className="mt-4 text-[1.3rem]">Nothing matches that</h3>
             <p className="mt-2 max-w-[42ch] text-ink-muted">
               Widen it a little — drop the type filter, or try Bedford, Kempston
               or a postcode like MK42.
@@ -104,6 +93,16 @@ export function ListingsExplorer() {
             </button>
           </div>
         )}
+
+        <p className="mt-8 flex flex-wrap items-center gap-x-2 text-[0.84rem] text-ink-muted">
+          {AFFILIATE_NOTE}
+          <Link
+            href="/affiliate-disclosure"
+            className="underline underline-offset-2 hover:text-ink"
+          >
+            How we work
+          </Link>
+        </p>
       </div>
     </section>
   );

@@ -30,8 +30,8 @@ export function PlanSteps() {
       <div className="wrap relative">
         <Reveal>
           <div className="rule-head mb-6 [&::after]:bg-white/15">
-            <span className="rule-num !text-accent-on-dark">04</span>
-            <span className="rule-label text-on-dark">Plan your stay</span>
+            <span className="rule-num !text-accent-on-dark">06</span>
+            <span className="rule-label text-on-dark">Plan your trip</span>
           </div>
           <h2 className="mb-12 max-w-[50rem] text-[clamp(2rem,6vw,4.5rem)] leading-[0.96] lg:mb-16">
             Three steps from idea to booked.

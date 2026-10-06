@@ -10,11 +10,12 @@ import { cn } from "@/lib/cn";
 export function PropertyTypes() {
   const { browseType } = useDirectory();
 
+  /* Deep bottom padding: the hotel grid below climbs back into this band. */
   return (
-    <section id="types" className="noise section-y bg-tint">
+    <section id="types" className="noise bg-tint pt-20 pb-36 lg:pt-28 lg:pb-50">
       <div className="wrap">
         <Reveal>
-          <RuleHead n="01" label="Where to stay" className="mb-6" />
+          <RuleHead n="02" label="Where to stay" className="mb-6" />
           <SectionHead
             title="Choose a place by what your stay needs."
             sub="A room for a fortnight or a whole house for the crew. The list starts with hotels because those are the ones we could verify."
