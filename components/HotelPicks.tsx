@@ -32,8 +32,8 @@ export function HotelPicks() {
               className="min-w-[min(100%,20rem)] flex-1 [&::after]:bg-tint-line"
             />
             <span className="text-[0.82rem] text-ink-muted">
-              {results.length} of {results.length === 1 ? "" : ""}
-              {filtered ? "matching" : "all"} · distances from Kempston Hardwick
+              {results.length} {results.length === 1 ? "place" : "places"}
+              {filtered ? " matching" : ""} · distances from Kempston Hardwick
             </span>
           </div>
         </Reveal>

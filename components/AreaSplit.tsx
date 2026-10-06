@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
@@ -14,6 +15,7 @@ const AREAS = [
   {
     eyebrow: "Under 1 mile · the doorstep",
     title: "Kempston & Elstow",
+    img: "/images/areas/kempston-elstow.jpg",
     body: "Right by the A421 junction. The shortest possible run in, and it is not close — but you will drive for anything beyond a pub and a shop.",
     links: [
       { label: "Where to stay near the site", href: "/blog/where-to-stay-near-universal-studios-uk" },
@@ -24,6 +26,7 @@ const AREAS = [
   {
     eyebrow: "2–3 miles · the town",
     title: "Central Bedford",
+    img: "/images/areas/central-bedford.jpg",
     body: "A proper town: the Embankment, somewhere to eat that is not the hotel bar, and fast trains to St Pancras. The cost is crossing Bedford at eight in the morning.",
     links: [
       { label: "Getting to the site by road and rail", href: "/blog/getting-to-the-universal-uk-site" },
@@ -52,14 +55,38 @@ export function AreaSplit() {
                 {i === 0 ? (
                   /* arch crop, with the circle breaking its edge */
                   <div className="relative">
-                    <div className="hatch-blue h-56 rounded-t-full rounded-b-card shadow-[inset_0_0_0_1px_rgb(23_24_27/0.04)] sm:h-[22rem]" />
-                    <div className="hatch absolute -right-5 bottom-5 size-24 rounded-full shadow-[0_0_0_6px_#fff,0_12px_24px_-8px_rgb(23_24_27/0.3)]" />
+                    <div className="relative h-56 overflow-hidden rounded-t-full rounded-b-card shadow-[inset_0_0_0_1px_rgb(23_24_27/0.04)] sm:h-[22rem]">
+                      <Image
+                        src={a.img}
+                        alt=""
+                        fill
+                        sizes="(min-width: 640px) 13rem, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="absolute -right-5 bottom-5 size-24 overflow-hidden rounded-full shadow-[0_0_0_6px_#fff,0_12px_24px_-8px_rgb(23_24_27/0.3)]">
+                      <Image
+                        src="/images/types/house.jpg"
+                        alt=""
+                        fill
+                        sizes="6rem"
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 ) : (
                   /* offset blue frame behind the image */
                   <div className="relative pr-4 pb-4">
                     <div className="absolute inset-y-4 right-0 left-4 rounded-card border-[1.5px] border-accent" />
-                    <div className="hatch relative h-56 rounded-card shadow-[0_12px_24px_-12px_rgb(23_24_27/0.25)] sm:h-[21.5rem]" />
+                    <div className="relative h-56 overflow-hidden rounded-card shadow-[0_12px_24px_-12px_rgb(23_24_27/0.25)] sm:h-[21.5rem]">
+                      <Image
+                        src={a.img}
+                        alt=""
+                        fill
+                        sizes="(min-width: 640px) 13rem, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 )}
 

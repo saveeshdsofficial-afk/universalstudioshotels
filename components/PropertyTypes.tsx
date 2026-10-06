@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useDirectory } from "./DirectoryProvider";
 import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
@@ -41,19 +43,18 @@ export function PropertyTypes() {
                       : "shadow-[var(--shadow-raise)] hover:shadow-[0_2px_4px_rgb(23_24_27/0.05),0_24px_48px_-16px_rgb(31_75_255/0.28)]",
                   )}
                 >
-                  <div
-                    className={cn(
-                      "relative grid aspect-4/3 place-items-center rounded-card",
-                      empty ? "bg-white/50" : "hatch",
+                  <div className="relative grid aspect-4/3 place-items-center overflow-hidden rounded-card bg-white/50">
+                    {empty ? (
+                      <Icon name={t.icon} className="size-8 text-ink-muted/40" />
+                    ) : (
+                      <Image
+                        src={`/images/types/${t.type.toLowerCase().replace("&", "and")}.jpg`}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1280px) 16vw, (min-width: 640px) 33vw, 50vw"
+                        className="object-cover"
+                      />
                     )}
-                  >
-                    <Icon
-                      name={t.icon}
-                      className={cn(
-                        "size-8",
-                        empty ? "text-ink-muted/50" : "text-ink-muted/70",
-                      )}
-                    />
                     <span className="absolute top-3 left-3 rounded-pill bg-white/[0.92] px-2.5 py-1 text-[0.72rem] font-semibold">
                       {empty ? "None yet" : `${count} listed`}
                     </span>

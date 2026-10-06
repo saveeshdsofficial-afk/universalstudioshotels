@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "./Reveal";
 import { Icon } from "./Icon";
@@ -40,7 +41,15 @@ export function GuidesTeaser() {
         <div className="grid gap-12 lg:grid-cols-[1.55fr_1fr] lg:items-start">
           <Reveal>
             <Link href={`/blog/${lead.slug}`} className="group block">
-              <div className="hatch-blue bleed-left relative grid h-[clamp(17rem,44vw,37.5rem)] place-items-center rounded-panel">
+              <div className="bleed-left relative grid h-[clamp(17rem,44vw,37.5rem)] place-items-center overflow-hidden rounded-panel">
+                <Image
+                  src={`/images/guides/${lead.slug}.jpg`}
+                  alt=""
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 70vw, 100vw"
+                  className="object-cover"
+                />
                 {/* 24px inside the visible edge once the image has bled left */}
                 <div className="absolute top-4 right-4 left-4 flex flex-wrap gap-2 sm:top-5 sm:right-auto sm:left-5 lg:left-[calc(var(--bleed)+1.5rem)]">
                   <span className="rounded-pill bg-white/[0.92] px-3 py-1.5 text-[0.75rem] font-semibold shadow-[0_1px_2px_rgb(23_24_27/0.08)]">
@@ -58,7 +67,6 @@ export function GuidesTeaser() {
                   illustration · not a photo
                 </span>
 
-                <Icon name="bed" className="size-16 text-accent/15" />
               </div>
 
               <div className="relative z-10 -mt-20 ml-6 flex flex-col gap-4 rounded-card bg-surface p-7 shadow-[var(--shadow-card)] transition duration-200 group-hover:-translate-y-[3px] sm:ml-12 sm:p-10 lg:-mt-40 lg:ml-50 lg:-mr-12">
@@ -83,8 +91,14 @@ export function GuidesTeaser() {
                   href={`/blog/${p.slug}`}
                   className="grid grid-cols-[6rem_minmax(0,1fr)] gap-5 rounded-card border border-line bg-surface p-4 shadow-[var(--shadow-raise)] transition duration-200 hover:-translate-y-[3px] hover:shadow-[0_2px_4px_rgb(23_24_27/0.05),0_20px_40px_-16px_rgb(23_24_27/0.22)] sm:grid-cols-[10.5rem_minmax(0,1fr)] sm:gap-6"
                 >
-                  <div className="hatch grid aspect-square place-items-center rounded-sm">
-                    <Icon name="route" className="size-6 text-ink-muted/60" />
+                  <div className="relative aspect-square overflow-hidden rounded-sm">
+                    <Image
+                      src={`/images/guides/${p.slug}.jpg`}
+                      alt=""
+                      fill
+                      sizes="10.5rem"
+                      className="object-cover"
+                    />
                   </div>
                   <div className="flex flex-col gap-2 py-2 pr-2">
                     <span className="text-[0.72rem] font-bold tracking-[0.14em] text-accent-ink uppercase">
@@ -103,7 +117,9 @@ export function GuidesTeaser() {
 
             <Reveal>
               <div className="flex items-center gap-4 rounded-card border border-dashed border-[#c9cbd2] p-6">
-                <div className="hatch size-18 shrink-0 rounded-full shadow-[0_0_0_4px_#fff,0_6px_16px_-6px_rgb(23_24_27/0.25)]" />
+                <div className="relative size-18 shrink-0 overflow-hidden rounded-full shadow-[0_0_0_4px_#fff,0_6px_16px_-6px_rgb(23_24_27/0.25)]">
+                  <Image src="/images/avatar.jpg" alt="" fill sizes="4.5rem" className="object-cover" />
+                </div>
                 <p className="serif text-[1.06rem] text-ink-soft italic">
                   &ldquo;No hotel can buy a place on this list, or a higher
                   one.&rdquo;
