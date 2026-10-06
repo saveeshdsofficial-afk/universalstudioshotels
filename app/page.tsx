@@ -148,8 +148,8 @@ const POSTS = [
 ];
 
 const STEPS = [
-  { n: "01", t: "Follow the build", d: "We track what has been announced and what has not. No rumours dressed up as dates." },
-  { n: "02", t: "Pick your base", d: "Bedford for closeness, Milton Keynes for value, Luton for flights, London for a city break." },
+  { n: "01", t: "Pick your base", d: "Bedford for closeness, Milton Keynes for value and parking, Luton if you are flying, London for a city break." },
+  { n: "02", t: "Work out the journey", d: "The A421 and the M1 do most of the work by road. Trains run into Bedford from St Pancras and along the Marston Vale line." },
   { n: "03", t: "Book when it suits", d: "Compare live prices on Booking.com. Most rooms still come with free cancellation." },
 ];
 
@@ -205,20 +205,20 @@ export default function Page() {
           <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: 24, maxWidth: 940, color: "#FFFFFF" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, alignSelf: "flex-start", padding: "7px 16px 7px 12px", borderRadius: 999, background: "rgba(255,255,255,.14)", border: "1px solid rgba(255,255,255,.28)", backdropFilter: "blur(8px)", fontSize: 13, fontWeight: 600 }}>
               <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#8FA6FF", boxShadow: "0 0 0 4px rgba(143,166,255,.25)" }} />
-              Announced for Bedfordshire · not open yet
+              Independent guide · Bedfordshire, UK
             </div>
             <h1 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 96, lineHeight: 0.93, letterSpacing: "-0.045em", textWrap: "balance" }}>
-              It isn&apos;t built yet.<br />Plan it anyway.
+              Stay close.<br />Make a trip of it.
             </h1>
             <p style={{ margin: 0, fontFamily: SERIF, fontSize: 22, lineHeight: 1.5, maxWidth: 620, color: "#F1F1F3" }}>
-              An independent guide to the corner of Bedfordshire the park is being built in — the towns, the trains, the days out and the places to stay. We follow what gets announced, and never guess at a date.
+              The independent guide to Bedfordshire for anyone heading to the planned theme park near Bedford. Where to stay, how to get there, and what else is worth your time while you are in the area.
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 16, paddingTop: 8 }}>
               <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "15px 26px", fontSize: 16 }}>
                 Read the guides<Right />
               </a>
               <a href="#news" style={{ color: "#FFFFFF", fontSize: 15, fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 4 }}>
-                What has been announced so far
+                What is confirmed so far
               </a>
             </div>
           </div>
@@ -268,8 +268,8 @@ export default function Page() {
         <section style={{ padding: "48px 120px 96px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))" }}>
             {[
-              { b: "2025", s: "the year the project was announced" },
-              { b: "4 towns", s: "Bedford, Milton Keynes, Luton, London" },
+              { b: "4 towns", s: "Bedford, Milton Keynes, Luton and London" },
+              { b: "0.6 mi", s: "from the site to the nearest hotel we list" },
               { b: "0", s: "paid placements or sponsored reviews" },
               { b: "Free", s: "to read, no sign-up, no paywall" },
             ].map((t) => (
@@ -332,7 +332,7 @@ export default function Page() {
           <SectionRule n="02" label="Where to stay by town" />
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, alignItems: "end", marginBottom: 48, marginTop: -16 }}>
             <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 0.98, letterSpacing: "-0.04em" }}>Pick the town, then the room.</h2>
-            <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT, maxWidth: 480 }}>Nothing is built yet, so there is no on-site hotel to compare against. What matters is which Bedfordshire town suits your trip — and what the drive looks like from each.</p>
+            <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT, maxWidth: 480 }}>Which town suits you depends on what you want from the trip: the shortest drive, the easiest parking, a station on the doorstep, or a city break attached to it. Here is how the four compare.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 24 }}>
             {TOWNS.map((t) => (
@@ -453,7 +453,7 @@ export default function Page() {
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "#D6D7DB" }}>Plan your stay</span>
             <span style={{ flex: 1, height: 1, background: "rgba(255,255,255,.14)" }} />
           </div>
-          <h2 style={{ margin: "0 0 64px", fontFamily: ARCHIVO, fontWeight: 800, fontSize: 72, lineHeight: 0.96, letterSpacing: "-0.045em", maxWidth: 900 }}>Three steps, years before the gates open.</h2>
+          <h2 style={{ margin: "0 0 64px", fontFamily: ARCHIVO, fontWeight: 800, fontSize: 72, lineHeight: 0.96, letterSpacing: "-0.045em", maxWidth: 900 }}>Three steps to a trip worth the drive.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 24, marginBottom: 64 }}>
             {STEPS.map((s) => (
               <div key={s.n} style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, borderRadius: 24, background: "linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))", border: "1px solid rgba(255,255,255,.12)", boxShadow: "inset 0 1px 0 rgba(255,255,255,.06)" }}>
