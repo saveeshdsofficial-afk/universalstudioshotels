@@ -154,7 +154,6 @@ const STEPS = [
 ];
 
 export default function Page() {
-  const [dest, setDest] = useState("Bedford");
   const [sent, setSent] = useState(false);
 
   return (
@@ -199,7 +198,7 @@ export default function Page() {
         </header>
 
         {/* 3 — hero: the park is not open, and the page says so first */}
-        <section style={{ position: "relative", height: 720, display: "flex", alignItems: "flex-end", padding: "0 120px 170px", overflow: "hidden" }}>
+        <section style={{ position: "relative", height: 720, display: "flex", alignItems: "flex-end", padding: "0 120px 128px", overflow: "hidden" }}>
           <Image src="/images/hero.jpg" alt="" fill priority sizes="1440px" style={{ objectFit: "cover", zIndex: 0 }} />
           <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg,rgba(23,24,27,.58) 0%,rgba(23,24,27,.26) 30%,rgba(23,24,27,.5) 60%,rgba(23,24,27,.9) 100%)" }} />
           <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: 24, maxWidth: 940, color: "#FFFFFF" }}>
@@ -224,48 +223,8 @@ export default function Page() {
           </div>
         </section>
 
-        {/* hero search card */}
-        <div style={{ position: "relative", zIndex: 5, margin: "-110px 120px 0", padding: 24, borderRadius: 24, background: "rgba(255,255,255,.82)", backdropFilter: "blur(20px) saturate(140%)", border: "1px solid rgba(255,255,255,.7)", boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 32px 64px -24px rgba(23,24,27,.35)", display: "flex", flexDirection: "column", gap: 16 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div style={{ display: "flex", gap: 4, padding: 4, borderRadius: 999, background: "rgba(23,24,27,.06)" }}>
-              {TOWNS.map((t) => {
-                const on = dest === t.name;
-                return (
-                  <button key={t.name} onClick={() => setDest(t.name)} style={{ border: 0, cursor: "pointer", borderRadius: 999, padding: "8px 18px", fontSize: 14, fontWeight: 600, font: "inherit", background: on ? "#FFFFFF" : "transparent", color: on ? INK : SOFT, boxShadow: on ? "0 1px 2px rgba(23,24,27,.08), 0 4px 12px -4px rgba(23,24,27,.16)" : "none" }}>
-                    {t.name}
-                  </button>
-                );
-              })}
-            </div>
-            <span style={{ fontSize: 13, color: MUTED }}>Live prices on Booking.com · £ GBP</span>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1.2fr .9fr auto", gap: 8 }}>
-            {[
-              { i: <Pin s={20} c={MUTED} w={1.5} />, l: "Staying near", v: dest },
-              { i: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={MUTED} strokeWidth={1.5}><rect x="3.5" y="5" width="17" height="15" rx="2" /><path d="M3.5 10h17M8 3v4M16 3v4" /></svg>, l: "When", v: "Add your dates" },
-              { i: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={MUTED} strokeWidth={1.5}><circle cx="9" cy="8" r="3.5" /><path d="M2.5 20c.8-3.6 3.3-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.8c1.9.7 3 2.4 3.5 5.2" /></svg>, l: "Who", v: "2 adults" },
-            ].map((f) => (
-              <div key={f.l} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 16px", borderRadius: 16, background: "#FFFFFF", border: `1px solid ${LINE}` }}>
-                {f.i}
-                <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: MUTED }}>{f.l}</span>
-                  <span style={{ fontSize: 16, fontWeight: 600 }}>{f.v}</span>
-                </span>
-              </div>
-            ))}
-            <a className="bb" href={booking(`${dest}, UK`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", gap: 12, padding: "0 22px 0 28px", fontSize: 17, whiteSpace: "nowrap" }}>
-              See stays<span style={{ ...CHIP, fontSize: 12 }}>Booking.com</span><Arrow s={18} />
-            </a>
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, alignItems: "center", fontSize: 13, color: SOFT }}>
-            <Tick />Free cancellation on most rooms · opens Booking.com in a new tab
-          </div>
-        </div>
-
         {/* 4 — trust strip */}
-        <section style={{ padding: "48px 120px 96px" }}>
+        <section style={{ padding: "96px 120px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))" }}>
             {[
               { b: "4 towns", s: "Bedford, Milton Keynes, Luton and London" },
