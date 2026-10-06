@@ -40,7 +40,7 @@ export function GuidesTeaser() {
             <Link href={`/blog/${lead.slug}`} className="group block">
               <div className="hatch-blue bleed-left relative grid h-[clamp(17rem,44vw,37.5rem)] place-items-center rounded-panel">
                 {/* 24px inside the visible edge once the image has bled left */}
-                <div className="absolute top-5 left-5 flex flex-wrap gap-2 lg:left-[calc(var(--bleed)+1.5rem)]">
+                <div className="absolute top-4 right-4 left-4 flex flex-wrap gap-2 sm:top-5 sm:right-auto sm:left-5 lg:left-[calc(var(--bleed)+1.5rem)]">
                   <span className="rounded-pill bg-white/[0.92] px-3 py-1.5 text-[0.75rem] font-semibold shadow-[0_1px_2px_rgb(23_24_27/0.08)]">
                     {lead.tag}
                   </span>
@@ -52,7 +52,7 @@ export function GuidesTeaser() {
                   </span>
                 </div>
 
-                <span className="absolute top-5 right-5 rounded-sm bg-white/90 px-2 py-1 font-mono text-[0.65rem] font-medium">
+                <span className="absolute right-4 bottom-4 rounded-sm bg-white/90 px-2 py-1 font-mono text-[0.65rem] font-medium sm:top-5 sm:right-5 sm:bottom-auto">
                   illustration · not a photo
                 </span>
 
