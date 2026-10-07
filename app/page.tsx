@@ -52,7 +52,7 @@ const BLUE_BTN: CSSProperties = {
   background: "linear-gradient(180deg,#3A63FF 0%,#1F4BFF 55%,#1A42EC 100%)",
   color: "#FFFFFF",
   textDecoration: "none",
-  borderRadius: 999,
+  borderRadius: 10,
   fontWeight: 700,
   boxShadow:
     "inset 0 1px 0 rgba(255,255,255,.28), 0 2px 4px rgba(31,75,255,.25), 0 14px 32px -10px rgba(31,75,255,.6)",
@@ -63,7 +63,7 @@ const GHOST_BTN: CSSProperties = {
   background: "#FFFFFF",
   color: INK,
   border: `1px solid ${LINE}`,
-  borderRadius: 999,
+  borderRadius: 10,
   fontWeight: 700,
   textDecoration: "none",
   boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)",
@@ -265,7 +265,7 @@ export default function Page() {
           <SectionRule label="Featured guide" link="All guides" />
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.55fr) minmax(0,1fr)", gap: 48, alignItems: "start" }}>
             <a href="#" style={{ position: "relative", display: "block", marginLeft: `calc(-1 * ${GUTTER})` }}>
-              <div style={{ position: "relative", height: 600, borderRadius: "0 24px 24px 0", overflow: "hidden" }}>
+              <div style={{ position: "relative", height: 600, borderRadius: "0 12px 12px 0", overflow: "hidden" }}>
                 <Image src="/images/guides/where-to-stay-near-universal-studios-uk.jpg" alt="" fill sizes="900px" style={{ objectFit: "cover" }} />
                 <div style={{ position: "absolute", top: 24, left: `calc(${GUTTER} + 24px)`, display: "flex", gap: 8 }}>
                   <span style={PILL}>Where to stay</span>
@@ -273,7 +273,7 @@ export default function Page() {
                   <span style={{ ...PILL, background: INK, color: "#fff" }}>Updated 2026</span>
                 </div>
               </div>
-              <div className="lift" style={{ position: "relative", margin: "-160px -48px 0 200px", background: "#FFFFFF", borderRadius: 16, padding: 40, display: "flex", flexDirection: "column", gap: 16, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -16px rgba(23,24,27,.22)", transition: "transform .2s, box-shadow .2s" }}>
+              <div className="lift" style={{ position: "relative", margin: "-160px -48px 0 200px", background: "#FFFFFF", borderRadius: 10, padding: 40, display: "flex", flexDirection: "column", gap: 16, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -16px rgba(23,24,27,.22)", transition: "transform .2s, box-shadow .2s" }}>
                 <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 44, lineHeight: 1.02, letterSpacing: "-0.035em", textWrap: "balance" }}>Where to stay near the Bedfordshire site, town by town</h2>
                 <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT }}>Kempston and Elstow sit closest. Bedford gives you a town. Milton Keynes and Luton trade a longer drive for easier parking and cheaper rooms. Here is how they actually compare.</p>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15, paddingTop: 8 }}>Read the guide <Right /></span>
@@ -282,8 +282,8 @@ export default function Page() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 24, paddingTop: 24 }}>
               {POSTS.slice(1, 3).map((g) => (
-                <a key={g.title} className="lift" href="#" style={{ display: "grid", gridTemplateColumns: "168px minmax(0,1fr)", gap: 24, padding: 16, borderRadius: 16, background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)", transition: "transform .2s, box-shadow .2s" }}>
-                  <div style={{ position: "relative", height: 168, borderRadius: 8, overflow: "hidden" }}>
+                <a key={g.title} className="lift" href="#" style={{ display: "grid", gridTemplateColumns: "168px minmax(0,1fr)", gap: 24, padding: 16, borderRadius: 10, background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)", transition: "transform .2s, box-shadow .2s" }}>
+                  <div style={{ position: "relative", height: 168, borderRadius: 6, overflow: "hidden" }}>
                     <Image src={g.img} alt="" fill sizes="168px" style={{ objectFit: "cover" }} />
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: "8px 8px 8px 0" }}>
@@ -293,7 +293,7 @@ export default function Page() {
                   </div>
                 </a>
               ))}
-              <div style={{ padding: 24, borderRadius: 16, border: "1px dashed #C9CBD2", display: "flex", gap: 16, alignItems: "center" }}>
+              <div style={{ padding: 24, borderRadius: 10, border: "1px dashed #C9CBD2", display: "flex", gap: 16, alignItems: "center" }}>
                 <div style={{ position: "relative", width: 72, height: 72, flex: "none", borderRadius: "50%", overflow: "hidden", boxShadow: "0 0 0 4px #FFFFFF, 0 6px 16px -6px rgba(23,24,27,.25)" }}>
                   <Image src="/images/avatar.jpg" alt="" fill sizes="72px" style={{ objectFit: "cover" }} />
                 </div>
@@ -315,8 +315,8 @@ export default function Page() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 24 }}>
             {TOWNS.map((t) => (
-              <div key={t.name} className="lift" style={{ display: "flex", flexDirection: "column", gap: 16, padding: "8px 8px 24px", borderRadius: 24, background: "#FFFFFF", boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.14)", transition: "transform .2s, box-shadow .2s" }}>
-                <div style={{ position: "relative", height: 300, borderRadius: 16, overflow: "hidden" }}>
+              <div key={t.name} className="lift" style={{ display: "flex", flexDirection: "column", gap: 16, padding: "8px 8px 24px", borderRadius: 12, background: "#FFFFFF", boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.14)", transition: "transform .2s, box-shadow .2s" }}>
+                <div style={{ position: "relative", height: 300, borderRadius: 10, overflow: "hidden" }}>
                   <Image src={t.img} alt="" fill sizes="300px" style={{ objectFit: "cover" }} />
                   <span style={{ ...PILL, position: "absolute", top: 12, left: 12 }}>{t.count}</span>
                 </div>
@@ -342,7 +342,7 @@ export default function Page() {
               </div>
               <span style={{ fontSize: 13, color: MUTED }}>Real places, photographed — not stock images</span>
             </div>
-            <div style={{ borderRadius: 24, overflow: "hidden", background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -20px rgba(23,24,27,.24)" }}>
+            <div style={{ borderRadius: 12, overflow: "hidden", background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -20px rgba(23,24,27,.24)" }}>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 2, background: LINE }}>
                 {HOTEL_PICS.map((h) => (
                   <div key={h.src} style={{ position: "relative", height: 320 }}>
@@ -375,7 +375,7 @@ export default function Page() {
           <SectionRule label="Park news and updates" link="All updates" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 32 }}>
             {NEWS.map((n) => (
-              <a key={n.title} className="lift" href="#" style={{ display: "flex", flexDirection: "column", borderRadius: 24, background: "#FFFFFF", overflow: "hidden", border: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)", transition: "transform .2s, box-shadow .2s" }}>
+              <a key={n.title} className="lift" href="#" style={{ display: "flex", flexDirection: "column", borderRadius: 12, background: "#FFFFFF", overflow: "hidden", border: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)", transition: "transform .2s, box-shadow .2s" }}>
                 <div style={{ position: "relative", height: 220 }}>
                   <Image src={n.img} alt="" fill sizes="400px" style={{ objectFit: "cover" }} />
                   <span style={{ ...PILL, position: "absolute", top: 14, left: 14 }}>{n.tag}</span>
@@ -397,8 +397,8 @@ export default function Page() {
           <SectionRule label="Latest from the journal" link="Visit the journal" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: "48px 32px" }}>
             {POSTS.map((p) => (
-              <a key={p.title} className="soft" href="#" style={{ display: "flex", flexDirection: "column", gap: 16, padding: 8, margin: -8, borderRadius: 24, transition: "background .2s" }}>
-                <div style={{ position: "relative", height: 240, borderRadius: 16, overflow: "hidden", boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)" }}>
+              <a key={p.title} className="soft" href="#" style={{ display: "flex", flexDirection: "column", gap: 16, padding: 8, margin: -8, borderRadius: 12, transition: "background .2s" }}>
+                <div style={{ position: "relative", height: 240, borderRadius: 10, overflow: "hidden", boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)" }}>
                   <Image src={p.img} alt="" fill sizes="380px" style={{ objectFit: "cover" }} />
                   <span style={{ ...PILL, position: "absolute", top: 12, left: 12 }}>{p.cat}</span>
                 </div>
@@ -421,7 +421,7 @@ export default function Page() {
           <h2 style={{ margin: "0 0 64px", fontFamily: ARCHIVO, fontWeight: 800, fontSize: 72, lineHeight: 0.96, letterSpacing: "-0.045em", maxWidth: 900 }}>Three steps to a trip worth the drive.</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 24, marginBottom: 64 }}>
             {STEPS.map((s) => (
-              <div key={s.n} style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, borderRadius: 24, background: "linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))", border: "1px solid rgba(255,255,255,.12)", boxShadow: "inset 0 1px 0 rgba(255,255,255,.06)" }}>
+              <div key={s.n} style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, borderRadius: 12, background: "linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))", border: "1px solid rgba(255,255,255,.12)", boxShadow: "inset 0 1px 0 rgba(255,255,255,.06)" }}>
                 <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 1, letterSpacing: "-0.05em", color: "transparent", WebkitTextStroke: "1.5px #8FA6FF" }}>{s.n}</span>
                 <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 28, letterSpacing: "-0.03em" }}>{s.t}</h3>
                 <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: "#C5C7CD" }}>{s.d}</p>
@@ -440,7 +440,7 @@ export default function Page() {
 
         {/* 11 — newsletter */}
         <section style={{ padding: `112px ${GUTTER}`, background: PAPER }}>
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,1fr)", gap: 64, alignItems: "center", padding: 64, borderRadius: 24, border: `1px solid ${TINT_LINE}`, backgroundColor: TINT, backgroundImage: NOISE, boxShadow: "0 1px 2px rgba(23,24,27,.04), 0 24px 56px -28px rgba(31,75,255,.35)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,1fr)", gap: 64, alignItems: "center", padding: 64, borderRadius: 12, border: `1px solid ${TINT_LINE}`, backgroundColor: TINT, backgroundImage: NOISE, boxShadow: "0 1px 2px rgba(23,24,27,.04), 0 24px 56px -28px rgba(31,75,255,.35)" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: BLUE_INK }}>The monthly letter</span>
               <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 48, lineHeight: 1, letterSpacing: "-0.04em" }}>One email a month, when there is news.</h2>
@@ -458,14 +458,14 @@ export default function Page() {
                 }}
                 style={{ display: "flex", flexDirection: "column", gap: 12 }}
               >
-                <div style={{ display: "flex", gap: 8, padding: 8, borderRadius: 999, background: "#FFFFFF", border: `1px solid ${TINT_LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.14)" }}>
+                <div style={{ display: "flex", gap: 8, padding: 8, borderRadius: 10, background: "#FFFFFF", border: `1px solid ${TINT_LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.14)" }}>
                   <input name="email" type="email" required placeholder="you@example.co.uk" style={{ flex: 1, minWidth: 0, border: 0, outline: 0, background: "transparent", padding: "0 16px", fontSize: 16, color: INK, font: "inherit" }} />
-                  <button type="submit" style={{ border: 0, borderRadius: 999, background: INK, color: "#FFFFFF", fontWeight: 700, fontSize: 15, padding: "14px 24px", cursor: "pointer", fontFamily: "inherit" }}>Subscribe</button>
+                  <button type="submit" style={{ border: 0, borderRadius: 6, background: INK, color: "#FFFFFF", fontWeight: 700, fontSize: 15, padding: "14px 24px", cursor: "pointer", fontFamily: "inherit" }}>Subscribe</button>
                 </div>
                 <span style={{ fontSize: 13, color: MUTED, paddingLeft: 16 }}>Opens your email app. We never share your address.</span>
               </form>
             ) : (
-              <div style={{ padding: 24, borderRadius: 16, background: "#FFFFFF", fontWeight: 600, fontSize: 17 }}>Thanks — send that email and we will add you.</div>
+              <div style={{ padding: 24, borderRadius: 10, background: "#FFFFFF", fontWeight: 600, fontSize: 17 }}>Thanks — send that email and we will add you.</div>
             )}
           </div>
         </section>
