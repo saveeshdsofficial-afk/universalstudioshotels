@@ -15,8 +15,9 @@ import { useState, type CSSProperties } from "react";
  *     fact, and every forward-looking line says so
  *   · every Booking.com link carries rel="sponsored nofollow"
  *
- * The wordmark is "Parkline", deliberately: the brief says the name must not
- * imply an official Universal site, so the mark carries no Universal wording.
+ * The wordmark is "Ride to Universal" at the owner's request. The supplied
+ * brief asked for a name that does not imply an official Universal site, so
+ * the footer disclaimer carries that weight on its own now.
  */
 
 const ARCHIVO = "var(--font-archivo), 'Archivo', sans-serif";
@@ -105,9 +106,8 @@ const Tick = ({ s = 14, c = BLUE, w = 2 }) => (
   </svg>
 );
 
-const SectionRule = ({ n, label, link }: { n: string; label: string; link?: string }) => (
+const SectionRule = ({ label, link }: { label: string; link?: string }) => (
   <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 40 }}>
-    <span style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: 20, color: BLUE }}>{n}</span>
     <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase" }}>{label}</span>
     <span style={{ flex: 1, height: 1, background: LINE }} />
     {link ? <a href="#" style={{ fontSize: 14, fontWeight: 600 }}>{link} →</a> : null}
@@ -208,7 +208,7 @@ export default function Page() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: `16px ${GUTTER}` }}>
             <a href="#" style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
               <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 26, letterSpacing: "-0.04em", lineHeight: 1 }}>
-                Parkline<span style={{ color: BLUE }}>.</span>
+                Ride to Universal<span style={{ color: BLUE }}>.</span>
               </span>
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: MUTED }}>Bedfordshire stay guide</span>
             </a>
@@ -226,10 +226,6 @@ export default function Page() {
           <Image src="/images/hero.jpg" alt="" fill priority sizes="1440px" style={{ objectFit: "cover", zIndex: 0 }} />
           <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg,rgba(23,24,27,.58) 0%,rgba(23,24,27,.26) 30%,rgba(23,24,27,.5) 60%,rgba(23,24,27,.9) 100%)" }} />
           <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: 24, maxWidth: 940, color: "#FFFFFF" }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, alignSelf: "flex-start", padding: "7px 16px 7px 12px", borderRadius: 999, background: "rgba(255,255,255,.14)", border: "1px solid rgba(255,255,255,.28)", backdropFilter: "blur(8px)", fontSize: 13, fontWeight: 600 }}>
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#8FA6FF", boxShadow: "0 0 0 4px rgba(143,166,255,.25)" }} />
-              Independent guide · Bedfordshire, UK
-            </div>
             <h1 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 96, lineHeight: 0.93, letterSpacing: "-0.045em", textWrap: "balance" }}>
               Stay close.<br />Make a trip of it.
             </h1>
@@ -266,7 +262,7 @@ export default function Page() {
 
         {/* 5 — featured guide */}
         <section id="guides" style={{ padding: `0 ${GUTTER} 128px` }}>
-          <SectionRule n="01" label="Featured guide" link="All guides" />
+          <SectionRule label="Featured guide" link="All guides" />
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.55fr) minmax(0,1fr)", gap: 48, alignItems: "start" }}>
             <a href="#" style={{ position: "relative", display: "block", marginLeft: `calc(-1 * ${GUTTER})` }}>
               <div style={{ position: "relative", height: 600, borderRadius: "0 24px 24px 0", overflow: "hidden" }}>
@@ -312,7 +308,7 @@ export default function Page() {
 
         {/* 6 — where to stay by town */}
         <section id="towns" style={{ padding: `112px ${GUTTER} 200px`, backgroundColor: TINT, backgroundImage: NOISE }}>
-          <SectionRule n="02" label="Where to stay by town" />
+          <SectionRule label="Where to stay by town" />
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, alignItems: "end", marginBottom: 48, marginTop: -16 }}>
             <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 0.98, letterSpacing: "-0.04em" }}>Start with the town.</h2>
             <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT, maxWidth: 480 }}>Which town suits you depends on what you want from the trip: the shortest drive, the easiest parking, a station on the doorstep, or a city break attached to it. Here is how the four compare.</p>
@@ -342,7 +338,6 @@ export default function Page() {
           <div style={{ position: "relative", top: -104, marginBottom: -104 }}>
             <div style={{ display: "flex", alignItems: "end", justifyContent: "space-between", marginBottom: 32 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <span style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: 20, color: BLUE }}>03</span>
                 <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase" }}>Hotels near the site</span>
               </div>
               <span style={{ fontSize: 13, color: MUTED }}>Real places, photographed — not stock images</span>
@@ -377,7 +372,7 @@ export default function Page() {
 
         {/* 8 — park news */}
         <section id="news" style={{ padding: `112px ${GUTTER} 128px`, background: PAPER, borderTop: `1px solid ${LINE}` }}>
-          <SectionRule n="04" label="Park news and updates" link="All updates" />
+          <SectionRule label="Park news and updates" link="All updates" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 32 }}>
             {NEWS.map((n) => (
               <a key={n.title} className="lift" href="#" style={{ display: "flex", flexDirection: "column", borderRadius: 24, background: "#FFFFFF", overflow: "hidden", border: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)", transition: "transform .2s, box-shadow .2s" }}>
@@ -399,7 +394,7 @@ export default function Page() {
 
         {/* 9 — latest blog */}
         <section id="blog" style={{ padding: `112px ${GUTTER} 128px`, background: "#FFFFFF" }}>
-          <SectionRule n="05" label="Latest from the journal" link="Visit the journal" />
+          <SectionRule label="Latest from the journal" link="Visit the journal" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: "48px 32px" }}>
             {POSTS.map((p) => (
               <a key={p.title} className="soft" href="#" style={{ display: "flex", flexDirection: "column", gap: 16, padding: 8, margin: -8, borderRadius: 24, transition: "background .2s" }}>
@@ -479,7 +474,7 @@ export default function Page() {
         <footer style={{ background: "#FFFFFF", borderTop: `1px solid ${LINE}`, padding: `80px ${GUTTER} 48px`, display: "flex", flexDirection: "column", gap: 56 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr", gap: 32 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 28, letterSpacing: "-0.04em", lineHeight: 1 }}>Parkline<span style={{ color: BLUE }}>.</span></span>
+              <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 28, letterSpacing: "-0.04em", lineHeight: 1 }}>Ride to Universal<span style={{ color: BLUE }}>.</span></span>
               <span style={{ fontSize: 15, lineHeight: 1.6, color: MUTED, maxWidth: 320 }}>An independent journal about Bedfordshire, the planned theme park, and where to stay when you visit.</span>
             </div>
             {[
@@ -520,7 +515,7 @@ export default function Page() {
               <strong style={{ color: INK }}>Affiliate disclosure.</strong> Booking.com is our only partner. When you book through one of our links we may earn a commission, at no extra cost to you. It never decides what we write or which places we recommend. <a href="#" style={{ textDecoration: "underline", textUnderlineOffset: 3 }}>Read the full disclosure</a>.
             </p>
             <p style={{ margin: 0 }}>
-              Independent site. Not affiliated with, endorsed by or connected to Universal Studios, Universal Destinations &amp; Experiences or Comcast NBCUniversal. All trademarks belong to their owners. The park described here is announced and planned; nothing on this site should be read as confirmation of dates or details. © 2026 Parkline.
+              Independent site. Not affiliated with, endorsed by or connected to Universal Studios, Universal Destinations &amp; Experiences or Comcast NBCUniversal. All trademarks belong to their owners. The park described here is announced and planned; nothing on this site should be read as confirmation of dates or details. © 2026 Ride to Universal.
             </p>
           </div>
         </footer>

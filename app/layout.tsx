@@ -24,7 +24,7 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Parkline — Bedfordshire stay guide",
+  title: "Ride to Universal — Bedfordshire stay guide",
   description:
     "An independent guide to Bedfordshire and the planned theme park near Bedford: area guides, getting there, days out and where to stay.",
 };
