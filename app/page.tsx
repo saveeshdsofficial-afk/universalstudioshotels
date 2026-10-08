@@ -13,7 +13,7 @@ import { type CSSProperties } from "react";
  * Two rules the brief sets that shape the code:
  *   · the park is only ever "announced" or "planned" — no date is stated as
  *     fact, and every forward-looking line says so
- *   · no affiliate links, no commercial partners
+ *   · every Booking.com link carries rel="sponsored nofollow"
  *
  * The wordmark is "Ride to Universal" at the owner's request. The supplied
  * brief asked for a name that does not imply an official Universal site, so
@@ -36,6 +36,18 @@ const BLUE_INK = "#1F45E6";
 
 const GUTTER = "max(24px, calc((100vw - 1200px) / 2))";
 
+const SPONSORED = "sponsored nofollow noopener noreferrer";
+
+/** Booking.com search for a town, with the affiliate id when one is set. */
+function booking(q: string) {
+  const u = new URL("https://www.booking.com/searchresults.html");
+  u.searchParams.set("ss", q);
+  u.searchParams.set("lang", "en-gb");
+  const aid = process.env.NEXT_PUBLIC_BOOKING_AID;
+  if (aid) u.searchParams.set("aid", aid);
+  return u.toString();
+}
+
 const BLUE_BTN: CSSProperties = {
   background: "linear-gradient(180deg,#3A63FF 0%,#1F4BFF 55%,#1A42EC 100%)",
   color: "#FFFFFF",
@@ -56,6 +68,14 @@ const GHOST_BTN: CSSProperties = {
   textDecoration: "none",
   boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)",
   transition: "transform .15s, box-shadow .15s",
+};
+
+const CHIP: CSSProperties = {
+  fontSize: 11,
+  fontWeight: 600,
+  padding: "3px 8px",
+  borderRadius: 999,
+  background: "rgba(255,255,255,.18)",
 };
 
 const PILL: CSSProperties = {
@@ -80,6 +100,12 @@ const Right = ({ s = 16, w = 2 }) => (
     <path d="M5 12h14M13 6l6 6-6 6" />
   </svg>
 );
+const Tick = ({ s = 14, c = BLUE, w = 2 }) => (
+  <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth={w}>
+    <path d="M5 12.5l4.5 4.5L19 7.5" />
+  </svg>
+);
+
 const SectionRule = ({ label, link }: { label: string; link?: string }) => (
   <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 40 }}>
     <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase" }}>{label}</span>
@@ -161,7 +187,7 @@ const PLAN = [
 const STEPS = [
   { n: "01", t: "Pick your base", d: "Bedford for closeness, Milton Keynes for value and parking, Luton if you are flying, London for a city break." },
   { n: "02", t: "Work out the journey", d: "The A421 and the M1 do most of the work by road. Trains run into Bedford from St Pancras and along the Marston Vale line." },
-  { n: "03", t: "Book when it suits", d: "Compare prices once your dates are fixed. Book direct, and check the cancellation terms before you pay." },
+  { n: "03", t: "Book when it suits", d: "Compare live prices on Booking.com. Most rooms still come with free cancellation." },
 ];
 
 export default function Page() {
@@ -293,18 +319,21 @@ export default function Page() {
                   </div>
                 ))}
               </div>
-              <div style={{ padding: 32, display: "flex", flexDirection: "column", gap: 10 }}>
+              <div style={{ padding: 32, display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: 40, alignItems: "center" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT }}>
                     Bedford holds the most choice within a few miles of the site, from Georgian hotels on the
-                    Embankment to the chains along the A421 at Kempston and Elstow. Prices move daily, so we describe what each
-                    part of the area is like rather than print a number that is wrong by the time you read it.
+                    Embankment to the chains along the A421 at Kempston and Elstow. Prices move daily, so we send you
+                    to the live listings rather than print a number that is wrong by the time you read it.
                   </p>
                   <span style={{ fontSize: 13, color: MUTED }}>
                     Pictured, left to right: The Swan on Bedford Embankment, The Mill in Bedford, Woodland Manor at
                     Clapham, and The Bell at Woburn.
                   </span>
                 </div>
+                <a className="bb" href={booking("Bedford, Bedfordshire, UK")} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 12, padding: "16px 24px", fontSize: 16, whiteSpace: "nowrap" }}>
+                  View hotels<span style={{ ...CHIP, fontSize: 12 }}>Booking.com</span><Arrow />
+                </a>
               </div>
             </div>
           </div>
@@ -368,9 +397,12 @@ export default function Page() {
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            <a className="gb" href="#stay" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 12, padding: "18px 28px", fontSize: 18 }}>
-              Hotels near the site<Arrow s={18} />
+            <a className="bb" href={booking("Bedford, UK")} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", gap: 12, padding: "18px 24px 18px 32px", fontSize: 18 }}>
+              Browse stays near Bedford<span style={{ ...CHIP, fontSize: 12 }}>Booking.com</span><Arrow s={18} />
             </a>
+            <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#D6D7DB" }}>
+              <Tick c="#8FA6FF" />Free cancellation on most rooms
+            </span>
           </div>
         </section>
 

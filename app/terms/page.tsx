@@ -62,16 +62,24 @@ export default function Terms() {
       </h1>
       <p style={{ margin: "0 0 8px", fontSize: 14, color: MUTED }}>Last updated 8 October 2026</p>
 
-      <h2 style={H2}>Commercial links</h2>
+      <h2 style={H2}>Affiliate links and commission</h2>
       <p style={P}>
-        This site carries no affiliate links and has no commercial partners. Nothing on it earns us a commission, and
-        no link here is paid for. If that changes we will say so here first, and label the links themselves.
+        This is an independent guide to Bedfordshire and the planned theme park near Bedford. Some hotel links on this
+        site earn us a commission. Booking.com is our only commercial partner. If you follow one of our links and book,
+        Booking.com may pay us a share of what they earn. It costs you nothing extra, and the price you pay is the same
+        as it would be had you gone to them directly.
+      </p>
+      <p style={P}>
+        Links that can earn us money are marked with a Booking.com label on the button itself, and carry a{" "}
+        <code style={{ fontFamily: "ui-monospace, Menlo, monospace", fontSize: 15 }}>rel=&quot;sponsored&quot;</code>{" "}
+        attribute in the page source.
       </p>
 
       <h2 style={H2}>How we work</h2>
       <p style={P}>
         We write the guide first. Nobody pays to appear on this site, and no hotel, agency or tourist board has any say
-        in what we publish. We do not run sponsored reviews or paid placements.
+        in what we publish. We do not run sponsored reviews or paid placements, and a commission rate has never decided
+        the order anything appears in.
       </p>
       <p style={P}>
         Where we name a real business, we say only what we can check. We do not print prices or room counts for
