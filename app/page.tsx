@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
 /**
  * Universal Stay Guide — landing page.
@@ -118,11 +118,6 @@ const SectionRule = ({ label, link }: { label: string; link?: string }) => (
 
 
 
-const NEWS = [
-  { tag: "Planning", img: "/images/news/planning.jpg", title: "What has actually been announced about the Bedfordshire park", meta: "Updated Oct 2026" },
-  { tag: "Transport", img: "/images/news/transport.jpg", title: "The roads and rail lines that will carry visitors in", meta: "Updated Sep 2026" },
-  { tag: "Timeline", img: "/images/news/timeline.jpg", title: "Why nobody can give you an opening date yet", meta: "Updated Sep 2026" },
-];
 
 const POSTS = [
   { cat: "Area guide", img: "/images/guides/bedford-area-guide-where-to-base-yourself.jpg", title: "Which Bedfordshire town to base yourself in", meta: "6 min read" },
@@ -145,9 +140,6 @@ const PHOTOS = [
   { c: "The High Street, Bedford", by: "PAUL FARMER", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:The_Bear,_Public_House,_High_Street,_Bedford_-_geograph.org.uk_-_3283295.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "Elstow village, a mile from the site", by: "Simon Burchell", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Village_Farmhouse,_Elstow.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
   { c: "The suspension bridge on the Great Ouse, Bedford", by: "Simon Speed", lic: "Public domain", url: "https://commons.wikimedia.org/wiki/File:BedfordSuspensionBridge.JPG", licUrl: "" },
-  { c: "The platform at Kempston Hardwick", by: "Bikeboy", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Kempston_Hardwick_railway_station_-_geograph.org.uk_-_4547847.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "The A421 south of Bedford", by: "David Howard", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Roxton_Road_crossing_the_A421_-_geograph.org.uk_-_6947323.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "Ampthill Park, Bedfordshire", by: "Philip Jeffrey", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Ampthill_Park_House_seen_across_the_fields_-_geograph.org.uk_-_3498686.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "The White Lion, a former coaching inn at Elstow", by: "PAUL FARMER", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Former_coaching_Inn_The_White_Lion_High_Street_Elstow_-_geograph.org.uk_-_1675438.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
 ];
 
@@ -179,6 +171,7 @@ const STEPS = [
 ];
 
 export default function Page() {
+  const [allPosts, setAllPosts] = useState(false);
 
   return (
     <>
@@ -217,7 +210,7 @@ export default function Page() {
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: MUTED }}>Bedfordshire stay guide</span>
             </a>
             <nav style={{ display: "flex", gap: 32, fontSize: 15, fontWeight: 500 }}>
-              <a href="#news">Park news</a><a href="#guides">Where to stay</a><a href="#guides">Guides</a><a href="#getting-there">Getting there</a><a href="#blog">Days out</a>
+              <a href="#guides">Where to stay</a><a href="#guides">Guides</a><a href="#getting-there">Getting there</a><a href="#blog">Days out</a>
             </nav>
             <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "11px 20px", fontSize: 14 }}>
               Start planning<Right s={15} />
@@ -240,7 +233,7 @@ export default function Page() {
               <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "15px 26px", fontSize: 16 }}>
                 Plan your ride<Right />
               </a>
-              <a href="#news" style={{ color: "#FFFFFF", fontSize: 15, fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 4 }}>
+              <a href="#the-park" style={{ color: "#FFFFFF", fontSize: 15, fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 4 }}>
                 What is confirmed so far
               </a>
             </div>
@@ -293,33 +286,11 @@ export default function Page() {
           </div>
         </section>
 
-        {/* 8 — park news */}
-        <section id="news" style={{ padding: `112px ${GUTTER} 128px`, background: PAPER, borderTop: `1px solid ${LINE}` }}>
-          <SectionRule label="Park news and updates" link="All updates" />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 32 }}>
-            {NEWS.map((n) => (
-              <a key={n.title} className="lift" href="#" style={{ display: "flex", flexDirection: "column", borderRadius: 12, background: "#FFFFFF", overflow: "hidden", border: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)", transition: "transform .2s, box-shadow .2s" }}>
-                <div style={{ position: "relative", height: 220 }}>
-                  <Image src={n.img} alt="" fill sizes="400px" style={{ objectFit: "cover" }} />
-                  <span style={{ ...PILL, position: "absolute", top: 14, left: 14 }}>{n.tag}</span>
-                </div>
-                <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 22, lineHeight: 1.18, letterSpacing: "-0.025em" }}>{n.title}</h3>
-                  <span style={{ marginTop: "auto", fontSize: 13, color: MUTED }}>{n.meta}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-          <p style={{ margin: "32px 0 0", fontSize: 14, color: MUTED, maxWidth: 760 }}>
-            We only report what has been formally announced. Where a detail is unconfirmed — including anything about an opening date — we say so rather than filling the gap.
-          </p>
-        </section>
-
         {/* 9 — latest blog */}
         <section id="blog" style={{ padding: `112px ${GUTTER} 128px`, background: "#FFFFFF" }}>
           <SectionRule label="Latest from the journal" link="Visit the journal" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: "48px 32px" }}>
-            {POSTS.map((p) => (
+            {(allPosts ? POSTS : POSTS.slice(0, 3)).map((p) => (
               <a key={p.title} className="soft" href="#" style={{ display: "flex", flexDirection: "column", gap: 16, padding: 8, margin: -8, borderRadius: 12, transition: "background .2s" }}>
                 <div style={{ position: "relative", height: 240, borderRadius: 10, overflow: "hidden", boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)" }}>
                   <Image src={p.img} alt="" fill sizes="380px" style={{ objectFit: "cover" }} />
@@ -332,6 +303,13 @@ export default function Page() {
               </a>
             ))}
           </div>
+          {!allPosts && POSTS.length > 3 ? (
+            <div style={{ display: "flex", justifyContent: "center", paddingTop: 56 }}>
+              <button type="button" onClick={() => setAllPosts(true)} className="gb" style={{ ...GHOST_BTN, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 10, padding: "15px 28px", fontSize: 16 }}>
+                More from the journal<Arrow s={15} />
+              </button>
+            </div>
+          ) : null}
         </section>
 
         {/* 10 — plan your stay band */}
@@ -370,7 +348,7 @@ export default function Page() {
             {[
               { h: "Guides", l: ["Where to stay", "Getting there", "Days out", "Where to eat"] },
               { h: "Towns", l: ["Bedford", "Milton Keynes", "Luton", "London"] },
-              { h: "The park", l: ["Park news", "What is confirmed", "Timeline"] },
+              { h: "The park", l: ["What is confirmed", "Getting there"] },
               { h: "About", l: ["About us", "Terms and conditions", "Contact", "Privacy"] },
             ].map((c) => (
               <div key={c.h} style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: 15 }}>
