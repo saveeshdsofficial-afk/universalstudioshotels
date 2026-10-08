@@ -167,19 +167,19 @@ const FOOTER_HREF: Record<string, string> = { "Terms and conditions": "/terms" }
 
 const PLAN = [
   { word: "Stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
-    alt: "Bedford town bridge over the River Great Ouse",
+    alt: "A made-up double bed and seating in a hotel room",
     body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around, and Milton Keynes or Luton trade a longer drive for easier parking.",
     cta: "See the hotels", href: "#stay" },
   { word: "Activities", title: "What to do", img: "/images/plan/what-to-do.jpg",
-    alt: "Woburn Abbey seen across its parkland",
+    alt: "A rollercoaster track silhouetted against an evening sky",
     body: "Woburn, the Shuttleworth Collection, the Great Ouse and a county full of villages. Enough for a weekend before a theme park is anywhere near it.",
     cta: "Days out nearby", href: "#blog" },
   { word: "Food", title: "Where to eat", img: "/images/plan/where-to-eat.jpg",
-    alt: "Lit restaurant frontages inside a shopping centre",
+    alt: "A freshly baked pizza on a tray beside a stone oven",
     body: "Riverside pubs in Bedford, the restaurant quarter in Milton Keynes, and the village inns in between. Where we would actually book a table.",
     cta: "Eating out", href: "#blog" },
   { word: "Travel", title: "How to get there", img: "/images/plan/how-to-get-there.jpg",
-    alt: "The main entrance building at Bedford railway station",
+    alt: "A black cab waiting in traffic on a city street",
     body: "Thameslink runs into Bedford from St Pancras in under an hour, and the Marston Vale line passes the site itself at Kempston Hardwick. By road it is the A421 between the M1 and the A1.",
     cta: "Routes and journey times", href: "#getting-there" },
 ];
