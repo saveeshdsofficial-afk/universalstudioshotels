@@ -166,19 +166,19 @@ const PHOTOS = [
 const FOOTER_HREF: Record<string, string> = { "Terms and conditions": "/terms" };
 
 const PLAN = [
-  { tag: "Where to stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
+  { word: "Stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
     alt: "Bedford town bridge over the River Great Ouse",
     body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around, and Milton Keynes or Luton trade a longer drive for easier parking.",
     cta: "See the hotels", href: "#stay" },
-  { tag: "What to do", title: "What to do", img: "/images/plan/what-to-do.jpg",
+  { word: "Activities", title: "What to do", img: "/images/plan/what-to-do.jpg",
     alt: "Woburn Abbey seen across its parkland",
     body: "Woburn, the Shuttleworth Collection, the Great Ouse and a county full of villages. Enough for a weekend before a theme park is anywhere near it.",
     cta: "Days out nearby", href: "#blog" },
-  { tag: "Where to eat", title: "Where to eat", img: "/images/plan/where-to-eat.jpg",
+  { word: "Food", title: "Where to eat", img: "/images/plan/where-to-eat.jpg",
     alt: "Lit restaurant frontages inside a shopping centre",
     body: "Riverside pubs in Bedford, the restaurant quarter in Milton Keynes, and the village inns in between. Where we would actually book a table.",
     cta: "Eating out", href: "#blog" },
-  { tag: "Getting there", title: "How to get there", img: "/images/plan/how-to-get-there.jpg",
+  { word: "Travel", title: "How to get there", img: "/images/plan/how-to-get-there.jpg",
     alt: "The main entrance building at Bedford railway station",
     body: "Thameslink runs into Bedford from St Pancras in under an hour, and the Marston Vale line passes the site itself at Kempston Hardwick. By road it is the A421 between the M1 and the A1.",
     cta: "Routes and journey times", href: "#getting-there" },
@@ -206,6 +206,14 @@ export default function Page() {
         .p .gb:hover{transform:translateY(-1px);border-color:#1F4BFF;color:#1F4BFF}
         .p .lift:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(23,24,27,.05),0 28px 56px -18px rgba(23,24,27,.26)}
         .p .soft:hover{background:#FAFAF7}
+        .p .tile .scrim{opacity:0;transition:opacity .28s ease}
+        .p .tile:hover .scrim,.p .tile:focus-visible .scrim{opacity:1}
+        .p .tile .meta{opacity:0;transform:translateY(12px);transition:opacity .28s ease,transform .28s ease}
+        .p .tile:hover .meta,.p .tile:focus-visible .meta{opacity:1;transform:none}
+        .p .tile .word{transition:transform .28s ease}
+        .p .tile:hover .word,.p .tile:focus-visible .word{transform:translateY(-6px)}
+        /* no hover on touch, so never hide the copy behind one */
+        @media (hover:none){.p .tile .scrim,.p .tile .meta{opacity:1;transform:none}}
       `}</style>
 
       <div className="p" style={{ width: "100%", background: PAPER, color: INK, fontFamily: SANS, fontSize: 16, lineHeight: 1.6 }}>
@@ -275,26 +283,22 @@ export default function Page() {
         {/* 5 — plan your visit: three ways in */}
         <section id="guides" style={{ padding: `112px ${GUTTER} 128px` }}>
           <SectionRule label="Plan your Universal adventure" link="All guides" />
-          <div style={{ display: "flex", flexDirection: "column", gap: 96 }}>
-            {PLAN.map((c, i) => {
-              /* odd rows put the picture on the right, so the eye zig-zags down the page */
-              const flip = i % 2 === 1;
-              return (
-                <div key={c.title} style={{ display: "grid", gridTemplateColumns: "minmax(0,1.05fr) minmax(0,1fr)", gap: 72, alignItems: "center" }}>
-                  <a href={c.href} className="lift" style={{ order: flip ? 2 : 1, position: "relative", display: "block", height: 440, borderRadius: 12, overflow: "hidden", boxShadow: "0 2px 4px rgba(23,24,27,.05), 0 24px 56px -20px rgba(23,24,27,.26)", transition: "transform .2s, box-shadow .2s" }}>
-                    <Image src={c.img} alt={c.alt} fill sizes="(max-width: 900px) 100vw, 560px" style={{ objectFit: "cover" }} />
-                    <span style={{ ...PILL, position: "absolute", top: 16, left: 16 }}>{c.tag}</span>
-                  </a>
-                  <div style={{ order: flip ? 1 : 2, display: "flex", flexDirection: "column", gap: 16, maxWidth: 460, justifySelf: flip ? "end" : "start" }}>
-                    <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 46, lineHeight: 1.02, letterSpacing: "-0.035em" }}>{c.title}</h3>
-                    <p style={{ margin: 0, fontFamily: SERIF, fontSize: 18, lineHeight: 1.6, color: SOFT }}>{c.body}</p>
-                    <a className="gb" href={c.href} style={{ ...GHOST_BTN, alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: 10, padding: "14px 22px", fontSize: 15, marginTop: 4 }}>
-                      {c.cta}<Arrow s={15} />
-                    </a>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,minmax(0,1fr))", gap: 24 }}>
+            {PLAN.map((c) => (
+              <a key={c.title} className="tile" href={c.href} style={{ position: "relative", display: "block", height: 400, borderRadius: 12, overflow: "hidden", color: "#FFFFFF" }}>
+                <Image src={c.img} alt={c.alt} fill sizes="(max-width: 900px) 100vw, 580px" style={{ objectFit: "cover" }} />
+                {/* a constant wash keeps the word legible before any hover */}
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(23,24,27,.12) 0%,rgba(23,24,27,.55) 100%)" }} />
+                <div className="scrim" style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(23,24,27,.55) 0%,rgba(23,24,27,.86) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, padding: 32, display: "flex", flexDirection: "column", justifyContent: "flex-end", gap: 12 }}>
+                  <span className="word" style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 44, lineHeight: 1, letterSpacing: "-0.04em" }}>{c.word}</span>
+                  <div className="meta" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    <p style={{ margin: 0, fontFamily: SERIF, fontSize: 17, lineHeight: 1.55, color: "#ECECEF", maxWidth: 420 }}>{c.body}</p>
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15 }}>{c.cta}<Right /></span>
                   </div>
                 </div>
-              );
-            })}
+              </a>
+            ))}
           </div>
         </section>
 
