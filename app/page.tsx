@@ -419,7 +419,6 @@ export default function Page() {
         {/* 10 — plan your stay band */}
         <section id="getting-there" style={{ position: "relative", padding: `128px ${GUTTER}`, background: `radial-gradient(ellipse 60% 80% at 85% 0%,rgba(31,75,255,.22) 0%,rgba(31,75,255,0) 60%),${INK}`, color: "#FFFFFF", overflow: "hidden" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24 }}>
-            <span style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: 20, color: "#8FA6FF" }}>06</span>
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "#D6D7DB" }}>Plan your stay</span>
             <span style={{ flex: 1, height: 1, background: "rgba(255,255,255,.14)" }} />
           </div>
