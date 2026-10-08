@@ -208,12 +208,13 @@ export default function Page() {
         .p .soft:hover{background:#FAFAF7}
         .p .tile .scrim{opacity:0;transition:opacity .28s ease}
         .p .tile:hover .scrim,.p .tile:focus-visible .scrim{opacity:1}
-        .p .tile .meta{opacity:0;transform:translateY(12px);transition:opacity .28s ease,transform .28s ease}
-        .p .tile:hover .meta,.p .tile:focus-visible .meta{opacity:1;transform:none}
-        .p .tile .word{transition:transform .28s ease}
-        .p .tile:hover .word,.p .tile:focus-visible .word{transform:translateY(-6px)}
+        /* collapses to nothing while idle, so the word sits on the tile's centre line */
+        .p .tile .metawrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+        .p .tile:hover .metawrap,.p .tile:focus-visible .metawrap{grid-template-rows:1fr}
+        .p .tile .meta{min-height:0;overflow:hidden;opacity:0;transition:opacity .28s ease}
+        .p .tile:hover .meta,.p .tile:focus-visible .meta{opacity:1}
         /* no hover on touch, so never hide the copy behind one */
-        @media (hover:none){.p .tile .scrim,.p .tile .meta{opacity:1;transform:none}}
+        @media (hover:none){.p .tile .scrim,.p .tile .meta{opacity:1}.p .tile .metawrap{grid-template-rows:1fr}}
       `}</style>
 
       <div className="p" style={{ width: "100%", background: PAPER, color: INK, fontFamily: SANS, fontSize: 16, lineHeight: 1.6 }}>
@@ -290,11 +291,13 @@ export default function Page() {
                 {/* a constant wash keeps the word legible before any hover */}
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(23,24,27,.12) 0%,rgba(23,24,27,.55) 100%)" }} />
                 <div className="scrim" style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(23,24,27,.55) 0%,rgba(23,24,27,.86) 100%)" }} />
-                <div style={{ position: "absolute", inset: 0, padding: 32, display: "flex", flexDirection: "column", justifyContent: "flex-end", gap: 12 }}>
+                <div style={{ position: "absolute", inset: 0, padding: 32, display: "flex", flexDirection: "column", justifyContent: "center" }}>
                   <span className="word" style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 44, lineHeight: 1, letterSpacing: "-0.04em" }}>{c.word}</span>
-                  <div className="meta" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                    <p style={{ margin: 0, fontFamily: SERIF, fontSize: 17, lineHeight: 1.55, color: "#ECECEF", maxWidth: 420 }}>{c.body}</p>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15 }}>{c.cta}<Right /></span>
+                  <div className="metawrap">
+                    <div className="meta" style={{ display: "flex", flexDirection: "column", gap: 12, paddingTop: 14 }}>
+                      <p style={{ margin: 0, fontFamily: SERIF, fontSize: 17, lineHeight: 1.55, color: "#ECECEF", maxWidth: 420 }}>{c.body}</p>
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15 }}>{c.cta}<Right /></span>
+                    </div>
                   </div>
                 </div>
               </a>
