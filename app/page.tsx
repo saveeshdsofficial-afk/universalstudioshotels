@@ -186,6 +186,10 @@ const PLAN = [
     alt: "Lit restaurant frontages inside a shopping centre",
     body: "Riverside pubs in Bedford, the restaurant quarter in Milton Keynes, and the village inns in between. Where we would actually book a table.",
     cta: "Eating out", href: "#blog" },
+  { tag: "Getting there", title: "How to get there", img: "/images/plan/how-to-get-there.jpg",
+    alt: "The main entrance building at Bedford railway station",
+    body: "Thameslink runs into Bedford from St Pancras in under an hour, and the Marston Vale line passes the site itself at Kempston Hardwick. By road it is the A421 between the M1 and the A1.",
+    cta: "Routes and journey times", href: "#getting-there" },
 ];
 
 const STEPS = [
