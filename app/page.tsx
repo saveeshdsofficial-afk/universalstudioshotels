@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type CSSProperties } from "react";
+import { type CSSProperties } from "react";
 
 /**
  * Universal Stay Guide — landing page.
@@ -145,12 +145,14 @@ const POSTS = [
   { cat: "Tips", img: "/images/guides/cutting-the-cost-of-a-long-stay.jpg", title: "Cutting the cost of a long stay in Bedfordshire", meta: "6 min read" },
   { cat: "Days out", img: "/images/areas/central-bedford.jpg", title: "A weekend in Bedford that is not just the park", meta: "7 min read" },
   { cat: "Planning", img: "/images/guides/contractor-accommodation-bedford-checklist.jpg", title: "Nine things to check before you book anything", meta: "7 min read" },
+  { cat: "Area guide", img: "/images/blog/villages.jpg", title: "Six Bedfordshire villages worth the detour", meta: "8 min read" },
+  { cat: "Days out", img: "/images/blog/london-day.jpg", title: "Doing London in a day from a Bedford base", meta: "6 min read" },
+  { cat: "Seasonal", img: "/images/blog/christmas.jpg", title: "Christmas in Milton Keynes and around Bedford", meta: "5 min read" },
 ];
 
 /* Every photo is a real, freely-licensed image from Wikimedia Commons. Credit is a
    condition of the CC BY and CC BY-SA licences, so it is published, not optional. */
 const PHOTOS = [
-  { c: "Bedford bridge over the Great Ouse", by: "Jim", lic: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Bedford_Bridge_On_The_River_Great_Ouse.jpg", licUrl: "https://creativecommons.org/licenses/by/2.0/" },
   { c: "Bedford Embankment, beside the Great Ouse", by: "Ronald Saunders from Warrington, UK", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Flickr_-_ronsaunders47_-_BEDFORD_EMBANKMENT..jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "Milton Keynes city centre", by: "John Chryslar", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Milton_Keynes_Sainsburys-Hub_Skyline.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
   { c: "Luton town centre, seen from the station exit", by: "Robert Eva", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Luton_town_centre_from_the_railway_station_exit._-_geograph.org.uk_-_5432104.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
@@ -171,6 +173,21 @@ const PHOTOS = [
   { c: "The Bell, Woburn", by: "Robert Eva", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Bell_Hotel,_Woburn_-_geograph.org.uk_-_5234113.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
 ];
 
+const PLAN = [
+  { tag: "Where to stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
+    alt: "Bedford town bridge over the River Great Ouse",
+    body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around. Milton Keynes and Luton trade a longer drive for easier parking.",
+    cta: "Compare the towns", href: "#towns" },
+  { tag: "What to do", title: "What to do", img: "/images/plan/what-to-do.jpg",
+    alt: "Woburn Abbey seen across its parkland",
+    body: "Woburn, the Shuttleworth Collection, the Great Ouse and a county full of villages. Enough for a weekend before a theme park is anywhere near it.",
+    cta: "Days out nearby", href: "#blog" },
+  { tag: "Where to eat", title: "Where to eat", img: "/images/plan/where-to-eat.jpg",
+    alt: "Lit restaurant frontages inside a shopping centre",
+    body: "Riverside pubs in Bedford, the restaurant quarter in Milton Keynes, and the village inns in between. Where we would actually book a table.",
+    cta: "Eating out", href: "#blog" },
+];
+
 const STEPS = [
   { n: "01", t: "Pick your base", d: "Bedford for closeness, Milton Keynes for value and parking, Luton if you are flying, London for a city break." },
   { n: "02", t: "Work out the journey", d: "The A421 and the M1 do most of the work by road. Trains run into Bedford from St Pancras and along the Marston Vale line." },
@@ -178,7 +195,6 @@ const STEPS = [
 ];
 
 export default function Page() {
-  const [sent, setSent] = useState(false);
 
   return (
     <>
@@ -186,6 +202,10 @@ export default function Page() {
         body{background:#FAFAF7;margin:0;overflow-x:clip}
         .p a{color:#17181B;text-decoration:none}
         .p a:hover{color:#1F4BFF}
+        .p header a{color:#FFFFFF}
+        .p header a:hover{color:#C9D4FF}
+        .p header .gb{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#FFFFFF}
+        .p header .gb:hover{background:rgba(255,255,255,.22);border-color:#FFFFFF;color:#FFFFFF}
         .p .bb:hover{transform:translateY(-1px);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 3px 6px rgba(31,75,255,.3),0 20px 40px -10px rgba(31,75,255,.7)}
         .p .gb:hover{transform:translateY(-1px);border-color:#1F4BFF;color:#1F4BFF}
         .p .lift:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(23,24,27,.05),0 28px 56px -18px rgba(23,24,27,.26)}
@@ -204,7 +224,7 @@ export default function Page() {
         </div>
 
         {/* 2 — header */}
-        <header style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(250,250,247,.86)", backdropFilter: "blur(14px)", borderBottom: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.04), 0 8px 24px -12px rgba(23,24,27,.10)" }}>
+        <header style={{ position: "absolute", top: 36, left: 0, right: 0, zIndex: 20, background: "transparent", color: "#FFFFFF" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: `16px ${GUTTER}` }}>
             <a href="#" style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
               <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 26, letterSpacing: "-0.04em", lineHeight: 1 }}>
@@ -243,66 +263,49 @@ export default function Page() {
           </div>
         </section>
 
-        {/* 4 — trust strip */}
-        <section style={{ padding: `96px ${GUTTER}` }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))" }}>
-            {[
-              { b: "4 towns", s: "Bedford, Milton Keynes, Luton and London" },
-              { b: "0.6 mi", s: "from the site to the nearest hotel we list" },
-              { b: "0", s: "paid placements or sponsored reviews" },
-              { b: "Free", s: "to read, no sign-up, no paywall" },
-            ].map((t) => (
-              <div key={t.s} style={{ display: "flex", flexDirection: "column", gap: 4, padding: "0 32px", borderLeft: `1px solid ${LINE}` }}>
-                <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 36, letterSpacing: "-0.04em", lineHeight: 1.1 }}>{t.b}</span>
-                <span style={{ fontSize: 14, color: MUTED }}>{t.s}</span>
-              </div>
-            ))}
+        {/* 4b — the park is not open yet, so say what is and is not known */}
+        <section id="the-park" style={{ padding: `112px ${GUTTER}`, background: PAPER, borderBottom: `1px solid ${LINE}` }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 64, alignItems: "start" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <span style={{ display: "inline-flex", alignSelf: "flex-start", alignItems: "center", gap: 10, padding: "7px 14px", borderRadius: 999, background: TINT, border: `1px solid ${TINT_LINE}`, fontSize: 13, fontWeight: 700, color: BLUE_INK }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: BLUE }} />
+                Not open yet
+              </span>
+              <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 56, lineHeight: 1, letterSpacing: "-0.04em", textWrap: "balance" }}>
+                A Universal park is coming to Bedfordshire.
+              </h2>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20, paddingTop: 8 }}>
+              <p style={{ margin: 0, fontFamily: SERIF, fontSize: 20, lineHeight: 1.55, color: SOFT }}>
+                The site is farmland at Kempston Hardwick, a few miles south of Bedford, beside the Marston Vale railway
+                line. Universal has confirmed the location and bought the land. Everything after that — what gets built,
+                what it costs, and the day the gates open — has not been announced.
+              </p>
+              <p style={{ margin: 0, fontFamily: SERIF, fontSize: 20, lineHeight: 1.55, color: SOFT }}>
+                So this guide is about Bedfordshire as it stands today: a county worth a weekend on its own, which will
+                one day have a theme park in it. When there is something firm to report, it goes in the park news below.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* 5 — featured guide */}
-        <section id="guides" style={{ padding: `0 ${GUTTER} 128px` }}>
-          <SectionRule label="Featured guide" link="All guides" />
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.55fr) minmax(0,1fr)", gap: 48, alignItems: "start" }}>
-            <a href="#" style={{ position: "relative", display: "block", marginLeft: `calc(-1 * ${GUTTER})` }}>
-              <div style={{ position: "relative", height: 600, borderRadius: "0 12px 12px 0", overflow: "hidden" }}>
-                <Image src="/images/guides/where-to-stay-near-universal-studios-uk.jpg" alt="" fill sizes="900px" style={{ objectFit: "cover" }} />
-                <div style={{ position: "absolute", top: 24, left: `calc(${GUTTER} + 24px)`, display: "flex", gap: 8 }}>
-                  <span style={PILL}>Where to stay</span>
-                  <span style={PILL}>6 min read</span>
-                  <span style={{ ...PILL, background: INK, color: "#fff" }}>Updated 2026</span>
+        {/* 5 — plan your visit: three ways in */}
+        <section id="guides" style={{ padding: `112px ${GUTTER} 128px` }}>
+          <SectionRule label="Plan your Universal adventure" link="All guides" />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 32 }}>
+            {PLAN.map((c) => (
+              <a key={c.title} className="lift" href={c.href} style={{ display: "flex", flexDirection: "column", borderRadius: 12, overflow: "hidden", background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -20px rgba(23,24,27,.22)", transition: "transform .2s, box-shadow .2s" }}>
+                <div style={{ position: "relative", height: 260 }}>
+                  <Image src={c.img} alt={c.alt} fill sizes="(max-width: 900px) 100vw, 400px" style={{ objectFit: "cover" }} />
+                  <span style={{ ...PILL, position: "absolute", top: 16, left: 16 }}>{c.tag}</span>
                 </div>
-              </div>
-              <div className="lift" style={{ position: "relative", margin: "-160px -48px 0 200px", background: "#FFFFFF", borderRadius: 10, padding: 40, display: "flex", flexDirection: "column", gap: 16, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -16px rgba(23,24,27,.22)", transition: "transform .2s, box-shadow .2s" }}>
-                <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 44, lineHeight: 1.02, letterSpacing: "-0.035em", textWrap: "balance" }}>Where to stay near the Bedfordshire site, town by town</h2>
-                <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT }}>Kempston and Elstow sit closest. Bedford gives you a town. Milton Keynes and Luton trade a longer drive for easier parking and cheaper rooms. Here is how they actually compare.</p>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15, paddingTop: 8 }}>Read the guide <Right /></span>
-              </div>
-            </a>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: 24, paddingTop: 24 }}>
-              {POSTS.slice(1, 3).map((g) => (
-                <a key={g.title} className="lift" href="#" style={{ display: "grid", gridTemplateColumns: "168px minmax(0,1fr)", gap: 24, padding: 16, borderRadius: 10, background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.12)", transition: "transform .2s, box-shadow .2s" }}>
-                  <div style={{ position: "relative", height: 168, borderRadius: 6, overflow: "hidden" }}>
-                    <Image src={g.img} alt="" fill sizes="168px" style={{ objectFit: "cover" }} />
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: "8px 8px 8px 0" }}>
-                    <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: BLUE_INK }}>{g.cat}</span>
-                    <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 23, lineHeight: 1.15, letterSpacing: "-0.025em" }}>{g.title}</h3>
-                    <span style={{ marginTop: "auto", fontSize: 13, color: MUTED }}>{g.meta}</span>
-                  </div>
-                </a>
-              ))}
-              <div style={{ padding: 24, borderRadius: 10, border: "1px dashed #C9CBD2", display: "flex", gap: 16, alignItems: "center" }}>
-                <div style={{ position: "relative", width: 72, height: 72, flex: "none", borderRadius: "50%", overflow: "hidden", boxShadow: "0 0 0 4px #FFFFFF, 0 6px 16px -6px rgba(23,24,27,.25)" }}>
-                  <Image src="/images/avatar.jpg" alt="" fill sizes="72px" style={{ objectFit: "cover" }} />
+                <div style={{ padding: 32, display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
+                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 30, lineHeight: 1.05, letterSpacing: "-0.03em" }}>{c.title}</h3>
+                  <p style={{ margin: 0, fontFamily: SERIF, fontSize: 17, lineHeight: 1.55, color: SOFT }}>{c.body}</p>
+                  <span style={{ marginTop: "auto", paddingTop: 16, display: "inline-flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15 }}>{c.cta} <Right /></span>
                 </div>
-                <p style={{ margin: 0, fontFamily: SERIF, fontStyle: "italic", fontSize: 17, lineHeight: 1.5, color: SOFT }}>
-                  &ldquo;We write the guide first. If a hotel link follows, it is because it fits — never because it pays more.&rdquo;
-                  <span style={{ fontFamily: SANS, fontStyle: "normal", fontSize: 13, color: MUTED, display: "block", marginTop: 4 }}>How we work</span>
-                </p>
-              </div>
-            </div>
+              </a>
+            ))}
           </div>
         </section>
 
@@ -438,38 +441,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* 11 — newsletter */}
-        <section style={{ padding: `112px ${GUTTER}`, background: PAPER }}>
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,1fr)", gap: 64, alignItems: "center", padding: 64, borderRadius: 12, border: `1px solid ${TINT_LINE}`, backgroundColor: TINT, backgroundImage: NOISE, boxShadow: "0 1px 2px rgba(23,24,27,.04), 0 24px 56px -28px rgba(31,75,255,.35)" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: BLUE_INK }}>The monthly letter</span>
-              <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 48, lineHeight: 1, letterSpacing: "-0.04em" }}>One email a month, when there is news.</h2>
-              <p style={{ margin: 0, fontFamily: SERIF, fontSize: 18, lineHeight: 1.55, color: SOFT }}>Planning milestones, new guides and anything confirmed about the Bedfordshire project. Nothing else.</p>
-            </div>
-            {!sent ? (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const email = new FormData(e.currentTarget).get("email");
-                  /* No mailing-list backend yet, so this opens a real email
-                     rather than pretending to have subscribed anyone. */
-                  window.location.href = `mailto:hello@kainovation.com?subject=${encodeURIComponent("Newsletter sign-up")}&body=${encodeURIComponent(`Please add ${email ?? ""} to the monthly letter.`)}`;
-                  setSent(true);
-                }}
-                style={{ display: "flex", flexDirection: "column", gap: 12 }}
-              >
-                <div style={{ display: "flex", gap: 8, padding: 8, borderRadius: 10, background: "#FFFFFF", border: `1px solid ${TINT_LINE}`, boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.14)" }}>
-                  <input name="email" type="email" required placeholder="you@example.co.uk" style={{ flex: 1, minWidth: 0, border: 0, outline: 0, background: "transparent", padding: "0 16px", fontSize: 16, color: INK, font: "inherit" }} />
-                  <button type="submit" style={{ border: 0, borderRadius: 6, background: INK, color: "#FFFFFF", fontWeight: 700, fontSize: 15, padding: "14px 24px", cursor: "pointer", fontFamily: "inherit" }}>Subscribe</button>
-                </div>
-                <span style={{ fontSize: 13, color: MUTED, paddingLeft: 16 }}>Opens your email app. We never share your address.</span>
-              </form>
-            ) : (
-              <div style={{ padding: 24, borderRadius: 10, background: "#FFFFFF", fontWeight: 600, fontSize: 17 }}>Thanks — send that email and we will add you.</div>
-            )}
-          </div>
-        </section>
-
         {/* 12 — footer */}
         <footer style={{ background: "#FFFFFF", borderTop: `1px solid ${LINE}`, padding: `80px ${GUTTER} 48px`, display: "flex", flexDirection: "column", gap: 56 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr", gap: 32 }}>
@@ -494,9 +465,8 @@ export default function Page() {
               Photo credits
             </summary>
             <p style={{ margin: "16px 0 12px" }}>
-              Photographs are freely licensed images from Wikimedia Commons, cropped to fit. Where a photo carries a
-              share-alike licence, our crop is offered under that same licence. Illustrations elsewhere on the page are
-              drawings, not photographs.
+              These photographs carry licences that require the photographer to be named. Everything else on the page is
+              CC0 or public domain and needs no credit.
             </p>
             <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "6px 32px" }}>
               {PHOTOS.map((ph) => (
@@ -510,10 +480,7 @@ export default function Page() {
               ))}
             </ul>
           </details>
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, paddingTop: 32, borderTop: `1px solid ${LINE}`, fontSize: 13, lineHeight: 1.65, color: MUTED }}>
-            <p style={{ margin: 0 }}>
-              <strong style={{ color: INK }}>Affiliate disclosure.</strong> Booking.com is our only partner. When you book through one of our links we may earn a commission, at no extra cost to you. It never decides what we write or which places we recommend. <a href="#" style={{ textDecoration: "underline", textUnderlineOffset: 3 }}>Read the full disclosure</a>.
-            </p>
+          <div style={{ paddingTop: 32, borderTop: `1px solid ${LINE}`, fontSize: 13, lineHeight: 1.65, color: MUTED, maxWidth: 820 }}>
             <p style={{ margin: 0 }}>
               Independent site. Not affiliated with, endorsed by or connected to Universal Studios, Universal Destinations &amp; Experiences or Comcast NBCUniversal. All trademarks belong to their owners. The park described here is announced and planned; nothing on this site should be read as confirmation of dates or details. © 2026 Ride to Universal.
             </p>
