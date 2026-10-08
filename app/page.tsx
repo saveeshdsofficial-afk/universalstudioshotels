@@ -248,7 +248,7 @@ export default function Page() {
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 16, paddingTop: 8 }}>
               <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "15px 26px", fontSize: 16 }}>
-                Read the guides<Right />
+                Plan your ride<Right />
               </a>
               <a href="#news" style={{ color: "#FFFFFF", fontSize: 15, fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 4 }}>
                 What is confirmed so far
