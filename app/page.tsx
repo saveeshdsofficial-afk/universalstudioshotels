@@ -163,6 +163,8 @@ const PHOTOS = [
   { c: "The Bell, Woburn", by: "Robert Eva", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Bell_Hotel,_Woburn_-_geograph.org.uk_-_5234113.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
 ];
 
+const FOOTER_HREF: Record<string, string> = { "Terms and conditions": "/terms" };
+
 const PLAN = [
   { tag: "Where to stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
     alt: "Bedford town bridge over the River Great Ouse",
@@ -208,17 +210,8 @@ export default function Page() {
 
       <div className="p" style={{ width: "100%", background: PAPER, color: INK, fontFamily: SANS, fontSize: 16, lineHeight: 1.6 }}>
 
-        {/* 1 — top bar: the disclosure, above everything */}
-        <div style={{ background: INK, color: "#D6D7DB", fontSize: 13, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, padding: "8px 24px" }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
-            <path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z" />
-          </svg>
-          <span>Independent guide to the planned Bedfordshire park. Some hotel links earn us a commission.</span>
-          <a href="#" style={{ color: "#FFFFFF", textDecoration: "underline", textUnderlineOffset: 3 }}>How we work</a>
-        </div>
-
         {/* 2 — header */}
-        <header style={{ position: "absolute", top: 36, left: 0, right: 0, zIndex: 20, background: "transparent", color: "#FFFFFF" }}>
+        <header style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 20, background: "transparent", color: "#FFFFFF" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: `16px ${GUTTER}` }}>
             <a href="#" style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
               <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 26, letterSpacing: "-0.04em", lineHeight: 1 }}>
@@ -420,11 +413,11 @@ export default function Page() {
               { h: "Guides", l: ["Hotels near the site", "Getting there", "Days out", "Where to eat"] },
               { h: "Towns", l: ["Bedford", "Milton Keynes", "Luton", "London"] },
               { h: "The park", l: ["Park news", "What is confirmed", "Timeline"] },
-              { h: "About", l: ["About us", "Affiliate disclosure", "Contact", "Privacy"] },
+              { h: "About", l: ["About us", "Terms and conditions", "Contact", "Privacy"] },
             ].map((c) => (
               <div key={c.h} style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: 15 }}>
                 <strong style={{ fontSize: 12, letterSpacing: ".14em", textTransform: "uppercase" }}>{c.h}</strong>
-                {c.l.map((x) => <a key={x} href="#" style={{ color: MUTED }}>{x}</a>)}
+                {c.l.map((x) => <a key={x} href={FOOTER_HREF[x] ?? "#"} style={{ color: MUTED }}>{x}</a>)}
               </div>
             ))}
           </div>
