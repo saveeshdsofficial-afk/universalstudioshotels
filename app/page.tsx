@@ -316,27 +316,23 @@ export default function Page() {
             <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 0.98, letterSpacing: "-0.04em" }}>Start with the town.</h2>
             <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT, maxWidth: 480 }}>Which town suits you depends on what you want from the trip: the shortest drive, the easiest parking, a station on the doorstep, or a city break attached to it. Here is how the four compare.</p>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 96 }}>
-            {TOWNS.map((t, i) => {
-              /* odd rows put the picture on the right, so the eye zig-zags down the page */
-              const flip = i % 2 === 1;
-              return (
-                <div key={t.name} style={{ display: "grid", gridTemplateColumns: "minmax(0,1.05fr) minmax(0,1fr)", gap: 72, alignItems: "center" }}>
-                  <div className="lift" style={{ order: flip ? 2 : 1, position: "relative", height: 440, borderRadius: 12, overflow: "hidden", boxShadow: "0 2px 4px rgba(23,24,27,.05), 0 24px 56px -20px rgba(23,24,27,.26)", transition: "transform .2s, box-shadow .2s" }}>
-                    <Image src={t.img} alt="" fill sizes="(max-width: 900px) 100vw, 560px" style={{ objectFit: "cover" }} />
-                    <span style={{ ...PILL, position: "absolute", top: 16, left: 16 }}>{t.count}</span>
-                  </div>
-                  <div style={{ order: flip ? 1 : 2, display: "flex", flexDirection: "column", gap: 14, maxWidth: 460, justifySelf: flip ? "end" : "start" }}>
-                    <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: BLUE_INK }}>{t.note}</span>
-                    <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 46, lineHeight: 1.02, letterSpacing: "-0.035em" }}>{t.name}</h3>
-                    <p style={{ margin: 0, fontFamily: SERIF, fontSize: 18, lineHeight: 1.6, color: SOFT }}>{t.body}</p>
-                    <a className="bb" href={booking(`${t.name}, UK`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: 12, padding: "14px 22px", fontSize: 15, marginTop: 10 }}>
-                      View hotels in {t.name}<span style={{ ...CHIP, fontSize: 12 }}>Booking.com</span><Arrow s={15} />
-                    </a>
-                  </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 24 }}>
+            {TOWNS.map((t) => (
+              <div key={t.name} className="lift" style={{ display: "flex", flexDirection: "column", gap: 16, padding: "8px 8px 24px", borderRadius: 12, background: "#FFFFFF", boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.14)", transition: "transform .2s, box-shadow .2s" }}>
+                <div style={{ position: "relative", height: 300, borderRadius: 10, overflow: "hidden" }}>
+                  <Image src={t.img} alt="" fill sizes="300px" style={{ objectFit: "cover" }} />
+                  <span style={{ ...PILL, position: "absolute", top: 12, left: 12 }}>{t.count}</span>
                 </div>
-              );
-            })}
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: "0 16px" }}>
+                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 26, letterSpacing: "-0.03em" }}>{t.name}</h3>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: BLUE_INK }}>{t.note}</span>
+                  <p style={{ margin: "4px 0 0", fontSize: 15, lineHeight: 1.5, color: MUTED }}>{t.body}</p>
+                  <a className="bb" href={booking(`${t.name}, UK`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "12px 16px", fontSize: 14, marginTop: 14 }}>
+                    View on Booking.com<Arrow s={14} />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
