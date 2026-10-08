@@ -131,17 +131,6 @@ const POSTS = [
   { cat: "Seasonal", img: "/images/blog/christmas.jpg", title: "Christmas in Milton Keynes and around Bedford", meta: "5 min read" },
 ];
 
-/* Every photo is a real, freely-licensed image from Wikimedia Commons. Credit is a
-   condition of the CC BY and CC BY-SA licences, so it is published, not optional. */
-const PHOTOS = [
-  { c: "Elstow Abbey, a mile from the park site", by: "Poliphilo", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Elstow_Abbey_from_east.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
-  { c: "The M1 through Bedfordshire", by: "Lewis Clarke", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Central_Bedfordshire_-_M1_Motorway_(geograph_5733152).jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "Harpur Square market, Bedford", by: "Paul Gillett", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Harpur_Square_Market,_Bedford_-_geograph.org.uk_-_2948619.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "The High Street, Bedford", by: "PAUL FARMER", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:The_Bear,_Public_House,_High_Street,_Bedford_-_geograph.org.uk_-_3283295.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "Elstow village, a mile from the site", by: "Simon Burchell", lic: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Village_Farmhouse,_Elstow.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
-  { c: "The suspension bridge on the Great Ouse, Bedford", by: "Simon Speed", lic: "Public domain", url: "https://commons.wikimedia.org/wiki/File:BedfordSuspensionBridge.JPG", licUrl: "" },
-  { c: "The White Lion, a former coaching inn at Elstow", by: "PAUL FARMER", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Former_coaching_Inn_The_White_Lion_High_Street_Elstow_-_geograph.org.uk_-_1675438.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-];
 
 const FOOTER_HREF: Record<string, string> = { "Terms and conditions": "/terms" };
 
@@ -357,26 +346,6 @@ export default function Page() {
               </div>
             ))}
           </div>
-          <details style={{ paddingTop: 32, borderTop: `1px solid ${LINE}`, fontSize: 13, lineHeight: 1.65, color: MUTED }}>
-            <summary style={{ cursor: "pointer", color: INK, fontSize: 12, letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 700 }}>
-              Photo credits
-            </summary>
-            <p style={{ margin: "16px 0 12px" }}>
-              These photographs carry licences that require the photographer to be named. Everything else on the page is
-              CC0 or public domain and needs no credit.
-            </p>
-            <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "6px 32px" }}>
-              {PHOTOS.map((ph) => (
-                <li key={ph.url}>
-                  {ph.c} — <a href={ph.url} rel="noopener noreferrer" target="_blank" style={{ color: MUTED, textDecoration: "underline", textUnderlineOffset: 3 }}>{ph.by}</a>
-                  {", "}
-                  {ph.licUrl
-                    ? <a href={ph.licUrl} rel="license noopener noreferrer" target="_blank" style={{ color: MUTED, textDecoration: "underline", textUnderlineOffset: 3 }}>{ph.lic}</a>
-                    : ph.lic}
-                </li>
-              ))}
-            </ul>
-          </details>
           <div style={{ paddingTop: 32, borderTop: `1px solid ${LINE}`, fontSize: 13, lineHeight: 1.65, color: MUTED, maxWidth: 820 }}>
             <p style={{ margin: 0 }}>
               Independent site. Not affiliated with, endorsed by or connected to Universal Studios, Universal Destinations &amp; Experiences or Comcast NBCUniversal. All trademarks belong to their owners. The park described here is announced and planned; nothing on this site should be read as confirmation of dates or details. © 2026 Ride to Universal.

@@ -107,9 +107,8 @@ export default function Terms() {
 
       <h2 style={H2}>Photographs</h2>
       <p style={P}>
-        Photographs are freely licensed images from Wikimedia Commons, cropped to fit. Those whose licence requires the
-        photographer to be named are credited at the foot of the home page, and where a licence is share-alike, our crop
-        is offered under those same terms.
+        Every photograph on this site is either CC0 or public domain, or was supplied by the site owner. None of them
+        carries a licence that requires the photographer to be named, which is why there is no credits list.
       </p>
 
       <h2 style={H2}>Contact</h2>
