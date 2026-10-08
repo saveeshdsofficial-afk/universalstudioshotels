@@ -266,11 +266,7 @@ export default function Page() {
         {/* 4b — the park is not open yet, so say what is and is not known */}
         <section id="the-park" style={{ padding: `112px ${GUTTER}`, background: PAPER, borderBottom: `1px solid ${LINE}` }}>
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 64, alignItems: "start" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-              <span style={{ display: "inline-flex", alignSelf: "flex-start", alignItems: "center", gap: 10, padding: "7px 14px", borderRadius: 999, background: TINT, border: `1px solid ${TINT_LINE}`, fontSize: 13, fontWeight: 700, color: BLUE_INK }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: BLUE }} />
-                Not open yet
-              </span>
+            <div>
               <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 56, lineHeight: 1, letterSpacing: "-0.04em", textWrap: "balance" }}>
                 A Universal park is coming to Bedfordshire.
               </h2>
