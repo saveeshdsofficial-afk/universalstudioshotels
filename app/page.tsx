@@ -138,7 +138,7 @@ const PLAN = [
   { word: "Stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
     alt: "A made-up double bed and seating in a hotel room",
     body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around, and Milton Keynes or Luton trade a longer drive for easier parking.",
-    cta: "Plan your stay", href: "#getting-there" },
+    cta: "Read the stay guide", href: "#blog" },
   { word: "Activities", title: "What to do", img: "/images/plan/what-to-do.jpg",
     alt: "A rollercoaster track silhouetted against an evening sky",
     body: "Woburn, the Shuttleworth Collection, the Great Ouse and a county full of villages. Enough for a weekend before a theme park is anywhere near it.",
@@ -150,14 +150,9 @@ const PLAN = [
   { word: "Travel", title: "How to get there", img: "/images/plan/how-to-get-there.jpg",
     alt: "A black cab waiting in traffic on a city street",
     body: "Thameslink runs into Bedford from St Pancras in under an hour, and the Marston Vale line passes the site itself at Kempston Hardwick. By road it is the A421 between the M1 and the A1.",
-    cta: "Routes and journey times", href: "#getting-there" },
+    cta: "Routes and journey times", href: "#blog" },
 ];
 
-const STEPS = [
-  { n: "01", t: "Pick your base", d: "Bedford for closeness, Milton Keynes for value and parking, Luton if you are flying, London for a city break." },
-  { n: "02", t: "Work out the journey", d: "The A421 and the M1 do most of the work by road. Trains run into Bedford from St Pancras and along the Marston Vale line." },
-  { n: "03", t: "Book when it suits", d: "Compare live prices on Booking.com. Most rooms still come with free cancellation." },
-];
 
 export default function Page() {
   const [allPosts, setAllPosts] = useState(false);
@@ -199,7 +194,7 @@ export default function Page() {
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: MUTED }}>Bedfordshire stay guide</span>
             </a>
             <nav style={{ display: "flex", gap: 32, fontSize: 15, fontWeight: 500 }}>
-              <a href="#guides">Where to stay</a><a href="#guides">Guides</a><a href="#getting-there">Getting there</a><a href="#blog">Days out</a>
+              <a href="#guides">Where to stay</a><a href="#guides">Guides</a><a href="#blog">Days out</a>
             </nav>
             <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "11px 20px", fontSize: 14 }}>
               Start planning<Right s={15} />
@@ -299,32 +294,6 @@ export default function Page() {
               </button>
             </div>
           ) : null}
-        </section>
-
-        {/* 10 — plan your stay band */}
-        <section id="getting-there" style={{ position: "relative", padding: `128px ${GUTTER}`, background: `radial-gradient(ellipse 60% 80% at 85% 0%,rgba(31,75,255,.22) 0%,rgba(31,75,255,0) 60%),${INK}`, color: "#FFFFFF", overflow: "hidden" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24 }}>
-            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "#D6D7DB" }}>Plan your stay</span>
-            <span style={{ flex: 1, height: 1, background: "rgba(255,255,255,.14)" }} />
-          </div>
-          <h2 style={{ margin: "0 0 64px", fontFamily: ARCHIVO, fontWeight: 800, fontSize: 72, lineHeight: 0.96, letterSpacing: "-0.045em", maxWidth: 900 }}>Three steps to a trip worth the drive.</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 24, marginBottom: 64 }}>
-            {STEPS.map((s) => (
-              <div key={s.n} style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, borderRadius: 12, background: "linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))", border: "1px solid rgba(255,255,255,.12)", boxShadow: "inset 0 1px 0 rgba(255,255,255,.06)" }}>
-                <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 1, letterSpacing: "-0.05em", color: "transparent", WebkitTextStroke: "1.5px #8FA6FF" }}>{s.n}</span>
-                <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 28, letterSpacing: "-0.03em" }}>{s.t}</h3>
-                <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: "#C5C7CD" }}>{s.d}</p>
-              </div>
-            ))}
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            <a className="bb" href={booking("Bedford, UK")} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", gap: 12, padding: "18px 24px 18px 32px", fontSize: 18 }}>
-              Browse stays near Bedford<Arrow s={18} />
-            </a>
-            <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#D6D7DB" }}>
-              <Tick c="#8FA6FF" />Free cancellation on most rooms
-            </span>
-          </div>
         </section>
 
         {/* 12 — footer */}
