@@ -368,7 +368,7 @@ export default function Page() {
               <span style={{ fontSize: 15, lineHeight: 1.6, color: MUTED, maxWidth: 320 }}>An independent journal about Bedfordshire, the planned theme park, and where to stay when you visit.</span>
             </div>
             {[
-              { h: "Guides", l: ["Hotels near the site", "Getting there", "Days out", "Where to eat"] },
+              { h: "Guides", l: ["Where to stay", "Getting there", "Days out", "Where to eat"] },
               { h: "Towns", l: ["Bedford", "Milton Keynes", "Luton", "London"] },
               { h: "The park", l: ["Park news", "What is confirmed", "Timeline"] },
               { h: "About", l: ["About us", "Terms and conditions", "Contact", "Privacy"] },
