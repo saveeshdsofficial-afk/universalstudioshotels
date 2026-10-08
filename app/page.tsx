@@ -332,7 +332,7 @@ export default function Page() {
                   </span>
                 </div>
                 <a className="bb" href={booking("Bedford, Bedfordshire, UK")} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 12, padding: "16px 24px", fontSize: 16, whiteSpace: "nowrap" }}>
-                  View hotels<span style={{ ...CHIP, fontSize: 12 }}>Booking.com</span><Arrow />
+                  View hotels<Arrow />
                 </a>
               </div>
             </div>
@@ -398,7 +398,7 @@ export default function Page() {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
             <a className="bb" href={booking("Bedford, UK")} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", gap: 12, padding: "18px 24px 18px 32px", fontSize: 18 }}>
-              Browse stays near Bedford<span style={{ ...CHIP, fontSize: 12 }}>Booking.com</span><Arrow s={18} />
+              Browse stays near Bedford<Arrow s={18} />
             </a>
             <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#D6D7DB" }}>
               <Tick c="#8FA6FF" />Free cancellation on most rooms
