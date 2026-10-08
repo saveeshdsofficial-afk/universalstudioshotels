@@ -115,12 +115,6 @@ const SectionRule = ({ label, link }: { label: string; link?: string }) => (
 );
 
 /* ------------------------------------------------------------------ data */
-const TOWNS = [
-  { name: "Bedford", img: "/images/towns/bedford.jpg", note: "Closest town to the site", body: "The Embankment, the Great Ouse and the widest choice of rooms within a few miles of Kempston Hardwick.", count: "Most options" },
-  { name: "Milton Keynes", img: "/images/towns/milton-keynes.jpg", note: "25 min by road", body: "Big chain hotels, easy parking and a straight run along the A421. Good value when Bedford fills up.", count: "Easiest parking" },
-  { name: "Luton", img: "/images/towns/luton.jpg", note: "Airport on the doorstep", body: "Worth a look if you are flying in, or want a cheaper base with a direct train north into Bedford.", count: "Best for flights" },
-  { name: "London", img: "/images/towns/london.jpg", note: "Under an hour by train", body: "Make it a city break with a day out in Bedfordshire. Fast services run into Bedford from St Pancras.", count: "City break" },
-];
 
 /* Four real Bedfordshire hotels, photographed. Two carry their name on the
    signage, so the caption names all four rather than implying anything. */
@@ -153,10 +147,6 @@ const POSTS = [
 /* Every photo is a real, freely-licensed image from Wikimedia Commons. Credit is a
    condition of the CC BY and CC BY-SA licences, so it is published, not optional. */
 const PHOTOS = [
-  { c: "Bedford Embankment, beside the Great Ouse", by: "Ronald Saunders from Warrington, UK", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Flickr_-_ronsaunders47_-_BEDFORD_EMBANKMENT..jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "Milton Keynes city centre", by: "John Chryslar", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Milton_Keynes_Sainsburys-Hub_Skyline.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
-  { c: "Luton town centre, seen from the station exit", by: "Robert Eva", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Luton_town_centre_from_the_railway_station_exit._-_geograph.org.uk_-_5432104.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "St Pancras International, London", by: "mattbuck", lic: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:St_Pancras_railway_station_MMB_A7.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/3.0/" },
   { c: "Elstow Abbey, a mile from the park site", by: "Poliphilo", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Elstow_Abbey_from_east.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
   { c: "The M1 through Bedfordshire", by: "Lewis Clarke", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Central_Bedfordshire_-_M1_Motorway_(geograph_5733152).jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "Harpur Square market, Bedford", by: "Paul Gillett", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Harpur_Square_Market,_Bedford_-_geograph.org.uk_-_2948619.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
@@ -176,8 +166,8 @@ const PHOTOS = [
 const PLAN = [
   { tag: "Where to stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
     alt: "Bedford town bridge over the River Great Ouse",
-    body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around. Milton Keynes and Luton trade a longer drive for easier parking.",
-    cta: "Compare the towns", href: "#towns" },
+    body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around, and Milton Keynes or Luton trade a longer drive for easier parking.",
+    cta: "See the hotels", href: "#stay" },
   { tag: "What to do", title: "What to do", img: "/images/plan/what-to-do.jpg",
     alt: "Woburn Abbey seen across its parkland",
     body: "Woburn, the Shuttleworth Collection, the Great Ouse and a county full of villages. Enough for a weekend before a theme park is anywhere near it.",
@@ -237,7 +227,7 @@ export default function Page() {
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: MUTED }}>Bedfordshire stay guide</span>
             </a>
             <nav style={{ display: "flex", gap: 32, fontSize: 15, fontWeight: 500 }}>
-              <a href="#news">Park news</a><a href="#towns">Where to stay</a><a href="#guides">Guides</a><a href="#getting-there">Getting there</a><a href="#blog">Days out</a>
+              <a href="#news">Park news</a><a href="#stay">Where to stay</a><a href="#guides">Guides</a><a href="#getting-there">Getting there</a><a href="#blog">Days out</a>
             </nav>
             <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "11px 20px", fontSize: 14 }}>
               Start planning<Right s={15} />
@@ -315,35 +305,8 @@ export default function Page() {
           </div>
         </section>
 
-        {/* 6 — where to stay by town */}
-        <section id="towns" style={{ padding: `112px ${GUTTER} 200px`, backgroundColor: TINT, backgroundImage: NOISE }}>
-          <SectionRule label="Where to stay by town" />
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, alignItems: "end", marginBottom: 48, marginTop: -16 }}>
-            <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 64, lineHeight: 0.98, letterSpacing: "-0.04em" }}>Start with the town.</h2>
-            <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT, maxWidth: 480 }}>Which town suits you depends on what you want from the trip: the shortest drive, the easiest parking, a station on the doorstep, or a city break attached to it. Here is how the four compare.</p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 24 }}>
-            {TOWNS.map((t) => (
-              <div key={t.name} className="lift" style={{ display: "flex", flexDirection: "column", gap: 16, padding: "8px 8px 24px", borderRadius: 12, background: "#FFFFFF", boxShadow: "0 1px 2px rgba(23,24,27,.05), 0 8px 24px -12px rgba(23,24,27,.14)", transition: "transform .2s, box-shadow .2s" }}>
-                <div style={{ position: "relative", height: 300, borderRadius: 10, overflow: "hidden" }}>
-                  <Image src={t.img} alt="" fill sizes="300px" style={{ objectFit: "cover" }} />
-                  <span style={{ ...PILL, position: "absolute", top: 12, left: 12 }}>{t.count}</span>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: "0 16px" }}>
-                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 26, letterSpacing: "-0.03em" }}>{t.name}</h3>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: BLUE_INK }}>{t.note}</span>
-                  <p style={{ margin: "4px 0 0", fontSize: 15, lineHeight: 1.5, color: MUTED }}>{t.body}</p>
-                  <a className="bb" href={booking(`${t.name}, UK`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "12px 16px", fontSize: 14, marginTop: 14 }}>
-                    View on Booking.com<Arrow s={14} />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* 7 — hotel picks */}
-        <section style={{ padding: `0 ${GUTTER} 128px`, backgroundColor: "#FFFFFF", backgroundImage: `linear-gradient(180deg,${TINT} 0,${TINT} 120px,#FFFFFF 120px)` }}>
+        <section id="stay" style={{ padding: `0 ${GUTTER} 128px`, backgroundColor: "#FFFFFF", backgroundImage: `linear-gradient(180deg,${TINT} 0,${TINT} 120px,#FFFFFF 120px)` }}>
           <div style={{ position: "relative", top: -104, marginBottom: -104 }}>
             <div style={{ display: "flex", alignItems: "end", justifyContent: "space-between", marginBottom: 32 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
