@@ -116,14 +116,6 @@ const SectionRule = ({ label, link }: { label: string; link?: string }) => (
 
 /* ------------------------------------------------------------------ data */
 
-/* Four real Bedfordshire hotels, photographed. Two carry their name on the
-   signage, so the caption names all four rather than implying anything. */
-const HOTEL_PICS = [
-  { src: "/images/hotels/swan.jpg", alt: "The Swan Hotel on Bedford Embankment, seen from across the Great Ouse" },
-  { src: "/images/hotels/mill.jpg", alt: "The Mill Hotel, a white-painted corner building in Bedford" },
-  { src: "/images/hotels/woodland.jpg", alt: "Woodland Manor Hotel, a stone country house at Clapham near Bedford" },
-  { src: "/images/hotels/bell.jpg", alt: "The Bell Hotel, a red-brick coaching inn in Woburn" },
-];
 
 
 const NEWS = [
@@ -157,10 +149,6 @@ const PHOTOS = [
   { c: "The A421 south of Bedford", by: "David Howard", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Roxton_Road_crossing_the_A421_-_geograph.org.uk_-_6947323.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "Ampthill Park, Bedfordshire", by: "Philip Jeffrey", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Ampthill_Park_House_seen_across_the_fields_-_geograph.org.uk_-_3498686.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
   { c: "The White Lion, a former coaching inn at Elstow", by: "PAUL FARMER", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Former_coaching_Inn_The_White_Lion_High_Street_Elstow_-_geograph.org.uk_-_1675438.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "The Swan, Bedford Embankment", by: "Gary Houston", lic: "CC0", url: "https://commons.wikimedia.org/wiki/File:Swan-Hotel-Bedford-20050921-007.jpg", licUrl: "https://creativecommons.org/publicdomain/zero/1.0/" },
-  { c: "The Mill, Bedford", by: "Dave Bevis", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Bedford_-_The_Mill_Hotel_-_geograph.org.uk_-_3832245.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "Woodland Manor, Clapham", by: "Jeff Gogarty", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Woodland_Manor_Hotel,_Clapham_Green,_Bedford_-_geograph.org.uk_-_7575369.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
-  { c: "The Bell, Woburn", by: "Robert Eva", lic: "CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Bell_Hotel,_Woburn_-_geograph.org.uk_-_5234113.jpg", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/" },
 ];
 
 const FOOTER_HREF: Record<string, string> = { "Terms and conditions": "/terms" };
@@ -169,7 +157,7 @@ const PLAN = [
   { word: "Stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
     alt: "A made-up double bed and seating in a hotel room",
     body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around, and Milton Keynes or Luton trade a longer drive for easier parking.",
-    cta: "See the hotels", href: "#stay" },
+    cta: "Plan your stay", href: "#getting-there" },
   { word: "Activities", title: "What to do", img: "/images/plan/what-to-do.jpg",
     alt: "A rollercoaster track silhouetted against an evening sky",
     body: "Woburn, the Shuttleworth Collection, the Great Ouse and a county full of villages. Enough for a weekend before a theme park is anywhere near it.",
@@ -229,7 +217,7 @@ export default function Page() {
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: MUTED }}>Bedfordshire stay guide</span>
             </a>
             <nav style={{ display: "flex", gap: 32, fontSize: 15, fontWeight: 500 }}>
-              <a href="#news">Park news</a><a href="#stay">Where to stay</a><a href="#guides">Guides</a><a href="#getting-there">Getting there</a><a href="#blog">Days out</a>
+              <a href="#news">Park news</a><a href="#guides">Where to stay</a><a href="#guides">Guides</a><a href="#getting-there">Getting there</a><a href="#blog">Days out</a>
             </nav>
             <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "11px 20px", fontSize: 14 }}>
               Start planning<Right s={15} />
@@ -302,43 +290,6 @@ export default function Page() {
                 </div>
               </a>
             ))}
-          </div>
-        </section>
-
-        {/* 7 — hotel picks */}
-        <section id="stay" style={{ padding: `0 ${GUTTER} 128px`, backgroundColor: "#FFFFFF", backgroundImage: `linear-gradient(180deg,${TINT} 0,${TINT} 120px,#FFFFFF 120px)` }}>
-          <div style={{ position: "relative", top: -104, marginBottom: -104 }}>
-            <div style={{ display: "flex", alignItems: "end", justifyContent: "space-between", marginBottom: 32 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase" }}>Hotels near the site</span>
-              </div>
-              <span style={{ fontSize: 13, color: MUTED }}>Real places, photographed — not stock images</span>
-            </div>
-            <div style={{ borderRadius: 12, overflow: "hidden", background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -20px rgba(23,24,27,.24)" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 2, background: LINE }}>
-                {HOTEL_PICS.map((h) => (
-                  <div key={h.src} style={{ position: "relative", height: 320 }}>
-                    <Image src={h.src} alt={h.alt} fill sizes="(max-width: 900px) 50vw, 300px" style={{ objectFit: "cover" }} />
-                  </div>
-                ))}
-              </div>
-              <div style={{ padding: 32, display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: 40, alignItems: "center" }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  <p style={{ margin: 0, fontFamily: SERIF, fontSize: 19, lineHeight: 1.55, color: SOFT }}>
-                    Bedford holds the most choice within a few miles of the site, from Georgian hotels on the
-                    Embankment to the chains along the A421 at Kempston and Elstow. Prices move daily, so we send you
-                    to the live listings rather than print a number that is wrong by the time you read it.
-                  </p>
-                  <span style={{ fontSize: 13, color: MUTED }}>
-                    Pictured, left to right: The Swan on Bedford Embankment, The Mill in Bedford, Woodland Manor at
-                    Clapham, and The Bell at Woburn.
-                  </span>
-                </div>
-                <a className="bb" href={booking("Bedford, Bedfordshire, UK")} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 12, padding: "16px 24px", fontSize: 16, whiteSpace: "nowrap" }}>
-                  View hotels<Arrow />
-                </a>
-              </div>
-            </div>
           </div>
         </section>
 
