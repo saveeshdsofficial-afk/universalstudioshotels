@@ -292,20 +292,26 @@ export default function Page() {
         {/* 5 — plan your visit: three ways in */}
         <section id="guides" style={{ padding: `112px ${GUTTER} 128px` }}>
           <SectionRule label="Plan your Universal adventure" link="All guides" />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 32 }}>
-            {PLAN.map((c) => (
-              <a key={c.title} className="lift" href={c.href} style={{ display: "flex", flexDirection: "column", borderRadius: 12, overflow: "hidden", background: "#FFFFFF", border: `1px solid ${LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 24px 56px -20px rgba(23,24,27,.22)", transition: "transform .2s, box-shadow .2s" }}>
-                <div style={{ position: "relative", height: 260 }}>
-                  <Image src={c.img} alt={c.alt} fill sizes="(max-width: 900px) 100vw, 400px" style={{ objectFit: "cover" }} />
-                  <span style={{ ...PILL, position: "absolute", top: 16, left: 16 }}>{c.tag}</span>
+          <div style={{ display: "flex", flexDirection: "column", gap: 96 }}>
+            {PLAN.map((c, i) => {
+              /* odd rows put the picture on the right, so the eye zig-zags down the page */
+              const flip = i % 2 === 1;
+              return (
+                <div key={c.title} style={{ display: "grid", gridTemplateColumns: "minmax(0,1.05fr) minmax(0,1fr)", gap: 72, alignItems: "center" }}>
+                  <a href={c.href} className="lift" style={{ order: flip ? 2 : 1, position: "relative", display: "block", height: 440, borderRadius: 12, overflow: "hidden", boxShadow: "0 2px 4px rgba(23,24,27,.05), 0 24px 56px -20px rgba(23,24,27,.26)", transition: "transform .2s, box-shadow .2s" }}>
+                    <Image src={c.img} alt={c.alt} fill sizes="(max-width: 900px) 100vw, 560px" style={{ objectFit: "cover" }} />
+                    <span style={{ ...PILL, position: "absolute", top: 16, left: 16 }}>{c.tag}</span>
+                  </a>
+                  <div style={{ order: flip ? 1 : 2, display: "flex", flexDirection: "column", gap: 16, maxWidth: 460, justifySelf: flip ? "end" : "start" }}>
+                    <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 46, lineHeight: 1.02, letterSpacing: "-0.035em" }}>{c.title}</h3>
+                    <p style={{ margin: 0, fontFamily: SERIF, fontSize: 18, lineHeight: 1.6, color: SOFT }}>{c.body}</p>
+                    <a className="gb" href={c.href} style={{ ...GHOST_BTN, alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: 10, padding: "14px 22px", fontSize: 15, marginTop: 4 }}>
+                      {c.cta}<Arrow s={15} />
+                    </a>
+                  </div>
                 </div>
-                <div style={{ padding: 32, display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
-                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 30, lineHeight: 1.05, letterSpacing: "-0.03em" }}>{c.title}</h3>
-                  <p style={{ margin: 0, fontFamily: SERIF, fontSize: 17, lineHeight: 1.55, color: SOFT }}>{c.body}</p>
-                  <span style={{ marginTop: "auto", paddingTop: 16, display: "inline-flex", alignItems: "center", gap: 8, fontWeight: 700, fontSize: 15 }}>{c.cta} <Right /></span>
-                </div>
-              </a>
-            ))}
+              );
+            })}
           </div>
         </section>
 
