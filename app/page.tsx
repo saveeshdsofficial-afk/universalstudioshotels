@@ -204,7 +204,7 @@ export default function Page() {
 
         {/* 3 — hero: the park is not open, and the page says so first */}
         <section style={{ position: "relative", height: 720, display: "flex", alignItems: "flex-end", padding: `0 ${GUTTER} 128px`, overflow: "hidden" }}>
-          <Image src="/images/hero.jpg" alt="" fill priority sizes="1440px" style={{ objectFit: "cover", zIndex: 0 }} />
+          <Image src="/images/hero.jpg" alt="An existing theme park at sunset, its coasters and towers reflected in a lagoon" fill priority sizes="100vw" style={{ objectFit: "cover", zIndex: 0 }} />
           <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg,rgba(23,24,27,.58) 0%,rgba(23,24,27,.26) 30%,rgba(23,24,27,.5) 60%,rgba(23,24,27,.9) 100%)" }} />
           <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: 24, maxWidth: 940, color: "#FFFFFF" }}>
             <h1 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 96, lineHeight: 0.93, letterSpacing: "-0.045em", textWrap: "balance" }}>
