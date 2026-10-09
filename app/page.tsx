@@ -134,11 +134,33 @@ const POSTS = [
 
 const FOOTER_HREF: Record<string, string> = { "Terms and conditions": "/terms" };
 
+/* Real businesses near the site at Kempston Hardwick (52.1046, -0.4936).
+   Distances are straight-line, computed from each postcode's ONS coordinates
+   via api.postcodes.io. They rank properties; they are not road distances.
+   No rates, star ratings or amenity lists: those were never verified, and
+   guessing them under a real business's name would misrepresent it. */
+const STAYS = [
+  { name: "Premier Inn Bedford South (A421)", town: "Kempston, Bedford", pc: "MK42 7FY", mi: 0.6,
+    note: "On Fletcher Road in Kempston, just off the A421. The closest hotel on this list to the site." },
+  { name: "Holiday Inn Express Bedford", town: "Elstow, Bedford", pc: "MK42 9BF", mi: 0.7,
+    note: "At Elstow Interchange, by the A6 and A421 junction south of Bedford." },
+  { name: "Premier Inn Bedford Town Centre (Riverside)", town: "Bedford", pc: "MK40 1AS", mi: 2.3,
+    note: "On Riverside Square, in the middle of Bedford by the Great Ouse." },
+  { name: "Mercure Bedford Centre Hotel", town: "Bedford", pc: "MK42 0AR", mi: 2.3,
+    note: "On St Mary's Street, on the south side of the river in central Bedford." },
+  { name: "The Bedford Swan Hotel & Thermal Spa", town: "Bedford", pc: "MK40 1RW", mi: 2.4,
+    note: "A four-star hotel on The Embankment, with a thermal spa on site." },
+  { name: "Premier Inn Bedford (Priory Marina)", town: "Bedford", pc: "MK41 9DJ", mi: 3.0,
+    note: "Beside Priory Country Park on Barkers Lane, east of the town centre." },
+  { name: "Woodlands Manor Hotel", town: "Clapham, Bedford", pc: "MK41 6EP", mi: 3.8,
+    note: "On Green Lane in Clapham, in open country north of Bedford." },
+];
+
 const PLAN = [
   { word: "Stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
     alt: "A made-up double bed and seating in a hotel room",
     body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around, and Milton Keynes or Luton trade a longer drive for easier parking.",
-    cta: "Read the stay guide", href: "#blog" },
+    cta: "See the stays", href: "#stay" },
   { word: "Activities", title: "What to do", img: "/images/plan/what-to-do.jpg",
     alt: "A rollercoaster track silhouetted against an evening sky",
     body: "Woburn, the Shuttleworth Collection, the Great Ouse and a county full of villages. Enough for a weekend before a theme park is anywhere near it.",
@@ -194,7 +216,7 @@ export default function Page() {
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: MUTED }}>Bedfordshire stay guide</span>
             </a>
             <nav style={{ display: "flex", gap: 32, fontSize: 15, fontWeight: 500 }}>
-              <a href="#guides">Where to stay</a><a href="#guides">Guides</a><a href="#blog">Days out</a>
+              <a href="#stay">Where to stay</a><a href="#guides">Guides</a><a href="#blog">Days out</a>
             </nav>
             <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "11px 20px", fontSize: 14 }}>
               Start planning<Right s={15} />
@@ -268,6 +290,39 @@ export default function Page() {
               </a>
             ))}
           </div>
+        </section>
+
+        {/* 6 — stays: real properties, nearest first */}
+        <section id="stay" style={{ padding: `112px ${GUTTER} 128px`, backgroundColor: TINT, backgroundImage: NOISE }}>
+          <SectionRule label="Stays" />
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, alignItems: "end", marginBottom: 48, marginTop: -16 }}>
+            <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 56, lineHeight: 1, letterSpacing: "-0.04em" }}>Nearest the site first.</h2>
+            <p style={{ margin: 0, fontFamily: SERIF, fontSize: 18, lineHeight: 1.55, color: SOFT, maxWidth: 480 }}>
+              Seven real hotels, ordered by straight-line distance from Kempston Hardwick. We do not print rates or
+              ratings, because those change daily and we cannot stand behind them. Follow a link for live prices.
+            </p>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 2, background: TINT_LINE, borderRadius: 12, overflow: "hidden", border: `1px solid ${TINT_LINE}` }}>
+            {STAYS.map((h) => (
+              <div key={h.pc} style={{ display: "grid", gridTemplateColumns: "88px minmax(0,1fr) auto", gap: 28, alignItems: "center", padding: "26px 28px", background: "#FFFFFF" }}>
+                <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 22, letterSpacing: "-0.03em", color: BLUE_INK }}>
+                  {h.mi}<span style={{ fontSize: 13, fontWeight: 600, color: MUTED }}> mi</span>
+                </span>
+                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 21, lineHeight: 1.2, letterSpacing: "-0.025em" }}>{h.name}</h3>
+                  <span style={{ fontSize: 13, color: MUTED }}>{h.town} · {h.pc}</span>
+                  <p style={{ margin: "2px 0 0", fontSize: 15, lineHeight: 1.5, color: SOFT }}>{h.note}</p>
+                </div>
+                <a className="bb" href={booking(`${h.name}, ${h.town}, UK`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "13px 20px", fontSize: 15, whiteSpace: "nowrap" }}>
+                  Check prices<Arrow s={15} />
+                </a>
+              </div>
+            ))}
+          </div>
+          <p style={{ margin: "20px 0 0", fontSize: 13, lineHeight: 1.6, color: MUTED, maxWidth: 760 }}>
+            Distances are straight-line from the site, measured from each postcode, not driving distance. Links go to
+            Booking.com and may earn us a commission at no extra cost to you.
+          </p>
         </section>
 
         {/* 9 — latest blog */}
