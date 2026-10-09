@@ -315,11 +315,6 @@ export default function Page() {
               </div>
             ))}
           </div>
-          <div style={{ paddingTop: 32, borderTop: `1px solid ${LINE}`, fontSize: 13, lineHeight: 1.65, color: MUTED, maxWidth: 820 }}>
-            <p style={{ margin: 0 }}>
-              Independent site. Not affiliated with, endorsed by or connected to Universal Studios, Universal Destinations &amp; Experiences or Comcast NBCUniversal. All trademarks belong to their owners. The park described here is announced and planned; nothing on this site should be read as confirmation of dates or details. © 2026 Ride to Universal.
-            </p>
-          </div>
         </footer>
       </div>
     </>
