@@ -211,7 +211,7 @@ export default function Page() {
               Stay close.<br />Make a trip of it.
             </h1>
             <p style={{ margin: 0, fontFamily: SERIF, fontSize: 22, lineHeight: 1.5, maxWidth: 620, color: "#F1F1F3" }}>
-              The independent guide to Bedfordshire for anyone heading to the planned theme park near Bedford. Where to stay, how to get there, and what else is worth your time while you are in the area.
+              Your guide to Bedfordshire for anyone heading to the planned theme park near Bedford. Where to stay, how to get there, and what else is worth your time while you are in the area.
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 16, paddingTop: 8 }}>
               <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "15px 26px", fontSize: 16 }}>
@@ -301,7 +301,7 @@ export default function Page() {
           <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr", gap: 32 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 28, letterSpacing: "-0.04em", lineHeight: 1 }}>Ride to Universal<span style={{ color: BLUE }}>.</span></span>
-              <span style={{ fontSize: 15, lineHeight: 1.6, color: MUTED, maxWidth: 320 }}>An independent journal about Bedfordshire, the planned theme park, and where to stay when you visit.</span>
+              <span style={{ fontSize: 15, lineHeight: 1.6, color: MUTED, maxWidth: 320 }}>A journal about Bedfordshire, the planned theme park, and where to stay when you visit.</span>
             </div>
             {[
               { h: "Guides", l: ["Where to stay", "Getting there", "Days out", "Where to eat"] },

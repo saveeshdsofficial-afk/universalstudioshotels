@@ -64,7 +64,7 @@ export default function Terms() {
 
       <h2 style={H2}>Affiliate links and commission</h2>
       <p style={P}>
-        This is an independent guide to Bedfordshire and the planned theme park near Bedford. Some hotel links on this
+        This is a guide to Bedfordshire and the planned theme park near Bedford. Some hotel links on this
         site earn us a commission. Booking.com is our only commercial partner. If you follow one of our links and book,
         Booking.com may pay us a share of what they earn. It costs you nothing extra, and the price you pay is the same
         as it would be had you gone to them directly.
