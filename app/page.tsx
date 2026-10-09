@@ -302,20 +302,23 @@ export default function Page() {
               ratings, because those change daily and we cannot stand behind them. Follow a link for live prices.
             </p>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 2, background: TINT_LINE, borderRadius: 12, overflow: "hidden", border: `1px solid ${TINT_LINE}` }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))", gap: 24 }}>
             {STAYS.map((h) => (
-              <div key={h.pc} style={{ display: "grid", gridTemplateColumns: "88px minmax(0,1fr) auto", gap: 28, alignItems: "center", padding: "26px 28px", background: "#FFFFFF" }}>
-                <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 22, letterSpacing: "-0.03em", color: BLUE_INK }}>
-                  {h.mi}<span style={{ fontSize: 13, fontWeight: 600, color: MUTED }}> mi</span>
-                </span>
-                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 21, lineHeight: 1.2, letterSpacing: "-0.025em" }}>{h.name}</h3>
-                  <span style={{ fontSize: 13, color: MUTED }}>{h.town} · {h.pc}</span>
-                  <p style={{ margin: "2px 0 0", fontSize: 15, lineHeight: 1.5, color: SOFT }}>{h.note}</p>
+              <div key={h.pc} className="lift" style={{ display: "flex", flexDirection: "column", borderRadius: 12, overflow: "hidden", background: "#FFFFFF", border: `1px solid ${TINT_LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 20px 48px -22px rgba(23,24,27,.22)", transition: "transform .2s, box-shadow .2s" }}>
+                {/* the distance is the useful thing here, so it gets the space a photo would */}
+                <div style={{ padding: "28px 28px 22px", background: `linear-gradient(180deg,${TINT} 0%,#FFFFFF 100%)`, borderBottom: `1px solid ${TINT_LINE}`, display: "flex", alignItems: "baseline", gap: 10 }}>
+                  <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 52, lineHeight: 0.9, letterSpacing: "-0.05em", color: BLUE_INK }}>{h.mi}</span>
+                  <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 20, letterSpacing: "-0.03em", color: BLUE_INK }}>mi</span>
+                  <span style={{ marginLeft: "auto", fontSize: 12, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: MUTED }}>from the site</span>
                 </div>
-                <a className="bb" href={booking(`${h.name}, ${h.town}, UK`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "13px 20px", fontSize: 15, whiteSpace: "nowrap" }}>
-                  Check prices<Arrow s={15} />
-                </a>
+                <div style={{ padding: 28, display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 22, lineHeight: 1.2, letterSpacing: "-0.025em" }}>{h.name}</h3>
+                  <span style={{ fontSize: 13, color: MUTED }}>{h.town} · {h.pc}</span>
+                  <p style={{ margin: "4px 0 0", fontSize: 15, lineHeight: 1.55, color: SOFT }}>{h.note}</p>
+                  <a className="bb" href={booking(`${h.name}, ${h.town}, UK`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, marginTop: "auto", alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: 10, padding: "13px 20px", fontSize: 15 }}>
+                    Check prices<Arrow s={15} />
+                  </a>
+                </div>
               </div>
             ))}
           </div>
