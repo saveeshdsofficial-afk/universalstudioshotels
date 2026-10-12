@@ -21,7 +21,7 @@ import { useState, type CSSProperties } from "react";
  */
 
 const ARCHIVO = "var(--font-archivo), 'Archivo', sans-serif";
-const SANS = "var(--font-public-sans), 'Public Sans', system-ui, sans-serif";
+const SANS = "var(--font-poppins), 'Poppins', system-ui, sans-serif";
 const SERIF = "var(--font-source-serif), 'Source Serif 4', Georgia, serif";
 
 const INK = "#17181B";
@@ -134,45 +134,24 @@ const POSTS = [
 
 const FOOTER_HREF: Record<string, string> = { "Terms and conditions": "/terms" };
 
-/* Real businesses near the site at Kempston Hardwick (52.1046, -0.4936).
-   Distances are straight-line, computed from each postcode's ONS coordinates
-   via api.postcodes.io. They rank properties; they are not road distances.
-   No rates, star ratings or amenity lists: those were never verified, and
-   guessing them under a real business's name would misrepresent it. */
-const STAYS = [
-  { name: "Premier Inn Bedford South (A421)", town: "Kempston, Bedford", pc: "MK42 7FY", mi: 0.6,
-    note: "On Fletcher Road in Kempston, just off the A421. The closest hotel on this list to the site." },
-  { name: "Holiday Inn Express Bedford", town: "Elstow, Bedford", pc: "MK42 9BF", mi: 0.7,
-    note: "At Elstow Interchange, by the A6 and A421 junction south of Bedford." },
-  { name: "Premier Inn Bedford Town Centre (Riverside)", town: "Bedford", pc: "MK40 1AS", mi: 2.3,
-    note: "On Riverside Square, in the middle of Bedford by the Great Ouse." },
-  { name: "Mercure Bedford Centre Hotel", town: "Bedford", pc: "MK42 0AR", mi: 2.3,
-    note: "On St Mary's Street, on the south side of the river in central Bedford." },
-  { name: "The Bedford Swan Hotel & Thermal Spa", town: "Bedford", pc: "MK40 1RW", mi: 2.4,
-    note: "A four-star hotel on The Embankment, with a thermal spa on site." },
-  { name: "Premier Inn Bedford (Priory Marina)", town: "Bedford", pc: "MK41 9DJ", mi: 3.0,
-    note: "Beside Priory Country Park on Barkers Lane, east of the town centre." },
-  { name: "Woodlands Manor Hotel", town: "Clapham, Bedford", pc: "MK41 6EP", mi: 3.8,
-    note: "On Green Lane in Clapham, in open country north of Bedford." },
-];
 
 const PLAN = [
   { word: "Stay", title: "Where to stay", img: "/images/plan/where-to-stay.jpg",
     alt: "A made-up double bed and seating in a hotel room",
     body: "Kempston and Elstow sit closest to the site. Bedford gives you a town to walk around, and Milton Keynes or Luton trade a longer drive for easier parking.",
-    cta: "See the stays", href: "#stay" },
+    cta: "See where to stay", href: "/stay" },
   { word: "Activities", title: "What to do", img: "/images/plan/what-to-do.jpg",
     alt: "A rollercoaster track silhouetted against an evening sky",
     body: "Woburn, the Shuttleworth Collection, the Great Ouse and a county full of villages. Enough for a weekend before a theme park is anywhere near it.",
-    cta: "Days out nearby", href: "#blog" },
+    cta: "Days out nearby", href: "/activities" },
   { word: "Food", title: "Where to eat", img: "/images/plan/where-to-eat.jpg",
     alt: "A freshly baked pizza on a tray beside a stone oven",
     body: "Riverside pubs in Bedford, the restaurant quarter in Milton Keynes, and the village inns in between. Where we would actually book a table.",
-    cta: "Eating out", href: "#blog" },
+    cta: "Eating out", href: "/food" },
   { word: "Travel", title: "How to get there", img: "/images/plan/how-to-get-there.jpg",
     alt: "A black cab waiting in traffic on a city street",
     body: "Thameslink runs into Bedford from St Pancras in under an hour, and the Marston Vale line passes the site itself at Kempston Hardwick. By road it is the A421 between the M1 and the A1.",
-    cta: "Routes and journey times", href: "#blog" },
+    cta: "Routes and journey times", href: "/travel" },
 ];
 
 
@@ -216,7 +195,7 @@ export default function Page() {
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: MUTED }}>Bedfordshire stay guide</span>
             </a>
             <nav style={{ display: "flex", gap: 32, fontSize: 15, fontWeight: 500 }}>
-              <a href="#stay">Where to stay</a><a href="#guides">Guides</a><a href="#blog">Days out</a>
+              <a href="/stay">Stay</a><a href="/activities">Activities</a><a href="/food">Food</a><a href="/travel">Travel</a>
             </nav>
             <a className="gb" href="#guides" style={{ ...GHOST_BTN, display: "inline-flex", alignItems: "center", gap: 10, padding: "11px 20px", fontSize: 14 }}>
               Start planning<Right s={15} />
@@ -290,42 +269,6 @@ export default function Page() {
               </a>
             ))}
           </div>
-        </section>
-
-        {/* 6 — stays: real properties, nearest first */}
-        <section id="stay" style={{ padding: `112px ${GUTTER} 128px`, backgroundColor: TINT, backgroundImage: NOISE }}>
-          <SectionRule label="Stays" />
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 48, alignItems: "end", marginBottom: 48, marginTop: -16 }}>
-            <h2 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 800, fontSize: 56, lineHeight: 1, letterSpacing: "-0.04em" }}>Nearest the site first.</h2>
-            <p style={{ margin: 0, fontFamily: SERIF, fontSize: 18, lineHeight: 1.55, color: SOFT, maxWidth: 480 }}>
-              Seven real hotels, ordered by straight-line distance from Kempston Hardwick. We do not print rates or
-              ratings, because those change daily and we cannot stand behind them. Follow a link for live prices.
-            </p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))", gap: 24 }}>
-            {STAYS.map((h) => (
-              <div key={h.pc} className="lift" style={{ display: "flex", flexDirection: "column", borderRadius: 12, overflow: "hidden", background: "#FFFFFF", border: `1px solid ${TINT_LINE}`, boxShadow: "0 2px 4px rgba(23,24,27,.04), 0 20px 48px -22px rgba(23,24,27,.22)", transition: "transform .2s, box-shadow .2s" }}>
-                {/* the distance is the useful thing here, so it gets the space a photo would */}
-                <div style={{ padding: "28px 28px 22px", background: `linear-gradient(180deg,${TINT} 0%,#FFFFFF 100%)`, borderBottom: `1px solid ${TINT_LINE}`, display: "flex", alignItems: "baseline", gap: 10 }}>
-                  <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 52, lineHeight: 0.9, letterSpacing: "-0.05em", color: BLUE_INK }}>{h.mi}</span>
-                  <span style={{ fontFamily: ARCHIVO, fontWeight: 800, fontSize: 20, letterSpacing: "-0.03em", color: BLUE_INK }}>mi</span>
-                  <span style={{ marginLeft: "auto", fontSize: 12, fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: MUTED }}>from the site</span>
-                </div>
-                <div style={{ padding: 28, display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
-                  <h3 style={{ margin: 0, fontFamily: ARCHIVO, fontWeight: 700, fontSize: 22, lineHeight: 1.2, letterSpacing: "-0.025em" }}>{h.name}</h3>
-                  <span style={{ fontSize: 13, color: MUTED }}>{h.town} · {h.pc}</span>
-                  <p style={{ margin: "4px 0 0", fontSize: 15, lineHeight: 1.55, color: SOFT }}>{h.note}</p>
-                  <a className="bb" href={booking(`${h.name}, ${h.town}, UK`)} target="_blank" rel={SPONSORED} style={{ ...BLUE_BTN, marginTop: "auto", alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: 10, padding: "13px 20px", fontSize: 15 }}>
-                    Check prices<Arrow s={15} />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p style={{ margin: "20px 0 0", fontSize: 13, lineHeight: 1.6, color: MUTED, maxWidth: 760 }}>
-            Distances are straight-line from the site, measured from each postcode, not driving distance. Links go to
-            Booking.com and may earn us a commission at no extra cost to you.
-          </p>
         </section>
 
         {/* 9 — latest blog */}

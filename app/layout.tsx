@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Public_Sans, Source_Serif_4 } from "next/font/google";
+import { Archivo, Poppins, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
 /* The three families the design canvas loads from Google Fonts. */
@@ -10,10 +10,11 @@ const archivo = Archivo({
   weight: ["500", "600", "700", "800"],
 });
 
-const publicSans = Public_Sans({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-public-sans",
+  variable: "--font-poppins",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 const sourceSerif = Source_Serif_4({
@@ -41,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${publicSans.variable} ${sourceSerif.variable}`}
+      className={`${archivo.variable} ${poppins.variable} ${sourceSerif.variable}`}
     >
       <body>{children}</body>
     </html>

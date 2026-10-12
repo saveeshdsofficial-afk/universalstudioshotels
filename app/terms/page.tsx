@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 const ARCHIVO = "var(--font-archivo), 'Archivo', sans-serif";
-const SANS = "var(--font-public-sans), 'Public Sans', system-ui, sans-serif";
+const SANS = "var(--font-poppins), 'Poppins', system-ui, sans-serif";
 const SERIF = "var(--font-source-serif), 'Source Serif 4', Georgia, serif";
 const INK = "#17181B";
 const SOFT = "#3A3B40";
